@@ -1,0 +1,31 @@
+{
+  "name": "adminUI",
+  "description": "the butifly admin dashboard ui.",
+  "main": "main.js",
+  "authors": [
+    "H <21418592@qq.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "admin",
+    "ui"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "jquery/jquery#^3.2.1",
+    "jquery-slimscroll": "rochal/jQuery-slimScroll#^1.3.8",
+    "screenfull.js": "sindresorhus/screenfull.js#^3.3.1",
+    "flot.tooltip": "krzysu/flot.tooltip#^0.9.0",
+    "jquery_appear": "morr/jquery.appear#^0.3.6",
+    "jquery-validation": "jquery-validation/jquery-validation#^1.17.0",
+    "fuelux": "ExactTarget/fuelux#^3.16.1",
+    "jquery-placeholder": "mathiasbynens/jquery-placeholder#^2.3.1"
+  }
+}
