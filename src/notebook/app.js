@@ -126,32 +126,13 @@ Date.now = Date.now || function() { return +new Date; };
 
 	  // tooltip
 	  //Todo::已迁移至components/tooltip
-	  //    $("[data-toggle=tooltip]").tooltip();
+	  //$("[data-toggle=tooltip]").tooltip();
 
-    // class
-  	$(document).on('click', '[data-toggle^="class"]', function(e){
-  		e && e.preventDefault();
-  		var $this = $(e.target), $class , $target, $tmp, $classes, $targets;
-  		!$this.data('toggle') && ($this = $this.closest('[data-toggle^="class"]'));
-    	$class = $this.data()['toggle'];
-    	$target = $this.data('target') || $this.attr('href');
-      $class && ($tmp = $class.split(':')[1]) && ($classes = $tmp.split(','));
-      $target && ($targets = $target.split(','));
-      $targets && $targets.length && $.each($targets, function( index, value ) {
-        ($targets[index] !='#') && $($targets[index]).toggleClass($classes[index]);
-      });
-    	$this.toggleClass('active');
-  	});
+	  // class
+	  //todo::已迁移至 components/toggle/toggle-class
 
-    // panel toggle
-    $(document).on('click', '.panel-toggle', function(e){
-      e && e.preventDefault();
-      var $this = $(e.target), $class = 'collapse' , $target;
-      if (!$this.is('a')) $this = $this.closest('a');
-      $target = $this.closest('.panel');
-        $target.find('.panel-body').toggleClass($class);
-        $this.toggleClass('active');
-    });
+	  // panel toggle
+	  //todo::已迁移至 components/toggle/toggle-panel
 
   	// carousel
   	$('.carousel.auto').carousel();

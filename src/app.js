@@ -13,6 +13,7 @@ import ajax from './components/ajax';
 import form from './components/form';
 import loadingBar from './components/loading-bar';
 import placeholder from './components/placeholder';
+import {ToggleClass,TogglePanel} from './components/toggle';
 
 /**
  * @var ../js/requirejc.js RequireJC
@@ -22,7 +23,7 @@ RequireJC.config({
 	debug  : true
 });
 let components = {
-	Tooltip,screenfull,slimscroll,landing,ajax,form,loadingBar,placeholder
+	Tooltip,screenfull,slimscroll,landing,ajax,form,loadingBar,placeholder,ToggleClass,TogglePanel
 };
 
 $(function () {
