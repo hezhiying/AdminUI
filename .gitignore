@@ -2,3 +2,8 @@ node_modules
 bower_components
 npm-debug.log
 mix-manifest.json
+hot
+.idea
+package-lock.json
+app.css
+app.js

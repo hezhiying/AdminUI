@@ -58,7 +58,8 @@
   $.fn.shift.Constructor = Shift
 }(jQuery);
 
-Date.now = Date.now || function() { return +new Date; };
+//Date.now = Date.now || function() { return +new Date; };
+//todo::已迁移至 components/admin-ui.js
 
 +function ($) {
 

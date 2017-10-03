@@ -29,19 +29,10 @@ mix.webpackConfig({
 });
 
 if (mix.config.production) {
-	mix.copy('node_modules/font-awesome/fonts/*', 'fonts');
-	//	mix.copy('node_modules/font-awesome/css/font-awesome.min.css', 'css/font-awesome.min.css');
-	mix.copy('node_modules/bootstrap/dist/js/bootstrap.min.js', 'js/bootstrap/');
-	mix.copy('node_modules/bootstrap/dist/css/bootstrap.min.css', 'js/bootstrap/');
-//	mix.copy('node_modules/jquery/dist/jquery.min.js', 'js')
-	//	mix.js('src/main.js', 'requirejc.min.js');
+  mix.less('src/less/app.less', 'build');
+  mix.js('src/app.js', 'build');
 } else {
-	//	mix.js('src/main.js', 'requirejc.js');
-}
-mix.less('src/less/app.less', 'css/');
-mix.js('src/app.js', 'js').sourceMaps();
-//mix.js('src/test.js', 'js/test.js');
 
-//mix.styles(['src/less/css/animate.css','src/less/css/font.css'],'css/animate.css');
-//mix.styles('src/less/css/font.css','css/font.css');
-//mix.styles('src/less/css/landing.css','css/landing.css');
+}
+mix.less('src/less/app.less', '.');
+mix.js('src/app.js', '.');

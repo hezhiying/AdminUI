@@ -1,8 +1,6 @@
 ($ => {
 	const prepareValidateRule    = function (rules) {
 		if ('object' !== typeof rules) {
-			console.log(rules);
-
 			rules = $.parseJSON(rules);
 		}
 		if (rules.rules) {
@@ -37,7 +35,6 @@
 			let e = $.Event('form.placement');
 			element.trigger(e, [error, element]);
 			if (!e.isDefaultPrevented()) {
-				console.log(element,element.next('.input-group-btn').length,element.prev('.input-group-btn').length)
 				if(element.next('.input-group-btn').length||element.prev('.input-group-btn').length){
 					//如果input后面同级元素直放到外面
 					(element.parents('div.form-group')||element.parent('div')).append(error);
@@ -99,13 +96,11 @@
 		let me         = this;
 		form.on('ajax.before', function () {
 			let result = me.validate();
-			console.log(result);
 			return result;
 		});
 
 		//注册销毁事件
 		form.closest('.adminUI').on('adminUI.destroy', this.destroy);
-//		console.log($.validator.defaults.errorContainer)
 	};
 	//验证
 	Validator.prototype.validate = function (errors) {

@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<title>AdminUI Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-	<link rel="stylesheet" href="../js/bootstrap/bootstrap.min.css" type="text/css"/>
-	<link rel="stylesheet" href="../css/app.css" type="text/css"/>
+	<!--<link rel="stylesheet" href="../js/bootstrap/bootstrap.min.css" type="text/css"/>-->
+	<link rel="stylesheet" href="../app.css" type="text/css"/>
 	<!--[if lt IE 9]>
 	<script src="../js/ie/html5shiv.js"></script>
 	<script src="../js/ie/respond.min.js"></script>
@@ -36,6 +36,7 @@
 		</div>
 	</div>
 </header>
+
 <!--connect-->
 <section class="adminUI" id="content">
 	<div class="container m-t-lg m-b-lg">
@@ -76,7 +77,11 @@
 			<div class="col-sm-4">
 				<div class="login-form">
 					<section class="panel panel-default">
-						<header class="panel-heading font-bold">User Login</header>
+						<header class="panel-heading font-bold">
+							User Login
+							<a href="#" class="panel-toggle text-muted pull-right"><i class="fa fa-caret-down text-active"></i><i class="fa fa-caret-up text "></i></a>
+
+						</header>
 						<div class="panel-body">
 							<form role="form" data-validate name="loginForm" data-ajax>
 
@@ -97,8 +102,11 @@
 											<button class="btn btn-default" type="button">Go!</button>
 										</span>
 										<input type="text" class="form-control" name="test" required>
-
 									</div>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control right" name="daterange2" date-range-picker data-start-date="2017-5-3" data-end-date="2017-7-1" data-opens="left" data-date-limit='{"days":20}' data-auto-apply="true">
+
 								</div>
 								<div class="form-group">
 									<!--<label>Password</label>-->
@@ -111,7 +119,14 @@
 										</label>
 									</div>
 								</div>
-
+								<div class="form-group">
+									<div class="input-group">
+										<input type="password" class="form-control text-sm" name="password" placeholder="Enter password to continue" id="password">
+										<div class="input-group-btn">
+											<a class="btn btn-success data-loading-text" data-ajax="post" id="login" href="demo.html"><i class="fa fa-arrow-right"></i></a>
+										</div>
+									</div>
+								</div>
 								<button type="submit" class="btn btn-sm btn-primary btn-block">Submit</button>
 								<div class="line line-dashed"></div>
 								<div>
@@ -200,9 +215,9 @@
 	</div>
 </footer>
 <script src="../js/jquery.min.js" type="text/javascript"></script>
-<script src="../js/requirejc.min.js" type="text/javascript"></script>
+<!--<script src="../js/requirejc.min.js" type="text/javascript"></script>-->
 <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
-<script src="../js/app.js?baseUrl=/"></script>
+<script src="../app.js?baseUrl=/"></script>
 <script>
 	$("form[name=loginForm]").data('validate',{
 		rules:{
