@@ -28,7 +28,7 @@ export const adminUI = {
 			}
 			//组件初始化
 			if (item.onload) {
-				//item.onload();
+				item.onload();
 			}
 		}
 	},
