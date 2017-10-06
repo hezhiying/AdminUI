@@ -100,7 +100,7 @@ notify.update('title', 'new title')
 $.alert(content, title)
 OR
 $.alert({
-  content: '', 
+  content: '', //text html ajax(url:page.html)
   title: '', 
   type: 'default',//red, green, orange, blue, purple, dark
   columnClass: 'xs, s, m, l, xl', //s
