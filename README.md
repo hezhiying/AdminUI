@@ -6,6 +6,7 @@
 - [全屏显示 fullscreen](#fullscreen)
 - [漂亮滚动条 slimScroll](#slimScroll)
 - [通知插件 notify](#notify)
+- [jquery-confirm](#jquery-confirm)
 
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -90,6 +91,55 @@ notify.update('title', 'new title')
 
 ```
 
+## jquery-confirm
+[http://craftpip.github.io/jquery-confirm/index.html](http://craftpip.github.io/jquery-confirm/index.html)
+
+**example**
+```js
+//alert: 只有一个OK按钮
+$.alert(content, title)
+OR
+$.alert({
+  content: '', 
+  title: '', 
+  type: 'default',//red, green, orange, blue, purple, dark
+  columnClass: 'xs, s, m, l, xl', //s
+  icon: '', //fa fa-user
+  contentLoaded: function(data, status, xhr){}, //仅在ajax调用时使用 status:success|error
+  theme: 'light', //主题 light, dark, modern, supervan, material, bootstrap
+  containerFluid: false, //If true, will use the container-fluid layout, to use the full browser width.
+  onContentReady: function(){},
+  onOpenBefore: function(){},
+  onOpen: function(){},
+  onDestroy: function(){},
+  onAction: function(buttonName){}, //任何按钮点击时被调用，返回buttonName
+  buttons:{
+    btn1: function(btn1){
+        this.buttons.btn2.setText();//api:enable, disable, show, hide, addClass, removeClass
+    },
+    btn2: {
+        text: '',
+        btnClass: '', //btn-blue btn-red, btn-green, btn-orange, btn-purple, btn-dark
+        keys: ['a', 'enter'],
+        isHidden: false,
+        isDisabled: false,
+        action: function(btn2){}
+    }
+      
+  }
+    
+})
+
+//confirm: OK and Close button
+$.confirm(content, title)
+OR
+$.confirm({/**options*/})
+
+//dialog: 没有按钮
+$.dialog(content, title)
+OR
+$.dialog({/**options*/})
+```
 
 ## 特性
 

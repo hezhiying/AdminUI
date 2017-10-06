@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Pages</title>
+    <link rel="stylesheet" href="../app.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../app.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <input type="text" name="name" id="inputID" class="form-control" value="" title="" required="required"
+                   placeholder="e.g. John Doe">
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <input type="text" name="name" id="inputEmail" class="form-control" value="" title="" required="required"
+                   placeholder="e.g. address@example.ext">
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <input type="text" name="name" id="inputUrl" class="form-control" value="" title="" required="required"
+                   placeholder="e.g. https://mathiasbynens.be/">
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <input type="password" name="password" id="inputPassword" class="form-control" value="" title=""
+                   required="required" placeholder="e.g. h4x0rpr00fz">
+        </div>
+    </div>
+</div>
+<div id="hello" class="hide hidden">
+    <div class="section">
+        <p>Options, their defaults, possibilities and explanations.</p>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <tbody><tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>String, Function</td>
+                    <td>
+                        <code>'Hello'</code>
+                    </td>
+                    <td>Title of the dialog. <br>
+                        Also accepts a function that returns a string.
+                    </td>
+                </tr>
+                <tr>
+                    <td>titleClass</td>
+                    <td>String</td>
+                    <td>
+                        <code>''</code>
+                    </td>
+                    <td>
+                        Class that will be applied to the title.
+                    </td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>String</td>
+                    <td>
+                        <code>'default'</code>
+                    </td>
+                    <td>
+                        Colors the modal to give the user a hint of success/failure/warning, <br>
+                        available options are: 'blue, green, red, orange, purple &amp; dark'
+                    </td>
+                </tr>
+                <tr>
+                    <td>typeAnimated</td>
+                    <td>Boolean</td>
+                    <td>
+                        <code>true</code>
+                    </td>
+                    <td>
+                        Adds a little animation to the colors.
+                    </td>
+                </tr>
+                <tr>
+                    <td>draggable</td>
+                    <td>Boolean</td>
+                    <td>
+                        <code>true</code>
+                    </td>
+                    <td>
+                        Makes the dialog draggable,
+                        the drag point is the title of the model, if the title is not defined the model
+                        won't be draggable.
+                        <br>
+                        alignMiddle is set to false, when using draggable.
+                    </td>
+                </tr>
+                <tr>
+                    <td>dragWindowGap</td>
+                    <td>Number</td>
+                    <td>
+                        <code>15</code>
+                    </td>
+                    <td>
+                        Draggable gap between the modal and window, defaults to 15px
+                    </td>
+                </tr>
+                <tr>
+                    <td>dragWindowBorder</td>
+                    <td>Boolean</td>
+                    <td>
+                        <code>true</code>
+                    </td>
+                    <td>
+                        If the modal should be restricted inside the window
+                    </td>
+                </tr>
+                <tr>
+                    <td>animateFromElement</td>
+                    <td>Boolean</td>
+                    <td>
+                        <code>true</code>
+                    </td>
+                    <td>
+                        Animates the modal from the clicked element
+                    </td>
+                </tr>
+                <tr>
+                    <td>alignMiddle</td>
+                    <td>Boolean</td>
+                    <td>
+                        <code>true</code>
+                    </td>
+                    <td>
+                        IMPORTANT <code>@deprecated</code>
+                        The model will be position in center of the screen.
+                        When the content in the model changes, the model is reposition itself.
+                    </td>
+                </tr>
+                <tr>
+                    <td>smoothContent</td>
+                    <td>Boolean</td>
+                    <td>
+                        <code>true</code>
+                    </td>
+                    <td>
+                        Smooth height transition when content in modal changes.
+                    </td>
+                </tr>
+                <tr>
+                    <td>content</td>
+                    <td>String, Function</td>
+                    <td><code>'Are you sure to continue?'</code></td>
+                    <td>
+                        Content for the dialog. <br>
+                        Accepts functions that return string or ajax promise.
+                    </td>
+                </tr>
+                <tr>
+                    <td>contentLoaded</td>
+                    <td>Function</td>
+                    <td><code>function(data,status,xhr){}</code></td>
+                    <td>
+                        In use only when content is loaded via Ajax.
+                        is called on always callback of $.ajax
+                    </td>
+                </tr>
+                <tr>
+                    <td>buttons</td>
+                    <td>Object</td>
+                    <td><code>{}</code></td>
+                    <td>
+                        Multiple definition of buttons
+                        <br>
+                        please see <a href="#defining-buttons">button definition</a> for button properties
+                    </td>
+                </tr>
+                <tr>
+                    <td>icon</td>
+                    <td>String</td>
+                    <td><code>''</code></td>
+                    <td>
+                        Icon class prepended before the title.
+                        ex: 'fa fa-icon'
+                    </td>
+                </tr>
+                <tr>
+                    <td>lazyOpen</td>
+                    <td>Boolean</td>
+                    <td><code>false</code></td>
+                    <td>
+                        Does not open the modal instantly. <br>
+                        requires to call the open() function to open the modal
+                    </td>
+                </tr>
+                <tr>
+                    <td>bgOpacity</td>
+                    <td>Float</td>
+                    <td><code>null</code></td>
+                    <td>
+                        if null, the theme's default bg opacity is applied.
+                    </td>
+                </tr>
+                <tr>
+                    <td>theme</td>
+                    <td>String</td>
+                    <td><code>'light'</code></td>
+                    <td>Color theme for the dialog.<br>
+                        possible options are 'light', 'dark', 'material' &amp; 'bootstrap'
+                    </td>
+                </tr>
+                <tr>
+                    <td>animation</td>
+                    <td>String</td>
+                    <td><code>'zoom'</code></td>
+                    <td>
+                        The Open animation for the dialog.<br>
+                        possible options are right, left, bottom, top, rotate, none, opacity, scale, zoom,
+                        scaleY, scaleX, rotateY, rotateYR (reverse), rotateX, rotateXR (reverse)
+                        <br>
+                        <span class="text-info">The 'blur' animation was removed in v1.1.2</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>closeAnimation</td>
+                    <td>String</td>
+                    <td><code>'scale'</code></td>
+                    <td>
+                        The close animation for the dialog. Same options as animation.
+                    </td>
+                </tr>
+                <tr>
+                    <td>animationSpeed</td>
+                    <td>Number</td>
+                    <td><code>400</code></td>
+                    <td>Animation duration in milliseconds.</td>
+                </tr>
+                <tr>
+                    <td>animationBounce</td>
+                    <td>Float</td>
+                    <td><code>1</code></td>
+                    <td>Adds a Bounce open animation, <br>1 = No bounce</td>
+                </tr>
+                <tr>
+                    <td>escapeKey</td>
+                    <td>Boolean, String</td>
+                    <td><code>false</code></td>
+                    <td>
+                        if false, escapeKey wont work, <br>
+                        if true, will work, but no callbacks, <br>
+                        if string, will be assigned to button.
+                    </td>
+                </tr>
+                <tr>
+                    <td>rtl</td>
+                    <td>Boolean</td>
+                    <td><code>false</code></td>
+                    <td>
+                        Use the Right to left text layout.
+                    </td>
+                </tr>
+                <tr>
+                    <td>container</td>
+                    <td>String</td>
+                    <td><code>'body'</code></td>
+                    <td>
+                        Specify where the generated HTML content for jconfirm should append. <br>
+                        By default it appends in the document's &lt;body&gt;.
+                    </td>
+                </tr>
+                <tr>
+                    <td>containerFluid</td>
+                    <td>Boolean</td>
+                    <td><code>false</code></td>
+                    <td>
+                        If true, will use the container-fluid layout, to use the full browser width.
+                    </td>
+                </tr>
+                <tr>
+                    <td>backgroundDismiss</td>
+                    <td>Boolean, String, Function</td>
+                    <td><code>false</code></td>
+                    <td>
+                        If false, user wont be able to exit by clicking out. <br>
+                        If true, user will be able to click out, no callback. <br>
+                        If string, will be assigned to button. <br>
+                        If function, will be used as callback.
+                    </td>
+                </tr>
+                <tr>
+                    <td>backgroundDismissAnimation</td>
+                    <td>String</td>
+                    <td><code>'shake'</code></td>
+                    <td>
+                        Animation to perform to grab the user's attention when user clicks out of the box.
+                    </td>
+                </tr>
+                <tr>
+                    <td>autoClose</td>
+                    <td>String</td>
+                    <td><code>false</code></td>
+                    <td>
+                        Auto-close the dialog within a specified time, if the user doesn't respond.<br>
+                        possible option <code>'buttonName|400'</code> <br>
+
+                        <p class="text-info">
+                            the string is divided in two halves with pipe <code>'|'</code>, the first part
+                            specifies the button name to trigger. The other
+                            half specifies the wait time in milliseconds.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>closeIcon</td>
+                    <td>Boolean</td>
+                    <td><code>null</code></td>
+                    <td>
+                        By default closeIcon is visible if both buttons are false. (dialog mode). <br>
+                        closeIcon can be shown by setting this value to true.
+                    </td>
+                </tr>
+                <tr>
+                    <td>closeIconClass</td>
+                    <td>String</td>
+                    <td><code>false</code></td>
+                    <td>
+                        By default jQuery confirm uses × html entity for this close symbol. You can
+                        provide icon class here to change it. <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>watchInterval</td>
+                    <td>Number</td>
+                    <td><code>100</code></td>
+                    <td>
+                        Watch the modal for changes and is centered on screen. <br>
+                        <i class="fa fa-info"></i> Added in v 2.5.0
+                    </td>
+                </tr>
+                <tr>
+                    <td>columnClass</td>
+                    <td>String</td>
+                    <td><code>'col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10
+                        col-xs-offset-1'</code></td>
+                    <td>
+                        Provides a better way to set Custom width and is responsive.<br>
+                        You can also set custom widths for different display sizes using the Bootstraps
+                        grid.
+                    </td>
+                </tr>
+                <tr>
+                    <td>useBootstrap</td>
+                    <td>Boolean</td>
+                    <td><code>true</code></td>
+                    <td>
+                        if true, bootstrap classes will be set on the modal. 'columnClass' wil be set on the
+                        box.
+                        if false, bootstrap classes will not be set, instead 'boxWidth' will be set on the
+                        box.
+                    </td>
+                </tr>
+                <tr>
+                    <td>boxWidth</td>
+                    <td>String</td>
+                    <td><code>'50%'</code></td>
+                    <td>
+                        This options sets the width of the box, when you're not planning to use bootstrap in
+                        your project
+                        <br>
+                        <i class="fa fa-info"></i> Will only work if 'useBootstrap' is set to false,
+                    </td>
+                </tr>
+                <tr>
+                    <td>scrollToPreviousElement</td>
+                    <td>Boolean</td>
+                    <td><code>true</code></td>
+                    <td>
+                        Scroll back to the element that was focused before jconfirm model opened.
+                    </td>
+                </tr>
+                <tr>
+                    <td>scrollToPreviousElementAnimate</td>
+                    <td>Boolean</td>
+                    <td><code>true</code></td>
+                    <td>
+                        Animates the scroll to previous element.
+                    </td>
+                </tr>
+                <tr>
+                    <td>offsetTop</td>
+                    <td>Number</td>
+                    <td><code>40</code></td>
+                    <td>
+                        The model will maintain at least 50px from the window's top.
+                    </td>
+                </tr>
+                <tr>
+                    <td>offsetBottom</td>
+                    <td>Number</td>
+                    <td><code>40</code></td>
+                    <td>
+                        The model will maintain at least 50px from the window's bottom.
+                    </td>
+                </tr>
+                <tr>
+                    <td>bootstrapClasses</td>
+                    <td>object</td>
+                    <td><code>{
+                        container: 'container',
+                        containerFluid: 'container-fluid',
+                        row: 'row',
+                        }</code></td>
+                    <td>
+                        These are the default classes that are set when bootstrap is used,
+                        this option is available to folks who use namespaced bootstrap classes.
+                    </td>
+                </tr>
+                <tr>
+                    <td>onContentReady</td>
+                    <td>Function</td>
+                    <td><code>function(){}</code></td>
+                    <td>
+                        is called when the content is put in DOM and the modal is open. (When the modal is
+                        completed ready.)
+                    </td>
+                </tr>
+                <tr>
+                    <td>onOpenBefore</td>
+                    <td>Function</td>
+                    <td><code>function(){}</code></td>
+                    <td>
+                        is called when the modal is going to be opened.
+                    </td>
+                </tr>
+                <tr>
+                    <td>onOpen</td>
+                    <td>Function</td>
+                    <td><code>function(){}</code></td>
+                    <td>
+                        is called when the modal has finished opening.
+                    </td>
+                </tr>
+                <tr>
+                    <td>onClose</td>
+                    <td>Function</td>
+                    <td><code>function(){}</code></td>
+                    <td>
+                        is called when the modal is going to be closed.
+                    </td>
+                </tr>
+                <tr>
+                    <td>onDestroy</td>
+                    <td>Function</td>
+                    <td><code>function(){}</code></td>
+                    <td>
+                        is called after the modal element is removed from the DOM.
+                    </td>
+                </tr>
+                <tr>
+                    <td>onAction</td>
+                    <td>Function</td>
+                    <td><code>function(buttonName){}</code></td>
+                    <td>
+                        is called when any of the button is clicked. buttonName is provided as argument.
+                    </td>
+                </tr>
+                </tbody></table>
+        </div>
+    </div>
+</div>
+<a name="" id="" class="btn btn-danger" href="#" role="button">link button</a>
+<button type="button" class="btn btn-primary" data-dialog="#hello" data-dialog-title="title" data-dialog-type="purple">button</button>
+<button type="button" class="btn btn-secondary">button-secondary</button>
+<button type="button" class="btn btn-success">button success</button>
+<input type="text" name="name" placeholder="e.g. John Doe">
+<input type="email" name="email" placeholder="e.g. address@example.ext">
+<input type="url" name="url" placeholder="e.g. https://mathiasbynens.be/">
+<input type="tel" name="tel" placeholder="e.g. +32 472 77 69 88">
+<input type="password" name="password" placeholder="e.g. h4x0rpr00fz">
+<input type="search" name="search" placeholder="Search this site…">
+<textarea name="message" placeholder="Your message goes here"></textarea>
+</body>
+</html>
