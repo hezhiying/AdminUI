@@ -8,6 +8,7 @@
 - [通知插件 notify](#notify)
 - [jquery-confirm](#jquery-confirm)
 - [tooltip](#tooltip)
+- [landing 让元素在进入视野里产生动画效果](#landing)
 
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -176,12 +177,14 @@ https://github.com/morr/jquery.appear/
 ```
 
 **属性**
+
 属性 | data | 说明  |默认
 ---|--- |---|---
 animation|data-animation|要使用的动画效果|<fadeInLeft>
 delay|data-delay|延迟多少时间开始动画效果ms|0
 
 **动画效果列表**
+
 淡入 | 淡出 | 说明 |
 ---|--- | --- |
 fadeIn|fadeOut|淡入(淡出)显示 
