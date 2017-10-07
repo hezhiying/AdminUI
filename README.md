@@ -163,6 +163,36 @@ http://www.flotcharts.org/
 placement|data-placement|显示位置|top`bottom right left`
 title|title|内容|
 
+## landing
+使用appear插件，让元素在进入视野里添加动画效果
+https://github.com/morr/jquery.appear/
+
+**e.g.**
+```html
+<div data-ride="animated" data-animation="fadeInLeft" data-delay="900"></div>
+<!--直接使用动画效果-->
+<div class="animated fadeInLeft"></div>
+<!--可用的动画效果
+```
+
+**属性**
+属性 | data | 说明  |默认
+---|--- |---|---
+animation|data-animation|要使用的动画效果|<fadeInLeft>
+delay|data-delay|延迟多少时间开始动画效果ms|0
+
+**动画效果列表**
+淡入 | 淡出 | 说明 |
+---|--- | --- |
+fadeIn|fadeOut|淡入(淡出)显示 
+fadeInUp|fadeOutUp|从下往上淡入(淡出)
+fadeInDown|fadeOutDown|从上 -> 往下
+fadeInLeft|fadeOutLeft|从左 -> 往右
+fadeInRight|fadeOutRight|从右 -> 往左
+fadeInUpBig|fadeOutUpBig|从底 -> 往上
+fadeInDownBig|fadeOutDownBig|从顶 -> 往下
+fadeInLeftBig|fadeOutLeftBig|从左屏 -> 往右
+fadeInRightBig|fadeOutRightBig|从右屏 -> 往左
 
 
 ## 特性
