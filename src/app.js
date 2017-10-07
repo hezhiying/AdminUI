@@ -59,13 +59,34 @@ import dialog from './components/dialog';
  * tooltip文字提示插件
  * https://github.com/krzysu/flot.tooltip
  * http://www.flotcharts.org/
+ * @e.g.
+ * <a class="btn btn-danger" href="#" data-toggle="tooltip" data-placement="top" title="sssfsafsf">link button</a>
+ * placement: top bottom right left
  */
 import Tooltip from './components/tooltip';
 
+/**
+ * 使用appear插件，让元素在进入视野里添加动画效果
+ * https://github.com/morr/jquery.appear/
+ * @e.g.
+ * <div data-ride="animated" data-animation="fadeInLeft" data-delay="900"></div>
+ * 可用的动画效果 animated fadeIn fadeInUp fadeInDown fadeInLeft fadeInRight fadeInUpBig fadeInDownBig fadeInLeftBig fadeInRightBig fadeOut fadeOutUp fadeOutDown fadeOutLeft fadeOutRight fadeOutUpBig fadeOutDownBig fadeOutLeftBig fadeOutRightBig
+ */
 import landing from './components/landing';
+
+/**
+ * 显示loading bar加载效果
+ * ajax加载时自动显示
+ * @e.g.
+ * $.adminUI.loadingBar.show(); //开始显示
+ * $.adminUI.loadingBar.success();  //成功
+ * $.adminUI.loadingBar.error(); //失败
+ */
+import loadingBar from './components/loading-bar';
+
+
 import ajax from './components/ajax';
 import form from './components/form';
-import loadingBar from './components/loading-bar';
 
 
 import {ToggleClass,TogglePanel} from './components/toggle';

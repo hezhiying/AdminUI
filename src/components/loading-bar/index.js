@@ -5,7 +5,7 @@
 	"use strict";
 	$.adminUI.loadingBar = {
 		bar    : null,
-		process: null,
+		processBar: null,
 		init() {
 			$('#loading-bar').remove();
 			this.bar = $('<div class="loading-bar animated" id="loading-bar">\
@@ -14,23 +14,23 @@
 				</div>\
 				</div>');
 			this.bar.prependTo('body');
-			this.process = this.bar.find('.progress-bar')
+			this.processBar = this.bar.find('.progress-bar')
 		},
 		show(){
 			this.init();
 			this.bar.find('.progress').addClass('progress-striped');
-			this.process.removeClass('progress-bar-success progress-bar-danger done').width(0);
+			this.processBar.removeClass('progress-bar-success progress-bar-danger done').width(0);
 			this.bar.removeClass('fadeOut').addClass('fadeIn').show();
-			this.process.width('90%')
+			this.processBar.width('90%')
 		},
 		error(){
 			this.bar.find('.progress').removeClass('progress-striped');
-			this.process.addClass('progress-bar-danger done').width('100%');
+			this.processBar.addClass('progress-bar-danger done').width('100%');
 			this.hide()
 		},
 		success(){
 			this.bar.find('.progress').removeClass('progress-striped');
-			this.process.addClass('progress-bar-success done').width('100%');
+			this.processBar.addClass('progress-bar-success done').width('100%');
 			this.hide()
 		},
 		hide(){
@@ -52,6 +52,7 @@
 		});
 		// block it
 		$(document).on('ajax.send', '[data-loading]', function (e) {
+			console.log('data-loading', e)
 			let me = e.element;
 			if (me.data('loading') !== undefined && me.data('loading') !== null) {
 				let jc;

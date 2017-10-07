@@ -9,6 +9,7 @@
 - [jquery-confirm](#jquery-confirm)
 - [tooltip](#tooltip)
 - [landing 让元素在进入视野里产生动画效果](#landing)
+- [loading-bar loadingBar加载效果](#loading-bar)
 
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -170,10 +171,13 @@ https://github.com/morr/jquery.appear/
 
 **e.g.**
 ```html
+<!--进入可视区域后今次播放从左往右淡入的动画效果-->
+<div data-ride="animated" data-animation="fadeInLeft" data-delay="300"></div>
+<div data-ride="animated" data-animation="fadeInLeft" data-delay="600"></div>
 <div data-ride="animated" data-animation="fadeInLeft" data-delay="900"></div>
 <!--直接使用动画效果-->
 <div class="animated fadeInLeft"></div>
-<!--可用的动画效果
+
 ```
 
 **属性**
@@ -197,7 +201,19 @@ fadeInDownBig|fadeOutDownBig|从顶 -> 往下
 fadeInLeftBig|fadeOutLeftBig|从左屏 -> 往右
 fadeInRightBig|fadeOutRightBig|从右屏 -> 往左
 
+## loading-bar 
 
+ajax加载时自动显示[code source](src/components/loading-bar/index.js)
+
+**e.g.**
+```js
+//开始显示
+$.adminUI.loadingBar.show();
+//成功
+$.adminUI.loadingBar.success();
+//失败
+$.adminUI.loadingBar.error();
+```
 ## 特性
 
 #### Button and Link
