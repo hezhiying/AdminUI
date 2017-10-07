@@ -46,9 +46,22 @@ import slimscroll from './components/slim-scroll';
  */
 import notify from './components/notify';
 
-
+/**
+ * jquery-confirm 模态提示框
+ * https://craftpip.github.io/jquery-confirm/
+ * @e.g.
+ * $.alert(content, title), $.confirm(), $.dialog()
+ * $.alert({})
+ */
 import dialog from './components/dialog';
+
+/**
+ * tooltip文字提示插件
+ * https://github.com/krzysu/flot.tooltip
+ * http://www.flotcharts.org/
+ */
 import Tooltip from './components/tooltip';
+
 import landing from './components/landing';
 import ajax from './components/ajax';
 import form from './components/form';

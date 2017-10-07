@@ -7,6 +7,7 @@
 - [漂亮滚动条 slimScroll](#slimScroll)
 - [通知插件 notify](#notify)
 - [jquery-confirm](#jquery-confirm)
+- [tooltip](#tooltip)
 
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -140,6 +141,29 @@ $.dialog(content, title)
 OR
 $.dialog({/**options*/})
 ```
+
+## tooltip
+
+https://github.com/krzysu/flot.tooltip
+
+http://www.flotcharts.org/
+
+**e.g.**
+```html
+<!--data-toggle="tooltip"-->
+
+<a class="btn btn-danger" href="#" data-toggle="tooltip" data-placement="top" title="sssfsafsf">link button</a>
+
+```
+
+**属性**
+
+属性 | data | 说明  |默认
+---|--- |---|---
+placement|data-placement|显示位置|top`bottom right left`
+title|title|内容|
+
+
 
 ## 特性
 

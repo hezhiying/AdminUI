@@ -10,6 +10,7 @@
 
 Modernizr.addTest('android',function(){return!!navigator.userAgent.match(/Android/i)});
 Modernizr.addTest('chrome',function(){return!!navigator.userAgent.match(/Chrome/i)});
+Modernizr.addTest('safari',function(){return!!navigator.userAgent.match(/Safari/i)});
 Modernizr.addTest('firefox',function(){return!!navigator.userAgent.match(/Firefox/i)});
 Modernizr.addTest('iemobile',function(){return!!navigator.userAgent.match(/IEMobile/i)});
 Modernizr.addTest('ie',function(){return!!navigator.userAgent.match(/MSIE/i)});
