@@ -10,6 +10,7 @@
 - [tooltip](#tooltip)
 - [landing 让元素在进入视野里产生动画效果](#landing)
 - [loading-bar loadingBar加载效果](#loading-bar)
+- [daterangepicker日期范围](#daterangepicker)
 
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -214,6 +215,27 @@ $.adminUI.loadingBar.success();
 //失败
 $.adminUI.loadingBar.error();
 ```
+## daterangepicker
+非常好用的日期范围选择
+* http://www.daterangepicker.com/
+* https://github.com/dangrossman/bootstrap-daterangepicker
+
+**e.g.**
+
+```html
+<input date-range-picker data-start-date="2017-5-3" data-end-date="2017-7-1" data-opens="right" >
+```
+**属性**
+
+属性 | data | 说明 |默认值
+---|--- | --- |---
+startDate|data-start-date|开始日期|当天
+endDate|data-end-date|结束日期|当天
+opens|data-opens|窗口打开位置|'left'/'right'/'center'
+dateLimit|data-date-limit|开始结束大最日期间隔
+drops|data-drops|选择框打开方向| 'down' or 'up'
+
+
 ## 特性
 
 #### Button and Link

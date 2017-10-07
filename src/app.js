@@ -84,13 +84,18 @@ import landing from './components/landing';
  */
 import loadingBar from './components/loading-bar';
 
+/**
+ * 日期范围选择控件
+ * http://www.daterangepicker.com/
+ * https://github.com/dangrossman/bootstrap-daterangepicker
+ */
+import daterangepicker from './components/date-range-picker';
 
 import ajax from './components/ajax';
 import form from './components/form';
 
 
 import {ToggleClass,TogglePanel} from './components/toggle';
-import daterangepicker from './components/date-range-picker';
 
 /**
  * @var ../js/requirejc.js RequireJC
