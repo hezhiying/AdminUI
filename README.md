@@ -11,6 +11,7 @@
 - [landing 让元素在进入视野里产生动画效果](#landing)
 - [loading-bar loadingBar加载效果](#loading-bar)
 - [daterangepicker日期范围](#daterangepicker)
+- [bootstrap-datepicker](#bootstrap-datepicker)
 
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -254,7 +255,49 @@ localeFormat|data-locale-format|格式|`YYYY-MM-DD`,
 * `ss` 秒
 * `A` AM PM
 
+## bootstrap-datepicker
 
+bootstrap提供的一个日期组件
+
+ * @git https://github.com/uxsolutions/bootstrap-datepicker
+ * @demo https://uxsolutions.github.io/bootstrap-datepicker
+ 
+ **e.g.**
+ ```html
+//单选 必须包含样式: datepicker-input
+<input type="text" class="form-control datepicker-input">
+
+//range日期范围 必须包含样式：input-daterange datepicker-input
+<div class="input-daterange input-group datepicker-input">
+    <input type="text" class="input-sm form-control" name="start" />
+    <span class="input-group-addon">to</span>
+    <input type="text" class="input-sm form-control" name="end" />
+</div>
+
+//组件样式加上 class="datepicker-input"
+//日期范围组件加上 class="input-daterange"
+```
+
+**可用属性**
+
+属性 | data | 说明 |默认值
+---|--- | --- |---
+format|data-date-format|日期格式|yyyy-mm-dd
+clearBtn|data-date-clear-btn|显示清空按钮|false
+todayBtn|data-date-today-btn|显示今日按钮|false `true`回到当天的日期位置但不设置 <br>`linked` 设置为当天日期
+orientation|data-date-orientation|组件显示方向|auto 由`auto`, `top`, `bottom`, `left`, `right` 一个或两个组件
+startDate|data-date-start-date|最小日期|日期格式字符串`2017-10-01`
+endDate|data-date-end-date|最大日期|`2017-10-31` 必须由 `format` 能够解析
+autoclose|data-date-autoclose|自动关闭|true
+startView|data-date-start-view|打开时显示的视图|0:days(默认) 1:months(月) 2:years(年) 3:decades(十年) 4:centuries(百年）
+
+**日期格式说明**
+
+* d, dd: 数字日期，无前导0和有前导0. Eg, 5, 05.
+* D, DD: 星期几缩写和全称. Eg, Mon, Monday.
+* m, mm: 数字月份. Eg, 7, 07.
+* M, MM: 月份缩写和全称. Eg, Jan, January
+* yy, yyyy: 2位或4位数年份. Eg, 12, 2012.
 
 
 ## 特性

@@ -91,6 +91,21 @@ import loadingBar from './components/loading-bar';
  */
 import daterangepicker from './components/date-range-picker';
 
+/**
+ * bootstrap-datepicker插件
+ * bootstrap提供的一款日期选择组件
+ * https://github.com/uxsolutions/bootstrap-datepicker
+ * @e.g.
+ * <input class="datepicker-input">
+ * 范围选择 必须包含样式：input-daterange datepicker-input
+ * <div class="input-daterange input-group datepicker-input">
+ *   <input type="text" class="input-sm form-control" name="start" />
+ *   <span class="input-group-addon">to</span>
+ *   <input type="text" class="input-sm form-control" name="end" />
+ * </div>
+ */
+import bootstrapDatepicker from './components/bootstrap-datepicker';
+
 import ajax from './components/ajax';
 import form from './components/form';
 
@@ -106,7 +121,7 @@ RequireJC.config({
 });
 
 let components = {
-	Tooltip, slimscroll,landing,ajax,form,loadingBar,placeholder, ToggleClass,TogglePanel,daterangepicker
+	Tooltip, slimscroll, bootstrapDatepicker, landing,ajax,form,loadingBar,placeholder, ToggleClass,TogglePanel,daterangepicker
 };
 
 $(function () {

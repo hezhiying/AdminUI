@@ -51,8 +51,9 @@
 		$(this).next('.combodate').find('select').addClass('form-control');
 	});
 
+	//Todo::已迁移至components/bootstrap-datepicker
 	// datepicker
-	$(".datepicker-input").each(function(){ $(this).datepicker();});
+	//$(".datepicker-input").each(function(){ $(this).datepicker();});
 
 	// dropfile
 	$('.dropfile').each(function(){
