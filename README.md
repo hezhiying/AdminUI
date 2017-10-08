@@ -223,7 +223,7 @@ $.adminUI.loadingBar.error();
 **e.g.**
 
 ```html
-<input date-range-picker data-start-date="2017-5-3" data-end-date="2017-7-1" data-opens="right" >
+<input date-range-picker data-start-date="2017-5-3" data-end-date="2017-7-1" data-opens="right" data-date-limit='{"days":30}'>
 ```
 **属性**
 
@@ -232,7 +232,7 @@ $.adminUI.loadingBar.error();
 startDate|data-start-date|开始日期|当天
 endDate|data-end-date|结束日期|当天
 opens|data-opens|窗口打开位置|'left'/'right'/'center'
-dateLimit|data-date-limit|开始结束大最日期间隔
+dateLimit|data-date-limit|开始结束大最日期间隔|`{"days":30}` `{"months":1}`
 drops|data-drops|选择框打开方向| 'down' or 'up'
 
 
