@@ -245,14 +245,16 @@ singleDatePicker|data-single-date-picker|是否单选一天|false
 localeFormat|data-locale-format|格式|`YYYY-MM-DD`, 
 
 ### localeFormat可用属性
-* **YYYY** 年
-* **MM** 月
-* ==DD== 日
-* ==H== 24小时制小时
-* ==h== 14小时制小时
-* ==mm== 分钟
-* ==ss== 秒
-* ==A== AM PM
+* `YYYY` 年
+* `MM` 月
+* `DD` 日
+* `H` 24小时制小时
+* `h` 14小时制小时
+* `mm` 分钟
+* `ss` 秒
+* `A` AM PM
+
+
 
 
 ## 特性
@@ -275,3 +277,4 @@ template:
 ```
 
 #### [DateRangePicker](src/components/date-range-picker.md) 
+
