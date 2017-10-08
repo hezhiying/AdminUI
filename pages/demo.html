@@ -475,9 +475,42 @@
 <div class="animated fadeInLeftBig">fadeInLeftBig</div>
 <div class="animated fadeInDownBig">fadeInDownBig</div>
 <div class="animated fadeInUpBig">fadeInUpBig</div>
-<div class="col-sm-4 animated fadeInLeft">
-    <input date-range-picker data-start-date="2017-5-3" data-end-date="2017-6-1" data-opens="center" data-date-limit-months='1'>
-    <input date-range-picker data-start-date="2017-5-3" data-locale-format="YYYY年MM月DD日 H:mm:ss" data-time-picker-seconds="true" data-time-picker24-hour="true" data-single-date-picker="true" data-time-picker="true" data-show-dropdowns="true" data-end-date="2017-6-1"  id="aa">
+<div class="row">
+    <div class="col-sm-4 animated fadeInLeft">
+        <input date-range-picker data-start-date="2017-5-3" data-end-date="2017-6-1" data-opens="center" data-date-limit-months='1'>
+        <input date-range-picker data-start-date="2017-5-3" data-locale-format="YYYY年MM月DD日 H:mm:ss" data-time-picker-seconds="true" data-time-picker24-hour="true" data-single-date-picker="true" data-time-picker="true" data-show-dropdowns="true" data-end-date="2017-6-1"  id="aa">
+        <input class="datepicker-input" data-date-autoclose="true" data-date-format="yyyy年mm月dd日" data-date-today-btn="true" data-date-start-date="2017-10-01" data-date-end-date="2017-10-30" data-date-start-view="2">
+        <div class="input-daterange input-group datepicker-input" data-date-autoclose="false" data-date-clear-btn="true">
+            <input type="text" class="input-sm form-control" name="starta" />
+            <span class="input-group-addon">to</span>
+            <input type="text" class="input-sm form-control" name="endb" />
+        </div>
+
+    </div>
+    <div class="col-xs-4">
+        <div class="input-group m-b ">
+            <input type="text" class="form-control">
+            <span class="input-group-addon"><i class="fa fa-anchor"></i></span>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="input-group m-b">
+            <input type="text" class="form-control">
+            <span class="input-group-btn"><button type="button"
+                                                  class="btn btn-primary add-on"><i class="fa fa-anchor"></i></button></span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">点我弹出/隐藏弹出框</button>
+
+    </div>
+    <div class="col-xs-4">
+        <div class="sparkline m-l m-r-lg pull-right" data-type="bar" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6</div>
+        <div class="sparkline m-l m-r-lg pull-right" data-type="pie" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6</div>
+        <div class="sparkline m-l m-r-lg pull-right" data-type="line" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6</div>
+    </div>
 </div>
 <form action="" method="post" role="form" data-loading>
     <legend>Form Title</legend>
@@ -505,5 +538,30 @@
 <input type="password" name="password" placeholder="e.g. h4x0rpr00fz">
 <input type="search" name="search" placeholder="Search this site…">
 <textarea name="message" placeholder="Your message goes here"></textarea>
+<section class="panel panel-default">
+    <header class="panel-heading text-right bg-light">
+        <ul class="nav nav-tabs pull-left">
+            <li><a href="#messages-2" data-toggle="tab"><i class="fa fa-comments text-default"></i></a></li>
+            <li class="active"><a href="#profile-2" data-toggle="tab"><i class="fa fa-user text-default"></i> Profile</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog text-default"></i> Settings <b class="caret"></b></a>
+                <ul class="dropdown-menu text-left">
+                    <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
+                    <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
+                </ul>
+            </li>
+        </ul>
+        <a href="#" class="panel-toggle text-muted"><i class="fa fa-caret-down text-active"></i><i class="fa fa-caret-up text"></i></a>
+        <span class="hidden-sm sr-only">Left tab</span>
+    </header>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane fade" id="messages-2">message</div>
+            <div class="tab-pane fade active in" id="profile-2">profile</div>
+            <div class="tab-pane fade" id="dropdown1">dropdown1</div>
+            <div class="tab-pane fade" id="dropdown2">dropdown2</div>
+        </div>
+    </div>
+</section>
 </body>
 </html>

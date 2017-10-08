@@ -3,7 +3,7 @@
 $.fn.uiTooltip = function () {
 	let self = $(this);
 	if (self.length) {
-		RequireJC(['tooltip'], () => {
+		RequireJC(['flot', 'tooltip'], () => {
 			self.each(function (i,elm) {
 				if ($(this).data('installed')) return;
 				$(this).tooltip();

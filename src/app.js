@@ -106,6 +106,8 @@ import daterangepicker from './components/date-range-picker';
  */
 import bootstrapDatepicker from './components/bootstrap-datepicker';
 
+import chartSparkline from './components/chart/sparkline';
+
 import ajax from './components/ajax';
 import form from './components/form';
 
@@ -121,7 +123,7 @@ RequireJC.config({
 });
 
 let components = {
-	Tooltip, slimscroll, bootstrapDatepicker, landing,ajax,form,loadingBar,placeholder, ToggleClass,TogglePanel,daterangepicker
+	Tooltip, slimscroll,chartSparkline, bootstrapDatepicker, landing,ajax,form,loadingBar,placeholder, ToggleClass,TogglePanel,daterangepicker
 };
 
 $(function () {

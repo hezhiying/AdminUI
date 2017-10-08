@@ -2,8 +2,9 @@
 
   $(function(){
 
+  //Todo::已迁移至components/chart/sparkline.js
 	// sparkline
-	var sr, sparkline = function($re){
+/*	var sr, sparkline = function($re){
 		$(".sparkline").each(function(){
 			var $data = $(this).data();
 			if($re && !$data.resize) return;
@@ -17,7 +18,7 @@
 		clearTimeout(sr);
 		sr = setTimeout(function(){sparkline(true)}, 500);
 	});
-	sparkline(false);
+	sparkline(false);*/
 
 
 	// easypie

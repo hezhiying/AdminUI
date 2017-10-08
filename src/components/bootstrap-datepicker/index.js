@@ -6,6 +6,7 @@
 
 (function ($) {
   $.fn.uiDatePicker = function () {
+    if(this.length === 0)return;
     RequireJC(['datepicker', 'datepicker-zh'], ()=>{
 
       $(this).each((i, e) =>{
