@@ -233,7 +233,26 @@ startDate|data-start-date|开始日期|当天
 endDate|data-end-date|结束日期|当天
 opens|data-opens|窗口打开位置|'left'/'right'/'center'
 dateLimit|data-date-limit|开始结束大最日期间隔|`{"days":30}` `{"months":1}`
+dateLimitDays|data-date-limit-days|选择范围（天）|int
+dateLimitMonths|data-date-limit-months|选择范围（月）|int
 drops|data-drops|选择框打开方向| 'down' or 'up'
+showDropdowns|data-show-dropdowns|年月下拉框可选| false
+timePicker|data-time-picker|时间可选| false
+timePicker24Hour|data-time-picker24-hour|24小时制| false
+timePickerIncrement|data-time-picker-increment|分钟间隔时间|1
+timePickerSeconds|data-time-picker-seconds|秒数是否可选|false
+singleDatePicker|data-single-date-picker|是否单选一天|false
+localeFormat|data-locale-format|格式|`YYYY-MM-DD`, 
+
+### localeFormat可用属性
+* **YYYY** 年
+* **MM** 月
+* ==DD== 日
+* ==H== 24小时制小时
+* ==h== 14小时制小时
+* ==mm== 分钟
+* ==ss== 秒
+* ==A== AM PM
 
 
 ## 特性

@@ -18,6 +18,17 @@
 		monthNames: ["一月","二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ],
 	};
 
+	const ranges = function () {
+	  return {
+      '今天': [moment(), moment()],
+      '昨天': [moment().subtract(1,'days'), moment().subtract(1,'days')],
+      '最近7天': [moment().subtract(6,'days'), moment()],
+      '最近30天': [moment().subtract(29,'days'), moment()],
+      '本月': [moment().startOf('month'), moment().endOf('month')],
+      '上月': [moment().subtract(1,'month').startOf('month'), moment().subtract(1,'month').endOf('month')]
+    };
+  };
+
 	$.fn.uiDateRangePicker = function () {
 		if(this.length){
 			RequireJC(['daterangepicker'], () => {
@@ -27,21 +38,24 @@
 						return;
 					}
 					$this.data('dateRangeObj',true);
-					$this.daterangepicker({
-						locale: locale,
-//						"dateLimit": {
-//							"days": 70
-//						},
-						showCustomRangeLabel:true,
-						ranges: {
-							'今天': [moment(), moment()],
-							'昨天': [moment().subtract(1,'days'), moment().subtract(1,'days')],
-							'最近7天': [moment().subtract(6,'days'), moment()],
-							'最近30天': [moment().subtract(29,'days'), moment()],
-							'本月': [moment().startOf('month'), moment().endOf('month')],
-							'上月': [moment().subtract(1,'month').startOf('month'), moment().subtract(1,'month').endOf('month')]
-						}
-					});
+					//显示格式
+          locale.format = $this.data("localeFormat") || 'YYYY-MM-DD';
+          let opts = {
+            locale: locale,
+            showCustomRangeLabel:true,
+            autoApply:true,
+            ranges: ranges()
+          };
+          let limitDays = $this.data("dateLimitDays");
+          let limitMonths = $this.data("dateLimitMonths");
+          if(limitDays){
+            opts.dateLimit = {days: limitDays}
+          }
+          if(limitMonths){
+            opts.dateLimit = {months: limitMonths}
+          }
+          //初始化日期控件
+					$this.daterangepicker(opts);
 				});
 			});
 		}
