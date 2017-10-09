@@ -12,6 +12,7 @@
 - [loading-bar loadingBar加载效果](#loading-bar)
 - [daterangepicker日期范围](#daterangepicker)
 - [bootstrap-datepicker](#bootstrap-datepicker)
+- [chart-sparkline迷你图](#chart-sparkline)
 
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -299,6 +300,57 @@ startView|data-date-start-view|打开时显示的视图|0:days(默认) 1:months(
 * M, MM: 月份缩写和全称. Eg, Jan, January
 * yy, yyyy: 2位或4位数年份. Eg, 12, 2012.
 
+## chart-sparkline
+
+直接在浏览器生成迷你图表(sparkline)
+
+* @git https://github.com/gwatts/jquery.sparkline
+* @home https://omnipotent.net/jquery.sparkline/#s-about
+
+**e.g.**
+
+```html
+//bar
+<span class="sparkline" data-type="bar" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#ff0000">5,8,9,12,8,10,8,9,7,8,6</span>
+<span class="sparkline" data-type="bar" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#ff0000">5:2,3:6</span>
+
+//line
+<span class="sparkline" data-type="line" data-height="35" data-width="80" data-fill-color="#ff0000" data-line-color="#ff0000">5,8,9,12,8,10,8,9,7,8,6,15</span>
+
+//pie
+<span class="sparkline" data-type="line" data-height="35" data-width="80" data-fill-color="#ff0000" data-line-color="#ff0000">5,8,9,12,8,10,8,9,7,8,6,15</span>
+
+```
+**常用属性**
+
+属性 | data | 说明 |默认值
+---|--- | --- |---
+type|data-type|图表类型|柱图`bar`, 曲线`line`, 饼图`pie`
+height|data-height|
+width|data-width|
+lineColor|data-line-color|线条色|
+fillColor|data-fill-color|填充色|`false`:透明 or 颜色值
+tooltipSuffix|data-tooltip-suffix|提示后缀|`string`
+tooltipPrefix|data-tooltip-prefix|提示前缀|`string`
+tooltipChartTitle|data-tooltip-chart-title|提示标题|`string`
+
+**line chart**
+* `LineWidth` or `data-line-width`: 线条宽度
+* `spotColor` or `data-spot-color`: 点的颜色
+* `minSpotColor` or`data-min-spot-color`: 最小点的颜色
+* `maxSpotColor` or `data-max-spot-color`: 最高点颜色
+
+**bar chart**
+* `barColor` `data-bar-color`: 柱正值颜色
+* `negBarColor` `data-neg-bar-color`: 柱负值颜色
+* `zeroColor` `data-zero-color`: 柱零值颜色
+* `barWidth` `data-bar-width`: 柱宽度
+* `barSpacing` `data-bar-spacing` 间距
+
+**pie chart**
+* `borderWidth` `data-border-width`: 边框宽度 default:0
+* `borderColor` `data-border-color`: 边框颜色 default:#000
+* `sliceColors` `data-slice-colors`: 颜色数组 ['#000', ...]
 
 ## 特性
 

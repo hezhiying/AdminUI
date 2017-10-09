@@ -6,7 +6,10 @@
     <link rel="stylesheet" href="../app.css">
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <!--<script src="../js/charts/sparkline/jquery.sparkline.min.js"></script>-->
+    <!--<script src="../js/daterangepicker/daterangepicker.js"></script>-->
     <script src="../app.js"></script>
+
 </head>
 <body>
 <div class="container">
@@ -507,9 +510,24 @@
 
     </div>
     <div class="col-xs-4">
-        <div class="sparkline m-l m-r-lg pull-right" data-type="bar" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6</div>
-        <div class="sparkline m-l m-r-lg pull-right" data-type="pie" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6</div>
-        <div class="sparkline m-l m-r-lg pull-right" data-type="line" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6</div>
+        <span class="sparkline" data-type="pie" data-slice-colors="['#ff9900','#000','#66aa00','#ff0000']" >5,10,7,19</span>
+        <span class="sparkline" data-type="bar" data-neg-bar-color="#000" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#ff0000">5:2,6,9,12:-10,-10:3, 0,8,10,8,9,7,8,6,15</span>
+        <span class="sparkline" data-type="bar" data-neg-bar-color="#000" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#ff0000">5,8,9,12,8,10,-4,-9,8,9,7,8,6,15</span>
+        <span class="sparkline" data-type="line" data-height="35" data-width="85" data-bar-width="6" data-bar-spacing="2" data-bar-color="#ff0000">5,8,9,12,8,10,8,9,7,8,6,15</span>
+        <span class="sparkline" data-spot-color="#f08000" data-tooltip-chart-title='test' data-type="line" data-height="35" data-fill-color="false">5,8,9,12,8,10,8,9,7,8,6,15</span>
+        <span class="sparkline" data-spot-color="#f08000" data-tooltip-suffix="hzy" data-tooltip-prefix="aa:" data-type="line" data-height="35" data-width="80" data-fill-color="#ff0000" data-line-color="#ff0000">5,8,9,12,8,10,8,9,7,8,6,15</span>
+
+        <!--
+
+        <div class="sparkline m-l m-r-lg pull-left " data-type="bar" data-height="35" data-bar-width="6" data-bar-spacing="2" >5,8,9,12,8,10,8,9,7,8,6,15</div>
+        <div class="sparkline m-l m-r-lg pull-left " data-type="pie" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6,15</div>
+        <div class="sparkline m-l m-r-lg pull-left" data-type="box" data-height="55" data-pie-width="61" data-pie-spacing="2" data-pie-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6</div>
+        <div class="sparkline m-l m-r-lg pull-left" data-type="line" data-height="35" data-line-width="2" data-bar-spacing="2" data-line-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6</div>
+        <div class="sparkline m-l m-r-lg pull-left" data-type="tristate" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6</div>
+        <div class="sparkline m-l m-r-lg pull-left" data-type="discrete" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6</div>
+        <div class="sparkline m-l m-r-lg pull-left" data-type="bullet" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#fb6b5b">5,8,9,12,8,10,8,9,7,8,6</div>
+-->
+
     </div>
 </div>
 <form action="" method="post" role="form" data-loading>

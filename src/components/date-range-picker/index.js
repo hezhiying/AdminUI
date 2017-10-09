@@ -31,7 +31,7 @@
 
 	$.fn.uiDateRangePicker = function () {
 		if(this.length){
-			RequireJC(['daterangepicker'], () => {
+			RequireJC(['moment', 'daterangepicker'], () => {
 				$(this).each((i, e) =>{
 					const $this = $(e), inited = $this.data('dateRangeObj');
 					if (inited) {
@@ -72,7 +72,7 @@ export default {
 			daterangepicker:'js/daterangepicker/daterangepicker'
 		},
 		dep:{
-			daterangepicker:['moment','js/daterangepicker/daterangepicker.css']
+			daterangepicker:['js/daterangepicker/daterangepicker.css']
 		}
 	},
 	onload:()=>{
