@@ -1,5 +1,5 @@
 import './i18n/en';
-import 'requirejc'
+import 'requirejc/src/main'
 import './notebook/app';
 import './notebook/app.plugin';
 import {adminUI} from './components/admin-ui';
@@ -106,7 +106,21 @@ import daterangepicker from './components/date-range-picker';
  */
 import bootstrapDatepicker from './components/bootstrap-datepicker';
 
+/**
+ * chart-sparkline
+ * 直接在浏览器生成迷你图表(sparkline)
+ *
+ * @git https://github.com/gwatts/jquery.sparkline
+ * @home https://omnipotent.net/jquery.sparkline/#s-about
+ * @e.g. <span class="sparkline" data-type="bar" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#ff0000">5,8,9,12,8,10,8,9,7,8,6</span>
+ */
 import chartSparkline from './components/chart/sparkline';
+
+/**
+ * easy-pie-chart
+ * 轻量级的插件来呈现简单，动画和视网膜优化的饼图
+ */
+import easyPieChart from './components/chart/easy-pie-chart';
 
 import ajax from './components/ajax';
 import form from './components/form';
@@ -123,7 +137,7 @@ RequireJC.config({
 });
 
 let components = {
-	Tooltip, slimscroll,chartSparkline, bootstrapDatepicker, landing,ajax,form,loadingBar,placeholder, ToggleClass,TogglePanel,daterangepicker
+	Tooltip, slimscroll,chartSparkline, easyPieChart, bootstrapDatepicker, landing,ajax,form,loadingBar,placeholder, ToggleClass,TogglePanel,daterangepicker
 };
 
 $(function () {

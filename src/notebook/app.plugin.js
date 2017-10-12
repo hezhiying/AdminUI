@@ -20,9 +20,9 @@
 	});
 	sparkline(false);*/
 
-
+	//Todo::已迁移至 components/chart/easy-pie-chart
 	// easypie
-    $('.easypiechart').each(function(){
+  /*  $('.easypiechart').each(function(){
     	var $this = $(this),
     	$data = $this.data(),
     	$step = $this.find('.step'),
@@ -45,7 +45,7 @@
     	}
 		$(this).easyPieChart($data);
 	});
-
+*/
   	// combodate
 	$(".combodate").each(function(){
 		$(this).combodate();

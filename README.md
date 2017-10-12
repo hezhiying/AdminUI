@@ -346,11 +346,53 @@ tooltipChartTitle|data-tooltip-chart-title|提示标题|`string`
 * `zeroColor` `data-zero-color`: 柱零值颜色
 * `barWidth` `data-bar-width`: 柱宽度
 * `barSpacing` `data-bar-spacing` 间距
+* `stackedBarColor` `data-stacked-bar-color`: 条形图系列颜色 ['#000','#111'] 对应 `<div class="sparkline"> 用颜色1:用颜色2</div>`
 
 **pie chart**
 * `borderWidth` `data-border-width`: 边框宽度 default:0
 * `borderColor` `data-border-color`: 边框颜色 default:#000
 * `sliceColors` `data-slice-colors`: 颜色数组 ['#000', ...]
+
+## easyPieChart 
+简单轻量的饼图插件
+
+* @git https://github.com/rendro/easy-pie-chart
+* @home http://rendro.github.io/easy-pie-chart/
+
+**e.g.**
+
+```html
+ <div id="test">0</div>
+ <div class="easypiechart" data-percent="25" data-target="#test" data-line-width="6" data-size="188">
+    <span class="h2 step">25</span>%
+    <div class="easypie-text">Today</div>
+ </div>
+ 
+```
+
+**属性说明**
+
+属性 | 默认值 | 说明 
+---|--- | --- 
+percent| 0 | 百分比 |
+lineWidth|3| 线条宽度(px) 
+lineCap|round|`butt`, `round`, `square`| 线条如何收尾(对接, 圆, 正文) | round
+size|110|饼图大小（px)
+barColor|<span style="color:#ef1e25">#ef1e25</span>|线条颜色
+trackColor|<span style="color:#f2f2f2">#f2f2f2</span>|轨道颜色 false 为禁止
+scaleColor|<span style="color:#dfe0e0">#dfe0e0</span>|缩放的线条颜色
+animate|false|变形动画时间毫秒
+delay|false|延迟多久开始执行动画(毫秒)
+onStart|$.noop|动画开始时回调
+onStep|$.noop(val)|动画执行时 返回当前百分比
+onStop|$.noop(val)|动画结束时 this.$el 访问dom
+target|undefined|会把当前百分比加到目标上显示
+
+```js
+//获取easyPieChart对象
+let chart = $("#id").data('easyPieChart');
+chart.update(40);//更新饼图百分比
+```
 
 ## 特性
 

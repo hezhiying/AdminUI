@@ -1,7 +1,20 @@
 /**
- * bootstrap-datepicker 插件
- * @git https://github.com/uxsolutions/bootstrap-datepicker
- * @demo https://uxsolutions.github.io/bootstrap-datepicker
+ * chart-sparkline
+ * 直接在浏览器生成迷你图表(sparkline)
+ *
+ * @git https://github.com/gwatts/jquery.sparkline
+ * @home https://omnipotent.net/jquery.sparkline/#s-about
+ * @example:
+ * bar 柱状图
+ * <span class="sparkline" data-type="bar" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#ff0000">5,8,9,12,8,10,8,9,7,8,6</span>
+ * <span class="sparkline" data-type="bar" data-height="35" data-bar-width="6" data-bar-spacing="2" data-bar-color="#ff0000">5:2,3:6</span>
+ *
+ * line 典线图
+ * <span class="sparkline" data-type="line" data-height="35" data-width="80" data-fill-color="#ff0000" data-line-color="#ff0000">5,8,9,12,8,10,8,9,7,8,6,15</span>
+ *
+ * pie 饼图
+ * <span class="sparkline" data-type="line" data-height="35" data-width="80" data-fill-color="#ff0000" data-line-color="#ff0000">5,8,9,12,8,10,8,9,7,8,6,15</span>
+ *
  */
   // sparkline
 // var sr, sparkline = function($re){
