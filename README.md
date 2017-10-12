@@ -376,7 +376,7 @@ tooltipChartTitle|data-tooltip-chart-title|提示标题|`string`
 ---|--- | --- 
 percent| 0 | 百分比 |
 lineWidth|3| 线条宽度(px) 
-lineCap|round|`butt`, `round`, `square`| 线条如何收尾(对接, 圆, 正文) | round
+lineCap|round|线条如何收尾:`butt`, `round`, `square` 
 size|110|饼图大小（px)
 barColor|<span style="color:#ef1e25">#ef1e25</span>|线条颜色
 trackColor|<span style="color:#f2f2f2">#f2f2f2</span>|轨道颜色 false 为禁止
