@@ -12,6 +12,84 @@
 
 </head>
 <body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-lg-4">
+            <section class="panel panel-default">
+                <header class="panel-heading font-bold">lines Chart</header>
+                <div class="panel-body">
+                    <div class="flotchart" style="height: 240px;">
+                        <div class="flot-data hide">
+
+                            [
+                            {
+                            data:[[0,35],[20,67],[40,52],[60,99],[80,59],[100,58],[120,32],[140,99],[160,30],[180,70],[200,75],[220,41],[240,53],[260,53],[280,51]],
+                            label:"data-0",
+                            lines:{show:true,fill:true}
+                            },
+                            {
+                            data:[[0,100],[20,80],[40,79],[60,80],[80,43],[100,87],[120,54],[140,88],[160,53],[180,57],[200,77],[220,41],[240,59],[260,95],[280,65]],
+                            label:"data-1",
+                            lines:{show:true,fill:true}
+                            },
+                            {
+                            data:[[0,81],[20,50],[40,82],[60,34],[80,37],[100,41],[120,93],[140,89],[160,73],[180,78],[200,46],[220,41],[240,64],[260,74],[280,44]],
+                            label:"data-2",
+                            lines:{show:true,fill:true}
+                            },
+                            ]
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-sm-12 col-lg-4">
+            <section class="panel panel-default">
+                <header class="panel-heading font-bold">bar Chart</header>
+                <div class="panel-body">
+                    <div class="flotchart" style="height: 240px;">
+                        <div class="flot-data hide">
+                            [{"data":[[0,35],[20,67],[40,52],[60,99],[80,59],[100,58],[120,32],[140,99],[160,30],[180,70],[200,75],[220,41],[240,53],[260,53],[280,51]],"label":"data-0","bars":{"show":true,"order":0}},{"data":[[0,100],[20,80],[40,79],[60,80],[80,43],[100,87],[120,54],[140,88],[160,53],[180,57],[200,77],[220,41],[240,59],[260,95],[280,65]],"label":"data-1","bars":{"show":true,"order":1}},{"data":[[0,81],[20,50],[40,82],[60,34],[80,37],[100,41],[120,93],[140,89],[160,73],[180,78],[200,46],[220,41],[240,64],[260,74],[280,44]],"label":"data-2","bars":{"show":true,"order":2}}]
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="col-sm-12 col-lg-4">
+            <section class="panel panel-default">
+                <header class="panel-heading font-bold">pie Chart</header>
+                <div class="panel-body">
+                    <div class="flotchart" style="height: 240px;">
+                        <div class="flot-data hide">
+                            [{"label":"data0","data":35},{"label":"data20","data":67},{"label":"data40","data":52},{"label":"data60","data":99},{"label":"data80","data":59},{"label":"data100","data":58},{"label":"data120","data":32},{"label":"data140","data":99},{"label":"data160","data":30},{"label":"data180","data":70},{"label":"data200","data":75},{"label":"data220","data":41},{"label":"data240","data":53},{"label":"data260","data":53},{"label":"data280","data":51}]
+
+                        </div>
+                        <div class="flot-options hide">
+                            {
+                            legend:{
+                            show:true
+                            },
+                            series: {
+                            pie: {
+                            innerRadius: 0.5,
+                            show: true,
+                            fill:false
+
+                            }
+                            },
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-sm-4">

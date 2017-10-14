@@ -1,5 +1,5 @@
 import './i18n/en';
-import 'requirejc/src/main'
+import 'requirejc'
 import './notebook/app';
 import './notebook/app.plugin';
 import {adminUI} from './components/admin-ui';
@@ -122,6 +122,16 @@ import chartSparkline from './components/chart/sparkline';
  */
 import easyPieChart from './components/chart/easy-pie-chart';
 
+/**
+ * flotChart
+ * @git https://github.com/flot/flot
+ * @home http://www.flotcharts.org/
+ * @e.g
+ * <div class="flotchart hide" style="height:240px"><div class="flot-data">这里放数据</div><div class="flot-options">这里放属性选项</div></div>
+ * 样式名包含flotchart  必须设置一个高度
+ */
+import flotChar from './components/chart/flot';
+
 import ajax from './components/ajax';
 import form from './components/form';
 
@@ -137,7 +147,7 @@ RequireJC.config({
 });
 
 let components = {
-	Tooltip, slimscroll,chartSparkline, easyPieChart, bootstrapDatepicker, landing,ajax,form,loadingBar,placeholder, ToggleClass,TogglePanel,daterangepicker
+	Tooltip, slimscroll,chartSparkline,flotChar, easyPieChart, bootstrapDatepicker, landing,ajax,form,loadingBar,placeholder, ToggleClass,TogglePanel,daterangepicker
 };
 
 $(function () {

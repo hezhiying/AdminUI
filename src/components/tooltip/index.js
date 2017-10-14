@@ -3,27 +3,15 @@
 $.fn.uiTooltip = function () {
 	let self = $(this);
 	if (self.length) {
-		RequireJC(['flot', 'tooltip'], () => {
-			self.each(function (i,elm) {
-				if ($(this).data('installed')) return;
-				$(this).tooltip();
-				$(this).data('installed', true);
-			});
-		});
+    self.each(function (i,elm) {
+      if ($(this).data('installed')) return;
+      $(this).tooltip();
+      $(this).data('installed', true);
+    });
 	}
 };
 
 export default{
-	config:{
-		paths:{
-			tooltip: 'js/charts/flot/jquery.flot.tooltip.min.js',
-			flot   : 'js/charts/flot/jquery.flot.min.js',
-
-		},
-		dep:{
-			tooltip: ['flot']
-		},
-	},
 	onload: function () {
 		$("[data-toggle=tooltip]").uiTooltip();
 	},

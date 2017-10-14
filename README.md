@@ -13,6 +13,8 @@
 - [daterangepicker日期范围](#daterangepicker)
 - [bootstrap-datepicker](#bootstrap-datepicker)
 - [chart-sparkline迷你图](#chart-sparkline)
+- [easyPieChart 轻量饼图插件](#easyPieChart)
+- [flotChart 图表插件](#flotChart)
 
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -154,6 +156,7 @@ https://github.com/krzysu/flot.tooltip
 http://www.flotcharts.org/
 
 **e.g.**
+
 ```html
 <!--data-toggle="tooltip"-->
 
@@ -173,6 +176,7 @@ title|title|内容|
 https://github.com/morr/jquery.appear/
 
 **e.g.**
+
 ```html
 <!--进入可视区域后今次播放从左往右淡入的动画效果-->
 <div data-ride="animated" data-animation="fadeInLeft" data-delay="300"></div>
@@ -209,6 +213,7 @@ fadeInRightBig|fadeOutRightBig|从右屏 -> 往左
 ajax加载时自动显示[code source](src/components/loading-bar/index.js)
 
 **e.g.**
+
 ```js
 //开始显示
 $.adminUI.loadingBar.show();
@@ -217,6 +222,7 @@ $.adminUI.loadingBar.success();
 //失败
 $.adminUI.loadingBar.error();
 ```
+
 ## daterangepicker
 非常好用的日期范围选择
 * http://www.daterangepicker.com/
@@ -226,7 +232,9 @@ $.adminUI.loadingBar.error();
 
 ```html
 <input date-range-picker data-start-date="2017-5-3" data-end-date="2017-7-1" data-opens="right" data-date-limit='{"days":30}'>
+
 ```
+
 **属性**
 
 属性 | data | 说明 |默认值
@@ -263,8 +271,9 @@ bootstrap提供的一个日期组件
  * @git https://github.com/uxsolutions/bootstrap-datepicker
  * @demo https://uxsolutions.github.io/bootstrap-datepicker
  
- **e.g.**
- ```html
+**e.g.**
+ 
+```html
 //单选 必须包含样式: datepicker-input
 <input type="text" class="form-control datepicker-input">
 
@@ -335,12 +344,14 @@ tooltipPrefix|data-tooltip-prefix|提示前缀|`string`
 tooltipChartTitle|data-tooltip-chart-title|提示标题|`string`
 
 **line chart**
+
 * `LineWidth` or `data-line-width`: 线条宽度
 * `spotColor` or `data-spot-color`: 点的颜色
 * `minSpotColor` or`data-min-spot-color`: 最小点的颜色
 * `maxSpotColor` or `data-max-spot-color`: 最高点颜色
 
 **bar chart**
+
 * `barColor` `data-bar-color`: 柱正值颜色
 * `negBarColor` `data-neg-bar-color`: 柱负值颜色
 * `zeroColor` `data-zero-color`: 柱零值颜色
@@ -349,6 +360,7 @@ tooltipChartTitle|data-tooltip-chart-title|提示标题|`string`
 * `stackedBarColor` `data-stacked-bar-color`: 条形图系列颜色 ['#000','#111'] 对应 `<div class="sparkline"> 用颜色1:用颜色2</div>`
 
 **pie chart**
+
 * `borderWidth` `data-border-width`: 边框宽度 default:0
 * `borderColor` `data-border-color`: 边框颜色 default:#000
 * `sliceColors` `data-slice-colors`: 颜色数组 ['#000', ...]
@@ -392,6 +404,153 @@ target|undefined|会把当前百分比加到目标上显示
 //获取easyPieChart对象
 let chart = $("#id").data('easyPieChart');
 chart.update(40);//更新饼图百分比
+```
+
+## flotChart
+* @git https://github.com/flot/flot
+* @home http://www.flotcharts.org/
+* 中文翻译1 http://shuaizai88.iteye.com/blog/1227641
+* 中文翻译2 http://blog.csdn.net/linybo/article/details/46891505
+**脚本写法**
+
+```js
+$.plot(placeholder, data, options)
+```
+**html写法**
+
+> *注意样式名包含flotchart and  必须设置一个高度*
+
+```html
+<div class="flotchart" style="height:240px">
+	<div class="flot-data hide">
+		<!--表格数据 Data Format-->
+	</div>
+	<div class="flot-options hide">
+		<!--表格选项-->
+   </div>
+</div>
+
+```
+
+### 表格数据 Data Format
+
+flot表格数据是一个数列数组(每条条曲线或直方图为一个数列，可以有条折线)
+
+```js
+[ series1, series2, ... ]
+```
+
+一个系列`series`可以是原始数据或具有属性的对象。
+
+原始数据格式是一个数组：
+
+```js
+[ [x1, y1], [x2, y2], ... ]
+
+//原始数据格式是一个数组:
+[ [1, 3], [2, 14.01], [3.5, 3.14] ]
+
+//或者是对象:
+//常用对象:
+{
+    data: rawdata, //一组数据
+    label: string
+}
+//data全部属性
+{
+    color: color or number
+    data: rawdata
+    label: string
+    //属性和plot options一样，参考后面解释
+    lines: specific lines options
+    bars: specific bars options
+    points: specific points options
+    xaxis: number
+    yaxis: number
+    clickable: boolean
+    hoverable: boolean
+    shadowSize: number
+    highlightColor: color or number
+}
+```
+
+### 表格选项 Plot Options
+
+常用属性
+
+```js
+{
+  //图例说明设置
+  legend: {
+    //是否显示图例说明 boolean
+    show: true,
+    
+    //有4个选项"ne", "nw", "se", "sw"分别表示将label组显示在 ↗， ↖， ↘， ↙
+    position: "ne",
+    
+    //边距，[x margin, y margin]
+    margin: [0, 0],
+    //背景色 null or color
+    backgroundColor: null,
+    //背景透明度 number between 0 and 1
+    backgroundOpacity: 0.8
+  },
+  //数例设置
+   series: {
+    //折线图 散点图 直方图 共同属性
+    lines, points, bars: {
+      show: boolean
+      lineWidth: number
+      fill: boolean or number
+      fillColor: null or color/gradient
+    },
+    bars: {
+     order:number, 直方图序号(不设置，会叠加在一起）
+         //直方图宽度，单位是数轴的单位而非像素
+         barWidth: number, 
+         //用于设置数据点对应刻度线与直方图之间的对齐关系，默认情况下，刻度线在直方图的左侧(left,靠近数轴最小值一侧)，如果设置为center，刻度线在直方图中间。
+         align: "left", "right" or "center"
+        //为true 直方图为水平绘制
+        horizontal: boolean
+      },
+      points: {
+        radius: number
+        symbol: "circle" or function
+      },
+      lines: {
+         //对于折线图，"steps"可以设置是否使用阶梯状折线，设置为true采用阶梯状折线，相邻2个数据点之间先以水平线连接，
+         //后然用垂直线连接，需要注意的是，这种模式会在同一垂直线上增加数据点来实现
+         steps: boolean
+       },
+       pie: {
+         innerRadius: 0.5, //同心圆半径(最大1）
+         show: true
+       },
+
+       shadowSize: number
+       highlightColor: color or number
+     },
+//背景栅格定制
+grid: {
+    hoverable: true,  //允许监听鼠标点击事件
+    clickable: false, //允许监听鼠标悬停事件
+    borderWidth: 0,   //设置边框宽度，设为0则取消边框
+    // tickColor:null,   //设置刻度线的颜色
+    // labelMargin:null, //设置刻度值标签与网格的距离，
+    // borderColor:null, //设置边框颜色，
+  },
+  //提示设置
+  tooltip:true,
+  tooltipOpts:{
+    show:true,
+    defaultTheme:false,
+    content: "%s | X: %x | Y: %y", //  string or function $s:标签名 %x x值 %y值
+  }
+  colors: [ color1, color2, ... ],
+
+ 
+
+}
 ```
 
 ## 特性

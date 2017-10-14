@@ -4,6 +4,7 @@
   "description": "auto require utils",
   "homepage": "https://github.com/hezhiying/requirejc",
   "private": true,
+  "main":"",
   "scripts": {
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -28,6 +29,6 @@
   "dependencies": {
     "bootstrap-daterangepicker": "^2.1.25",
     "moment": "^2.18.1",
-    "requirejc": "^2.2.2"
+    "requirejc": "^2.3.1"
   }
 }
