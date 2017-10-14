@@ -4,7 +4,7 @@
 ### 所有特性
 - [占位符 placeholder](#placeholder)
 - [全屏显示 fullscreen](#fullscreen)
-- [漂亮滚动条 slimScroll](#slimScroll)
+- [漂亮滚动条 slimScroll](#slimscroll)
 - [通知插件 notify](#notify)
 - [jquery-confirm](#jquery-confirm)
 - [tooltip](#tooltip)
@@ -13,8 +13,8 @@
 - [daterangepicker日期范围](#daterangepicker)
 - [bootstrap-datepicker](#bootstrap-datepicker)
 - [chart-sparkline迷你图](#chart-sparkline)
-- [easyPieChart 轻量饼图插件](#easyPieChart)
-- [flotChart 图表插件](#flotChart)
+- [easyPieChart 轻量饼图插件](#easypiechart)
+- [flotChart 图表插件](#flotchart)
 
 ## placeholder
 IE上实现Html5中placeholder效果
