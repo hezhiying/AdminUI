@@ -15,6 +15,10 @@
 - [chart-sparkline迷你图](#chart-sparkline)
 - [easyPieChart 轻量饼图插件](#easypiechart)
 - [flotChart 图表插件](#flotchart)
+- [data-toggle 插件](#data-toggle)
+	- [tooltip 提示框](#tooltip)
+	- [popover 弹出框](#popover)
+	- [toggle class 切换元素样式](#toggle-class)
 
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -148,28 +152,6 @@ $.dialog(content, title)
 OR
 $.dialog({/**options*/})
 ```
-
-## tooltip
-
-https://github.com/krzysu/flot.tooltip
-
-http://www.flotcharts.org/
-
-**e.g.**
-
-```html
-<!--data-toggle="tooltip"-->
-
-<a class="btn btn-danger" href="#" data-toggle="tooltip" data-placement="top" title="sssfsafsf">link button</a>
-
-```
-
-**属性**
-
-属性 | data | 说明  |默认
----|--- |---|---
-placement|data-placement|显示位置|top`bottom right left`
-title|title|内容|
 
 ## landing
 使用appear插件，让元素在进入视野里添加动画效果
@@ -551,6 +533,124 @@ grid: {
  
 
 }
+```
+
+## data-toggle
+
+### tooltip
+
+
+**Example:**
+
+```html
+
+<a class="btn btn-danger" href="#" data-toggle="tooltip" data-placement="top" title="提示内容">顶部 tooltip</a>
+
+//data-placement:显示位置 top bottom right left
+//title: 提示内容
+
+```
+
+### popover
+
+**Example:**
+
+> 弹出普通文本
+
+```html
+<button type="button" class="btn btn-default" title="Popover title"
+            data-toggle="popover" data-container="body" data-placement="left"
+            data-content="左侧的 Popover 中的一些内容">
+        左侧的 Popover
+</button>
+    
+```
+
+> 弹出html内容：
+
+```html
+<button class="btn btn-sm btn-info" data-toggle="popover" data-html="true" data-placement="top" data-content="<div class='scrollable' style='height:40px'>Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</div>" title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Popover on top'>Popover on top</button>
+```
+
+属性|默认值|说明
+---|---|---|
+data-placement|auto|规定如何定位弹出框（即`top` `bottom` `left` `right` `auto`）。
+title|undefined|提示内容
+data-content| undefined|弹出框内容
+data-html|false|内容是否为html格式
+data-trigger|click|定义如何触发弹出框： click  hover focus manual。您可以传递多个触发器，每个触发器之间用空格分隔。
+data-container|false,当前元素的下方|向指定元素追加弹出框。e.g:container: 'body'
+data-delay|0|延迟显示和隐藏弹出框的毫秒数 
+
+### toggle-class
+
+```html
+<button type="button" class="btn btn-default"
+            data-toggle="class:nav-off-screen, open" data-target="#nav,html">
+        toggle class
+</button>
+
+//data-toggle="class:样式1,样式2,..."
+//data-target="元素1,元素2"
+//样式和元素位置一一对应
+```
+
+### toggle-pannel
+
+查看demo:
+
+```html
+<section class="panel panel-default">
+ <header class="panel-heading text-right bg-light">
+ <ul class="nav nav-tabs pull-left">
+ <li><a href="#messages-2" data-toggle="tab"><i class="fa fa-comments text-default"></i></a></li>
+ <li class="active"><a href="#profile-2" data-toggle="tab"><i class="fa fa-user text-default"></i> Profile</a></li>
+ <li class="dropdown">
+ <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog text-default"></i> Settings <b class="caret"></b></a>
+ <ul class="dropdown-menu text-left">
+ <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
+ <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
+ </ul>
+ </li>
+ </ul>
+ <a href="#" class="panel-toggle text-muted"><i class="fa fa-caret-down text-active"></i><i class="fa fa-caret-up text"></i></a>
+ <span class="hidden-sm sr-only">Left tab</span>
+ </header>
+ <div class="panel-body">
+ <div class="tab-content">
+ <div class="tab-pane fade" id="messages-2">message</div>
+ <div class="tab-pane fade active in" id="profile-2">profile</div>
+ <div class="tab-pane fade" id="dropdown1">dropdown1</div>
+ <div class="tab-pane fade" id="dropdown2">dropdown2</div>
+ </div>
+ </div>
+ </section>
+```
+
+
+
+# 相关样式说明
+
+```
+//很多情况下按钮激活和未激活是可以显示不同的ico 
+//可以结合data-toggle=class 插件很多事情可以简单化
+//未激活时显示
+<a href="#" class="panel-toggle text-muted">
+	<!--隐藏-->
+	<i class="fa fa-caret-down text-active"></i>
+	<!--显示-->
+	<i class="fa fa-caret-up text"></i>          
+</a>
+
+//添加active类激活后自动显示另一个ico
+
+<a href="#" class="panel-toggle text-muted active">
+	<!--显示-->
+	<i class="fa fa-caret-down text-active"></i>
+	<!--隐藏-->
+	<i class="fa fa-caret-up text"></i>          
+</a>
+
 ```
 
 ## 特性

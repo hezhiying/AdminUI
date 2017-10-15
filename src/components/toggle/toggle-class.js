@@ -7,7 +7,7 @@
  <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen, open" data-target="#nav,html"></a>
  <div id="nav"></div>
  */
-export const ToggleClass = {
+export default {
 	onload:()=>{
 		$(document).on('click', '[data-toggle^="class"]', function(e){
 			e && e.preventDefault();

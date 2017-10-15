@@ -30,7 +30,7 @@
  </section>
  */
 
-export const TogglePanel = {
+export default  {
 	onload:()=>{
 		$(document).on('click', '.panel-toggle', function(e){
 			e && e.preventDefault();

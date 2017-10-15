@@ -29,10 +29,9 @@ mix.webpackConfig({
 });
 
 if (mix.config.production) {
-  mix.less('src/less/app.less', 'build');
-  mix.js('src/app.js', 'build');
+  mix.less('src/less/app.less', './build/app.css');
+  mix.js('src/app.js', './build/app.js');
 } else {
-
+  mix.less('src/less/app.less', '.');
+  mix.js('src/app.js', '.');
 }
-mix.less('src/less/app.less', '.');
-mix.js('src/app.js', '.');

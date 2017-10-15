@@ -56,16 +56,6 @@ import notify from './components/notify';
 import dialog from './components/dialog';
 
 /**
- * tooltip文字提示插件
- * https://github.com/krzysu/flot.tooltip
- * http://www.flotcharts.org/
- * @e.g.
- * <a class="btn btn-danger" href="#" data-toggle="tooltip" data-placement="top" title="sssfsafsf">link button</a>
- * placement: top bottom right left
- */
-import Tooltip from './components/tooltip';
-
-/**
  * 使用appear插件，让元素在进入视野里添加动画效果
  * https://github.com/morr/jquery.appear/
  * @e.g.
@@ -132,22 +122,32 @@ import easyPieChart from './components/chart/easy-pie-chart';
  */
 import flotChar from './components/chart/flot';
 
+/**
+ * data-toggle插件
+ * tooltip popover
+ */
+import togglePopover from './components/toggle/popover';
+import toggleTooltip from './components/toggle/tooltip';
+import toggleClass from './components/toggle/toggle-class';
+import togglePanel from './components/toggle/toggle-panel';
+
 import ajax from './components/ajax';
 import form from './components/form';
 
-
-import {ToggleClass,TogglePanel} from './components/toggle';
-
-/**
- * @var ../js/requirejc.js RequireJC
- */
 RequireJC.config({
 	baseUrl: getScriptArg('baseUrl') || '/',
 	debug  : true
 });
 
 let components = {
-	Tooltip, slimscroll,chartSparkline,flotChar, easyPieChart, bootstrapDatepicker, landing,ajax,form,loadingBar,placeholder, ToggleClass,TogglePanel,daterangepicker
+	slimscroll, landing,ajax,form,loadingBar,placeholder,
+  //图表相关
+  easyPieChart, flotChar, chartSparkline,
+  //日期相关
+  daterangepicker, bootstrapDatepicker,
+  //data-toggle
+  togglePopover, toggleTooltip, toggleClass, togglePanel,
+
 };
 
 $(function () {
