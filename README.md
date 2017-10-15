@@ -19,6 +19,7 @@
 	- [tooltip 提示框](#tooltip)
 	- [popover 弹出框](#popover)
 	- [toggle class 切换元素样式](#toggle-class)
+	- [toggle panel 切换显示隐藏](#toggle-panel)
 
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -595,7 +596,7 @@ data-delay|0|延迟显示和隐藏弹出框的毫秒数
 //样式和元素位置一一对应
 ```
 
-### toggle-pannel
+### toggle-panel
 
 查看demo:
 
