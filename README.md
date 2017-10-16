@@ -681,6 +681,23 @@ $("form").valid();
 2. 通过脚本：$("form").data('formRule',{rules,messages})
 3. form元素定定义data-form-rule属性:{"rules":{},"messages"}
 
+### form元素data主要属性和方法
+
+```js
+let validateObj = $("form").data('validateObj');//插件句柄
+validateObj.options   //验证选项
+validateObj.target    //form表单元素本身
+validateObj.validator //jquery validate插件原生句柄
+
+//手动校验表单，或直接显示错误内容。用于服务器验证出错显示。($("form").data('validateObj')).validOrShowError(errors)
+//errors格式： {field:'错误信息', field2:['xxx','zzzz']}
+validateObj.validOrShowErrors(errors); 
+
+let validator = $("form").data('validator'); //jquery validate 句柄
+validator.showErrors(errors);//显示错误信息
+validator.form(); //校验
+validator.focusInvalid(); //第一个错误元素获得焦点
+```
 
 # 相关样式说明
 

@@ -164,7 +164,7 @@ import CONFIG from '../config.js';
     //监听ajax.before事件，提交form表单前进行验证
     let me = this;
     form.on(CONFIG.EVENT.AJAX_BEFORE, function (event) {
-      return me.validate(); //返回验证结果成功还是失败，返回false ajax将停止提交
+      return me.validOrShowErrors(); //返回验证结果成功还是失败，返回false ajax将停止提交
     });
 
     //注册销毁事件
@@ -176,7 +176,7 @@ import CONFIG from '../config.js';
    * @param errors
    * @returns {boolean}
    */
-  Validator.prototype.validate = function (errors) {
+  Validator.prototype.validOrShowErrors = function (errors) {
     if (!this.validator) {
       return false;
     }
