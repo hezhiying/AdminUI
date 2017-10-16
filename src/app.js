@@ -123,16 +123,33 @@ import easyPieChart from './components/chart/easy-pie-chart';
 import flotChar from './components/chart/flot';
 
 /**
- * data-toggle插件
- * tooltip popover
+ * 弹出提示框
+ * data-toggle=popover
  */
 import togglePopover from './components/toggle/popover';
+/**
+ * 显示提示
+ * data-toggle=tooltip
+ */
 import toggleTooltip from './components/toggle/tooltip';
+/**
+ * 切换样式
+ * data-toggle=class:css1,css2  data-target="#id1,#id2"
+ */
 import toggleClass from './components/toggle/toggle-class';
+/**
+ * 切换显示隐藏面板
+ */
 import togglePanel from './components/toggle/toggle-panel';
 
-import ajax from './components/ajax';
-import form from './components/form';
+import ajax from './components/ajax/ajax';
+
+/**
+ * 表单校验插件
+ * https://jqueryvalidation.org/
+ * https://github.com/jquery-validation/jquery-validation
+ */
+import form from './components/ajax/form';
 
 RequireJC.config({
 	baseUrl: getScriptArg('baseUrl') || '/',
@@ -140,14 +157,15 @@ RequireJC.config({
 });
 
 let components = {
-	slimscroll, landing,ajax,form,loadingBar,placeholder,
+	slimscroll, landing, loadingBar, placeholder,
   //图表相关
   easyPieChart, flotChar, chartSparkline,
   //日期相关
   daterangepicker, bootstrapDatepicker,
   //data-toggle
   togglePopover, toggleTooltip, toggleClass, togglePanel,
-
+	//ajax
+  ajax,form,
 };
 
 $(function () {

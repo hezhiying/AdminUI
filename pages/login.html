@@ -1,241 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>AdminUI Login</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-	<!--<link rel="stylesheet" href="../js/bootstrap/bootstrap.min.css" type="text/css"/>-->
-	<link rel="stylesheet" href="../app.css" type="text/css"/>
-	<!--[if lt IE 9]>
-	<script src="../js/ie/html5shiv.js"></script>
-	<script src="../js/ie/respond.min.js"></script>
-	<script src="../js/ie/excanvas.js"></script>
-	<![endif]-->
+    <meta charset="UTF-8">
+    <title>AdminUI Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" href="../app.css" type="text/css"/>
+    <!--[if lt IE 9]>
+    <script src="../js/ie/html5shiv.js"></script>
+    <script src="../js/ie/respond.min.js"></script>
+    <script src="../js/ie/excanvas.js"></script>
+    <![endif]-->
 </head>
 <body>
 
 <!-- header -->
 <header id="header" class="navbar navbar-fixed-top bg-white box-shadow b-b b-light adminUI" data-spy="affix"
-		data-offset-top="1">
-	<div class="container">
-		<div class="navbar-header">
-			<a href="#" class="navbar-brand"><img src="../images/logo.png" class="m-r-sm"><span class="text-muted">AdminUI</span></a>
-			<button class="btn btn-link visible-xs" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-				<i class="fa fa-bars"></i>
-			</button>
-		</div>
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li class="" >
+        data-offset-top="1">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand"><img src="../images/logo.png" class="m-r-sm"><span class="text-muted">AdminUI</span></a>
+            <button class="btn btn-link visible-xs" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
 
-					<a href="#dashboard.html" data-toggle="tooltip" data-placement="bottom" title="sssfsafsf">click me</a>
-				</li>
-				<li class="active">
-					<a href="#">Home</a>
-				</li>
-			</ul>
-		</div>
-	</div>
+                    <a href="#dashboard.html" data-toggle="tooltip" data-placement="bottom" title="sssfsafsf">click
+                        me</a>
+                </li>
+                <li class="active">
+                    <a href="#">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </header>
 
 <!--connect-->
 <section class="adminUI" id="content">
-	<div class="container m-t-lg m-b-lg">
-		<div class="row">
-			<div class="col-sm-8">
-				<div class="post-media">
-					<section class="panel bg-primary dk m-b-none">
-						<div class="carousel auto slide panel-body" id="c-fade">
-							<ol class="carousel-indicators out">
-								<li data-target="#c-fade" data-slide-to="0" class="active"></li>
-								<li data-target="#c-fade" data-slide-to="1" class=""></li>
-								<li data-target="#c-fade" data-slide-to="2" class=""></li>
-							</ol>
-							<div class="carousel-inner">
-								<div class="item active text-center">
-									<span class="h2"><i class="fa fa-clock-o fa-5x m-t icon-muted"></i></span>
-									<p class="text-muted m-t m-b-lg">Time saving</p>
-								</div>
-								<div class="item text-center">
-									<span class="h2"><i class="fa fa-file-o fa-5x m-t icon-muted"></i></span>
-									<p class="text-muted m-t m-b-lg">Full documents</p>
-								</div>
-								<div class="item text-center">
-									<span class="h2"><i class="fa fa-mobile fa-5x m-t icon-muted"></i></span>
-									<p class="text-muted m-t m-b-lg">Mobile/Tablet/Desktop</p>
-								</div>
-							</div>
-							<a class="left carousel-control" href="#c-fade" data-slide="prev">
-								<i class="fa fa-angle-left"></i>
-							</a>
-							<a class="right carousel-control" href="#c-fade" data-slide="next">
-								<i class="fa fa-angle-right"></i>
-							</a>
-						</div>
-					</section>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="login-form">
-					<section class="panel panel-default">
-						<header class="panel-heading font-bold">
-							User Login
-							<a href="#" class="panel-toggle text-muted pull-right"><i class="fa fa-caret-down text-active"></i><i class="fa fa-caret-up text "></i></a>
+    <div class="container m-t-lg m-b-lg">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="post-media">
+                    <section class="panel bg-primary dk m-b-none">
+                        <div class="carousel auto slide panel-body" id="c-fade">
+                            <ol class="carousel-indicators out">
+                                <li data-target="#c-fade" data-slide-to="0" class="active"></li>
+                                <li data-target="#c-fade" data-slide-to="1" class=""></li>
+                                <li data-target="#c-fade" data-slide-to="2" class=""></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active text-center">
+                                    <span class="h2"><i class="fa fa-clock-o fa-5x m-t icon-muted"></i></span>
+                                    <p class="text-muted m-t m-b-lg">Time saving</p>
+                                </div>
+                                <div class="item text-center">
+                                    <span class="h2"><i class="fa fa-file-o fa-5x m-t icon-muted"></i></span>
+                                    <p class="text-muted m-t m-b-lg">Full documents</p>
+                                </div>
+                                <div class="item text-center">
+                                    <span class="h2"><i class="fa fa-mobile fa-5x m-t icon-muted"></i></span>
+                                    <p class="text-muted m-t m-b-lg">Mobile/Tablet/Desktop</p>
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#c-fade" data-slide="prev">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a class="right carousel-control" href="#c-fade" data-slide="next">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="login-form">
+                    <section class="panel panel-default">
+                        <header class="panel-heading font-bold">
+                            User Login
+                            <a href="#" class="panel-toggle text-muted pull-right"><i
+                                    class="fa fa-caret-down text-active"></i><i class="fa fa-caret-up text "></i></a>
+                        </header>
+                        <div class="panel-body">
 
-						</header>
-						<div class="panel-body">
-							<form role="form" data-validate name="loginForm" data-ajax>
+                            <form role="form" name="loginForm" class="form-validate">
+                                <div class="form-group has-feedback">
+                                    <!--<label>Password</label>-->
+                                    <input name="email2" type="email" class="form-control" required
+                                           placeholder="please input email">
+                                    <!--显示feedback ico-->
+                                    <span class="form-control-feedback feedback-success"> <i class="fa fa-check"></i> </span>
+                                    <span class="form-control-feedback feedback-error"> <i class="fa fa-times"></i> </span>
+                                </div>
 
-								<div class="form-group">
-									<!--<label>Email address</label>-->
-									<input name="email" type="email" class="form-control" placeholder="Enter email" data-message="xxxx">
-								</div>
-								<div class="form-group  has-feedback">
-									<label>Email address</label>
-									<input type="text" class="form-control" placeholder=".has-warning" required data-required-message="xxxx" name="email2">
-									<div class="form-control-feedback">
-										<i class="icon-notification2"></i>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="input-group">
-											<span class="input-group-btn">
-											<button class="btn btn-default" type="button">Go!</button>
-										</span>
-										<input type="text" class="form-control" name="test" required>
-									</div>
-								</div>
-								<div class="form-group">
-									<input type="text" class="form-control right" name="daterange2" date-range-picker data-start-date="2017-5-3" data-end-date="2017-7-1" data-opens="left" data-date-limit='{"days":20}' data-auto-apply="true">
+                                <div class="form-group">
+                                    <!--直接在input上定义验证规则-->
+                                    <input name="password" type="password" class="form-control" minlength="3" maxlength="10" placeholder="Password">
+                                </div>
 
-								</div>
-								<div class="form-group">
-									<!--<label>Password</label>-->
-									<input name="password" type="password" class="form-control" placeholder="Password">
-								</div>
-								<div class="form-group">
-									<div class="checkbox">
-										<label>
-											<input name="remember" type="checkbox" required> Remember me
-										</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="input-group">
-										<input type="password" class="form-control text-sm" name="password" placeholder="Enter password to continue" id="password">
-										<div class="input-group-btn">
-											<a class="btn btn-success data-loading-text" data-ajax="post" id="login" href="demo.html"><i class="fa fa-arrow-right"></i></a>
-										</div>
-									</div>
-								</div>
-								<button type="submit" class="btn btn-sm btn-primary btn-block">Submit</button>
-								<div class="line line-dashed"></div>
-								<div>
-									<p class="pull-left">
-										<a href="#" class="btn btn-sm btn-icon btn-default btn-rounded disabled m-r-xs"><i
-											class="fa fa-wechat"></i></a>
-										<a href="#" class="btn btn-sm btn-icon btn-default btn-rounded disabled"><i
-											class="fa fa-qq"></i></a>
-									</p>
-									<div class="shift" data-toggle="shift:insertBefore" data-target="#shift-target">fff</div>
-									<p class="clear">
-										<a href="#" class="pull-right m-t-xs">
-											<small>忘记密码?</small>
-										</a>
-										<a href="#" class="pull-right m-t-xs m-r-md">
-											<small>立即注册</small>
-										</a>
-									</p>
-								</div>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="remember" type="checkbox" required> Remember me
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-primary btn-block">Submit</button>
+                                <div class="line line-dashed"></div>
+                                <div>
+                                    <p class="pull-left">
+                                        <a href="#" class="btn btn-sm btn-icon btn-default btn-rounded disabled m-r-xs"><i
+                                                class="fa fa-wechat"></i></a>
+                                        <a href="#" class="btn btn-sm btn-icon btn-default btn-rounded disabled"><i
+                                                class="fa fa-qq"></i></a>
+                                    </p>
+                                    <p class="clear">
+                                        <a href="#" class="pull-right m-t-xs">
+                                            <small>忘记密码?</small>
+                                        </a>
+                                        <a href="#" class="pull-right m-t-xs m-r-md">
+                                            <small>立即注册</small>
+                                        </a>
+                                    </p>
+                                </div>
+                            </form>
 
-							</form>
-						</div>
-					</section>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="bg-white-only">
-		<div class="container">
-			<div class="m-t-xl m-b-xl">
-				<h2 class="font-thin">Why more than 21,000 project owners have chosen us</h2>
-			</div>
-			<div class="row m-b-xl">
-				<div class="col-sm-4" data-ride="animated" data-animation="fadeInLeft" data-delay="300">
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white-only">
+        <div class="container">
+            <div class="m-t-xl m-b-xl">
+                <h2 class="font-thin">Why more than 21,000 project owners have chosen us</h2>
+            </div>
+            <div class="row m-b-xl">
+                <div class="col-sm-4" data-ride="animated" data-animation="fadeInLeft" data-delay="300">
 					<span class="fa-stack fa-2x pull-left m-r m-t-xs">
 					  <i class="fa fa-circle fa-stack-2x text-info"></i>
 					  <i class="fa fa-stack-1x fa-inverse">1</i>
 					</span>
-					<div class="clear">
-						<h4>Lightweight with Rich Components</h4>
-						<p class="text-muted text-sm">We only choose the lightweight plugins, but with rich functions.
-							we use tiny components, css and js size is first consideration. <br><br>This project ues
-							HTML5 and CSS3 to build the components and widgets. the pages use header, nav, section to
-							build the layout.</p>
-					</div>
-				</div>
-				<div class="col-sm-4" data-ride="animated" data-animation="fadeInLeft" data-delay="600">
+                    <div class="clear">
+                        <h4>Lightweight with Rich Components</h4>
+                        <p class="text-muted text-sm">We only choose the lightweight plugins, but with rich functions.
+                            we use tiny components, css and js size is first consideration. <br><br>This project ues
+                            HTML5 and CSS3 to build the components and widgets. the pages use header, nav, section to
+                            build the layout.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4" data-ride="animated" data-animation="fadeInLeft" data-delay="600">
             <span class="fa-stack fa-2x pull-left m-r m-t-xs">
               <i class="fa fa-circle fa-stack-2x text-info"></i>
               <i class="fa fa-stack-1x fa-inverse">2</i>
             </span>
-					<div class="clear">
-						<h4>Keep Updating with Great Support</h4>
-						<p class="text-muted text-sm">This project is based on Bootstrap 3. the sleek, intuitive, and
-							powerful mobile-first front-end framework for faster and easier web development. we will
-							keep it updated to Bootstrap.<br><br> <a href="#" class="text-primary">More...</a></p>
-					</div>
-				</div>
-				<div class="col-sm-4" data-ride="animated" data-animation="fadeInLeft" data-delay="900">
+                    <div class="clear">
+                        <h4>Keep Updating with Great Support</h4>
+                        <p class="text-muted text-sm">This project is based on Bootstrap 3. the sleek, intuitive, and
+                            powerful mobile-first front-end framework for faster and easier web development. we will
+                            keep it updated to Bootstrap.<br><br> <a href="#" class="text-primary">More...</a></p>
+                    </div>
+                </div>
+                <div class="col-sm-4" data-ride="animated" data-animation="fadeInLeft" data-delay="900">
             <span class="fa-stack fa-2x pull-left m-r m-t-xs">
               <i class="fa fa-circle fa-stack-2x text-info"></i>
               <i class="fa fa-stack-1x fa-inverse">3</i>
             </span>
-					<div class="clear">
-						<h4>HTML5 & CSS3 with Clean Design</h4>
-						<p class="text-muted text-sm">This project ues HTML5 and CSS3 to build the components and
-							widgets. the pages use header, nav, section to build the layout. </p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <div class="clear">
+                        <h4>HTML5 & CSS3 with Clean Design</h4>
+                        <p class="text-muted text-sm">This project ues HTML5 and CSS3 to build the components and
+                            widgets. the pages use header, nav, section to build the layout. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!--footer-->
 <footer>
-	<div class="bg-dark ">
-		<div class="container wrapper">
-			<div class="m-t-xl m-b">
-				Developed By <strong>Zine</strong>,Powered By <strong>Laravel</strong> & <strong>Notebook</strong>
-			</div>
-			<p class="text-center">
-				<a href="#content" data-jump="true" class="btn btn-icon btn-rounded btn-dark b-dark bg-empty m-sm text-muted"><i class="fa fa-angle-up"></i></a>
-			</p>
-		</div>
-	</div>
+    <div class="bg-dark ">
+        <div class="container wrapper">
+            <div class="m-t-xl m-b">
+                Developed By <strong>Zine</strong>,Powered By <strong>Laravel</strong> & <strong>Notebook</strong>
+            </div>
+            <p class="text-center">
+                <a href="#content" data-jump="true"
+                   class="btn btn-icon btn-rounded btn-dark b-dark bg-empty m-sm text-muted"><i
+                        class="fa fa-angle-up"></i></a>
+            </p>
+        </div>
+    </div>
 </footer>
 <script src="../js/jquery.min.js" type="text/javascript"></script>
-<!--<script src="../js/requirejc.min.js" type="text/javascript"></script>-->
 <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
-
 <script src="../app.js?baseUrl=/" type="text/javascript"></script>
-<!--<script src="../js/charts/flot/jquery.flot.min.js"></script>-->
 
 <script>
-	$("form[name=loginForm]").data('validate',{
-		rules:{
-			email:{
-				required:true,email:true
-			},
-			password:{
-				required:true,minlength:3,maxlength:6
-			},
-			remember:{
-				required:true
-			}
-		}
-	})
+
+
+  $("form[name=loginForm1]").data('validate', {
+    rules: {
+      email: {
+        required: true, email: true
+      },
+      password: {
+        required: true,
+      },
+      remember: {
+        required: true
+      }
+    },
+    messages: {
+      password: {
+        minlength: 'hello'
+      }
+    }
+  })
 </script>
 </body>
 </html>

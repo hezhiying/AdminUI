@@ -12,7 +12,62 @@
 
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">login form</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form" name="loginForm" data-form-rule='{"rules":{"password":{"required":true}},"messages":{"password":{"required":"密码必须输入","minlength":"密码最少3位"}}}' data-ajax2 class="form-validate">
+                        <div class="form-group has-feedback">
+                            <!--<label>Password</label>-->
+                            <input name="email2" type="email" class="form-control" required
+                                   placeholder="please input email">
+                            <!--显示feedback ico-->
+                            <span class="form-control-feedback feedback-success"> <i class="fa fa-check"></i> </span>
+                            <span class="form-control-feedback feedback-error"> <i class="fa fa-times"></i> </span>
+                        </div>
 
+                        <div class="form-group">
+                            <!--直接在input上定义验证规则-->
+                            <input name="password" type="password" class="form-control" minlength="3" maxlength="10" placeholder="Password">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input name="remember" type="checkbox" required> Remember me
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary btn-block">Submit</button>
+
+                    </form>
+                    <script>
+
+                      $(function () {
+                        $("forfm").data('formRule',{
+                          rules:{
+                            password:{
+                              required:true
+                            }
+                          },
+                          messages:{
+                            password:{
+                              required:'密码必须输入',
+                              minlength:'密码最少3位'
+                            }
+                          }
+                        })
+                      })
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-lg-4">

@@ -20,7 +20,9 @@
 	- [popover 弹出框](#popover)
 	- [toggle class 切换元素样式](#toggle-class)
 	- [toggle panel 切换显示隐藏](#toggle-panel)
+- [form validate 表单验证](#form-validate)
 
+	
 ## placeholder
 IE上实现Html5中placeholder效果
 
@@ -628,6 +630,56 @@ data-delay|0|延迟显示和隐藏弹出框的毫秒数
  </section>
 ```
 
+## form-validate
+表单验证插件，默认所有表单已进行validate插件初始化。
+
+ * https://jqueryvalidation.org/
+ * https://github.com/jquery-validation/jquery-validation
+ * [所有内置验证方法](https://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods) 
+
+```html
+<!--添加data-ajax属性交由ajax组件触发校验，否则绑定submit事件验证-->
+ <form role="form" name="loginForm" data-ajax class="form-validate">
+      <div class="form-group has-feedback">
+          <input name="email2" type="email" class="form-control" required placeholder="please input email">
+          <!--div.form-group添加 has-feedback 样式，并配合以下两行，会显示右侧对或错图标。-->
+          <span class="form-control-feedback feedback-success"> <i class="fa fa-check"></i> </span>
+          <span class="form-control-feedback feedback-error"> <i class="fa fa-times"></i> </span>
+      </div>
+      <div class="form-group">
+          <!--直接在input上定义验证规则-->
+          <input name="password" type="password" class="form-control" minlength="3" maxlength="10" placeholder="Password">
+      </div>
+      <div class="form-group">
+            <div class="checkbox">
+                <label><input name="remember" type="checkbox" required> Remember me</label>
+            </div>
+      </div>
+      <button type="submit" class="btn btn-sm btn-primary btn-block">Submit</button>
+</form>
+
+<script>
+
+$(function () {
+   //自定义验证规则及提示信息
+   $("form").data('formRule',{rules: { password: {required: true, minlength:3}},
+      messages: {password: {required: '密码必须输入', minlength: '密码最少3位'}}
+   })
+})
+
+//手动验证
+
+$("form").valid();
+
+</script>
+                    
+```
+
+### 添加验证规则方法:
+
+1. 直接在html中写,支持的[内置验证器方法](https://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods)
+2. 通过脚本：$("form").data('formRule',{rules,messages})
+3. form元素定定义data-form-rule属性:{"rules":{},"messages"}
 
 
 # 相关样式说明

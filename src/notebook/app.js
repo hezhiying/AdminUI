@@ -72,11 +72,12 @@
 	// todo::已迁移 components/placeholder
 
     // popover
-    $("[data-toggle=popover]").popover();
+    //todo:: 已迁移 components/toggle/popover.js
+ /*   $("[data-toggle=popover]").popover();
     $(document).on('click', '.popover-title .close', function(e){
     	var $target = $(e.target), $popover = $target.closest('.popover').prev();
     	$popover && $popover.popover('hide');
-    });
+    });*/
 
     // ajax modal
     $(document).on('click', '[data-toggle="ajaxModal"]',
