@@ -647,8 +647,8 @@ data-delay|0|延迟显示和隐藏弹出框的毫秒数
           <span class="form-control-feedback feedback-error"> <i class="fa fa-times"></i> </span>
       </div>
       <div class="form-group">
-          <!--直接在input上定义验证规则-->
-          <input name="password" type="password" class="form-control" minlength="3" maxlength="10" placeholder="Password">
+          <!--直接在input上定义验证规则 格式：data-rule-规则名="参数"  -->
+          <input name="password" type="password" class="form-control" data-rule-minlength="3" data-rule-maxlength="10" placeholder="Password">
       </div>
       <div class="form-group">
             <div class="checkbox">
@@ -677,9 +677,21 @@ $("form").valid();
 
 ### 添加验证规则方法:
 
-1. 直接在html中写,支持的[内置验证器方法](https://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods)
+1. 直接在html中写,支持的[内置验证器方法](https://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods),格式为：`data-rule-name`
 2. 通过脚本：$("form").data('formRule',{rules,messages})
 3. form元素定定义data-form-rule属性:{"rules":{},"messages"}
+4. 已包含自定义规则:
+
+	* `data-rule-ismobile`:判断是否手机号
+	* `data-rule-istel`:判断是否为电话号码或手机号
+	* `data-rule-ischinese`: 判断是否全为中文字符
+	* `data-rule-isenglish`: 判断是否全为英文字符
+	
+> 自定义规则脚本文件路径：`js/jquery-validation/extend-rules.js`
+> 
+> 自定义中文messages脚本路径 `js/jquery-validation/local/messages_zh.js`
+> 
+> 可以修改以上两个文件定义自己的规则和提示信息
 
 ### form元素data主要属性和方法
 

@@ -5,7 +5,7 @@ import './notebook/app.plugin';
 import {adminUI} from './components/admin-ui';
 import './components/modernizr';
 import {getScriptArg} from './utils/helpers'
-
+import './components/jquery.extend.string';
 /**
  * 占位显示
  * IE上实现Html5中placeholder效果

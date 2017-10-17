@@ -239,7 +239,12 @@ import CONFIG from '../config.js';
 })(jQuery);
 export default {
   config: {
-    paths: {validator: 'js/jquery-validation/jquery.validate.js'}
+    paths: {
+      validator: ['js/jquery-validation/local/messages_zh.js','js/jquery-validation/extend-rules.js'],
+    },
+    dep:{
+      validator:'js/jquery-validation/jquery.validate.min.js'
+    }
   },
   onload: () => {
     $('form').uiForm();
