@@ -7,7 +7,6 @@
 - [漂亮滚动条 slimScroll](#slimscroll)
 - [通知插件 notify](#notify)
 - [jquery-confirm](#jquery-confirm)
-- [tooltip](#tooltip)
 - [landing 让元素在进入视野里产生动画效果](#landing)
 - [loading-bar loadingBar加载效果](#loading-bar)
 - [daterangepicker日期范围](#daterangepicker)
@@ -21,6 +20,7 @@
 	- [toggle class 切换元素样式](#toggle-class)
 	- [toggle panel 切换显示隐藏](#toggle-panel)
 - [form validate 表单验证](#form-validate)
+- [ajax](#ajax)
 
 	
 ## placeholder
@@ -710,6 +710,51 @@ validator.showErrors(errors);//显示错误信息
 validator.form(); //校验
 validator.focusInvalid(); //第一个错误元素获得焦点
 ```
+
+## Ajax
+
+`data-ajax="get.json"` 
+
+* `method`   get, post, put, patch, or delete
+* `dataType` json, xml, script, or html
+
+### 前端监听，捕获事件，在元素上监听
+
+可以在前端任意截获以下事件以改变默认
+
+```js
+
+$("#id").onAjaxBefore(event=>{});
+$("#id").onAjaxBuild((ajaxOptions, event)=>{});
+$("#id").onAjaxSend((xhr, ajaxOptions, event)=>{});
+$("#id").onAjaxError((xhr, ajaxOptions, statusText, event)=>{});
+$("#id").onAjaxSuccess((data, xhr, ajaxOptions, event)=>{});
+$("#id").onAjaxDone((xhr, ajaxOptions, event)=>{});
+//this  指向当前元素
+//event 事件对象
+//xhr   jquery.xhr 对象
+//ajaxOptions ajax发送选项
+
+//OR
+
+$("#id").on('ajax.before',function(event){})
+$("#id").on('ajax.build',function(event, ajaxOptions){})
+$("#id").on('ajax.send',function(event, xhr, ajaxOptions){})
+$("#id").on('ajax.error',function(event, xhr, ajaxOptions, statusText){})
+$("#id").on('ajax.success',function(event, data, xhr, ajaxOptions){})
+$("#id").on('ajax.done',function(event, xhr, ajaxOptions){})
+```
+
+
+
+### ajax是否需要确认 confirm
+
+如果本次ajax请求前需要确认，如删除操作，请添加 `data-confirm` 属性
+
+属性名|说明|默认
+---|---|---
+data-confirm|提示框标题| `请再次确认操作`
+data-confirm-content|内容| `null`
 
 # 相关样式说明
 

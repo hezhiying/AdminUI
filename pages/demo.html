@@ -22,7 +22,7 @@
                     <h3 class="panel-title">login form</h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form" name="loginForm" class="form-validate" data-ajax>
+                    <form role="form" name="loginForm" class="form-validate" method="get" data-ajax="post.json" data-ajax-async="false" action="error.json">
                         <div class="form-group has-feedback">
                             <!--<label>Password</label>-->
                             <input name="email2" type="email" class="form-control"
@@ -44,10 +44,11 @@
                                 </label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-sm btn-primary btn-block">Submit</button>
+                        <button type="submit" class="btn btn-sm btn-primary btn-block " data-loading>Submit</button>
 
                     </form>
                     <script>
+
                       $("form").on('form.init.rule',(event)=>{
                         let rules = {
                           email2:{
@@ -766,7 +767,7 @@
     Button name
 </button>
 <a name="a" id="b" class="btn btn-danger" href="#" role="button" data-toggle="tooltip" title="sssfsafsf">link button</a>
-<button type="button" class="btn btn-primary" data-dialog="#hello" data-dialog-title="title" data-dialog-type="purple">button</button>
+<button type="button" class="btn btn-primary" data-dialog="#hello" data-dialog-title="title" data-dialog-type="purple">button dialog</button>
 <button type="button" class="btn btn-secondary">button-secondary</button>
 <button type="button" class="btn btn-success">button success</button>
 <input type="text" name="name" placeholder="e.g. John Doe">

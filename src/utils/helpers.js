@@ -8,6 +8,5 @@ export function getScriptArg(key){
 	let scripts=document.getElementsByTagName("script"),
 		script=scripts[scripts.length-1],
 		src=script.src;
-	console.log(src);
 	return (src.match(new RegExp("(?:\\?|&)"+key+"=(.*?)(?=&|$)"))||['',null])[1];
 }

@@ -16,7 +16,6 @@ $.fn.uiTooltip = function () {
 };
 
 export default{
-  config:{paths:{a:'aaa'}},
   onload: function () {
     $("[data-toggle=tooltip]").uiTooltip();
   },

@@ -12,9 +12,9 @@
       cancel: 'Cancel',
 
       //confirm 文本
-      confirmOK: 'Yes,Sure!', //确认文本
-      confirmCancel: 'Cancel', //取消文本
-      confirmTile: 'Are you sure?', //确认标题
+      confirmOK: '确认!', //确认文本
+      confirmCancel: '取消', //取消文本
+      confirmTile: '请再次确认操作', //确认标题
 
       changNotSaved: 'Changes you made may not be saved.',
       ajaxDataConvertException: 'Cannot convert response data to expected type.',

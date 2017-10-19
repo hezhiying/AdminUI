@@ -45,10 +45,23 @@
 	$(() => {
 		const bar = $.adminUI.loadingBar;
 		$(document).ajaxStart(() => {
-			bar.show();
+      console.log('loadbar.start')
+
+
+      bar.show();
 		});
 		$(document).ajaxStop(() => {
-			bar.hide();
+      console.log('loadbar.stop')
+      bar.hide();
+		});
+		$(document).ajaxError(() => {
+			console.log('loadbar.error')
+			bar.error();
+		});
+		$(document).ajaxSuccess(() => {
+      console.log('loadbar.success')
+
+      bar.success();
 		});
 		// block it
 		$(document).on('ajax.send', '[data-loading]', function (e) {

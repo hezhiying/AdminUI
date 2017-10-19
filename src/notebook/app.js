@@ -140,11 +140,12 @@
   	$('.carousel.auto').carousel();
 
   	// button loading
-  	$(document).on('click.button.data-api', '[data-loading-text]', function (e) {
+    //todo::禁止此事件
+  	/*$(document).on('click.button.data-api', '[data-loading-text]', function (e) {
   	    var $this = $(e.target);
   	    $this.is('i') && ($this = $this.parent());
-  	    $this.button('loading');
-  	});
+  	   $this.button('loading');
+  	});*/
 
     var $window = $(window);
     // mobile

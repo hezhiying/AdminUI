@@ -1,10 +1,14 @@
-import './i18n/en';
+import './i18n/zh_cn';
 import 'requirejc'
 import './notebook/app';
 import './notebook/app.plugin';
 import {adminUI} from './components/admin-ui';
 import './components/modernizr';
 import {getScriptArg} from './utils/helpers'
+
+/**
+ * 扩展jquery string方法
+ */
 import './components/jquery.extend.string';
 /**
  * 占位显示

@@ -163,8 +163,40 @@ import CONFIG from '../config.js';
 
     //监听ajax.before事件，提交form表单前进行验证
     let me = this;
+
     form.on(CONFIG.EVENT.AJAX_BEFORE, function (event) {
-      return me.validOrShowErrors(); //返回验证结果成功还是失败，返回false ajax将停止提交
+      if($(this).is($(event.target))){
+        return me.validOrShowErrors(); //返回验证结果成功还是失败，返回false ajax将停止提交
+      }
+
+    });
+    //监听ajax.build事件，序列化表单数据
+    form.on(CONFIG.EVENT.AJAX_BUILD, function (event, ajaxOptions) {
+      if($(this).is($(event.target))){
+        ajaxOptions.data = form.serializeArray()
+      }
+    });
+
+    /**
+     * 当提交ajax时，button状态更改为loading状态
+     */
+    form.on(CONFIG.EVENT.AJAX_SEND, function (event) {
+      if($(this).is($(event.target))){
+        form.find("button[data-loading]").button('loading');
+      }
+    });
+    //当完成时，恢复button状态
+    form.on(CONFIG.EVENT.AJAX_DONE, function (event) {
+      if($(this).is($(event.target))){
+        form.find("button[data-loading]").button('reset');
+      }
+    });
+
+    //监听表单校验失败事件
+    form.on(CONFIG.EVENT.FORM_VALIDATE_ERROR, function (event, errors) {
+      if($(this).is($(event.target))){
+        me.validOrShowErrors(errors);
+      }
     });
 
     //注册销毁事件

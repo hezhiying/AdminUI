@@ -5,7 +5,7 @@ import notify from 'bootstrap-notify'
  */
 ($ => {
 	$.notifyS = (message, title, url = null) => {
-		return nott(message, title, 'check-square', 'success', url);
+		return nott(message, title, 'check', 'success', url);
 	};
 	$.notifyI = (message, title, url = null) => {
 		return nott(message, title, 'info-circle', 'info', url);
@@ -14,7 +14,7 @@ import notify from 'bootstrap-notify'
 		return nott(message, title, 'warning', 'warning', url);
 	};
 	$.notifyD = (message, title, url = null) => {
-		return nott(message, title, 'warning', 'danger', url);
+		return nott(message, title, 'times', 'danger', url);
 	};
 
 	const nott = (message, title, icon, type, url = null) => {
