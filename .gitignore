@@ -7,4 +7,5 @@ hot
 package-lock.json
 app.css
 app.js
+js/vendor.js
 nodebook

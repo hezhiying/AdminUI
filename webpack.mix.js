@@ -31,7 +31,8 @@ mix.webpackConfig({
 if (mix.config.production) {
   mix.less('src/less/app.less', './build/app.css');
   mix.js('src/app.js', './build/app.js');
+  mix.scripts(['node_modules/jquery/dist/jquery.js', 'js/vue/vue.js', 'js/bootstrap/bootstrap.min.js'], 'js/vendor.js');
 } else {
   mix.less('src/less/app.less', '.');
-  mix.js('src/app.js', '.');
+  mix.js('src/app.js', 'app.js');
 }

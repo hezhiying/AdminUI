@@ -1,0 +1,57 @@
+/** laravel error page*/
+.frame-application {
+  .frame-index {
+    background-color: #2a2a2a;
+    color: #bebebe;
+  }
+}
+
+.frame-index {
+  font-size: 11px!important;
+  color: #a29d9d;
+  background-color: rgba(0, 0, 0, .05);
+  height: 18px;
+  width: 18px;
+  line-height: 18px;
+  border-radius: 5px;
+  padding: 0 1px 0 1px;
+  text-align: center;
+  display: inline-block;
+  float: left;
+
+}
+.frame-method-info {
+  margin-left: 24px;
+  margin-bottom: 10px;
+  color: #131313;
+}
+.frame:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+.frame:not(.active):hover {
+  background: #BEE9EA;
+}
+.frame {
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  background: #eeeeee;
+}
+.delimiter {
+  display: inline-block;
+}
+.frame-class, .frame-function, .frame-index {
+  font-size: 14px;
+}
+
+.frame-file {
+  font-family: "Inconsolata", "Fira Mono", "Source Code Pro", Monaco, Consolas, "Lucida Console", monospace;
+  color: #a29d9d;
+  font-size: 12px;
+}
+.frame-line {
+  font-weight: bold;
+}
+.frame-line:before {
+  content: ":";
+}

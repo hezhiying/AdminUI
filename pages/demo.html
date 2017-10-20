@@ -4,16 +4,71 @@
     <meta charset="UTF-8">
     <title>Demo Pages</title>
     <link rel="stylesheet" href="../app.css">
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/vendor.js"></script>
+    <!--<script src="../js/jquery.min.js"></script>-->
+    <!--<script src="../js/bootstrap/bootstrap.min.js"></script>-->
     <!--<script src="../js/charts/sparkline/jquery.sparkline.min.js"></script>-->
     <!--<script src="../js/daterangepicker/daterangepicker.js"></script>-->
+    <!--<script src="../js/vue/vue.js"></script>-->
     <script src="../app.js?debug=false"></script>
 
 </head>
 <body>
+<div id="app">
+    <lar-error :errors='errors'>default</lar-error>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" id="error">
+            <div class="panel panel-default no-border no-borders">
+                <header class="panel-heading">
+                     <span class="badge bg-info">Undefined variable: data (53)</span>
+                </header>
+                <div class="panel-body p-n">
+                    <!-- TAB CONTENT -->
+                    <div class="tab-content">
+                        <div class="frame frame-application" id="frame-line-0">
+                            <span class="frame-index">52</span>
+                            <div class="frame-method-info">
+                                <span class="frame-class"><div class="delimiter">ErrorException</div></span>
+                                <span class="frame-function"><div class="delimiter"></div></span>
+                            </div>
 
+                            <div class="frame-file">
+                                <div class="delimiter">…</div>/<div class="delimiter">app</div>/<div class="delimiter">Http</div>/<div class="delimiter">Controllers</div>/<div class="delimiter">LoginController.php</div><!--
+   --><span class="frame-line">12</span>
+                            </div>
+                        </div>
+                        <div class="frame  frame-application" id="frame-line-1">
+                            <span class="frame-index">51</span>
+                            <div class="frame-method-info">
+                                <span class="frame-class"><div class="delimiter">Illuminate</div>\<div class="delimiter">Foundation</div>\<div class="delimiter">Bootstrap</div>\<div class="delimiter">HandleExceptions</div></span>
+                                <span class="frame-function"><div class="delimiter">handleError</div></span>
+                            </div>
 
+                            <div class="frame-file">
+                                <div class="delimiter">…</div>/<div class="delimiter">app</div>/<div class="delimiter">Http</div>/<div class="delimiter">Controllers</div>/<div class="delimiter">LoginController.php</div><!--
+   --><span class="frame-line">12</span>
+                            </div>
+                        </div>
+                        <div class="frame" id="frame-line-2">
+                            <span class="frame-index">50</span>
+                            <div class="frame-method-info">
+                                <span class="frame-class"><div class="delimiter">App</div>\<div class="delimiter">Http</div>\<div class="delimiter">Controllers</div>\<div class="delimiter">LoginController</div></span>
+                                <span class="frame-function"><div class="delimiter">login</div></span>
+                            </div>
+
+                            <div class="frame-file">
+                                <div class="delimiter">…</div>/<div class="delimiter">vendor</div>/<div class="delimiter">laravel</div>/<div class="delimiter">framework</div>/<div class="delimiter">src</div>/<div class="delimiter">Illuminate</div>/<div class="delimiter">Routing</div>/<div class="delimiter">Controller.php</div><!--
+   --><span class="frame-line">54</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-lg-4">
@@ -767,7 +822,7 @@
     Button name
 </button>
 <a name="a" id="b" class="btn btn-danger" href="#" role="button" data-toggle="tooltip" title="sssfsafsf">link button</a>
-<button type="button" class="btn btn-primary" data-dialog="#hello" data-dialog-title="title" data-dialog-type="purple">button dialog</button>
+<button type="button" class="btn btn-primary" data-dialog="#error" data-dialog-title="ErrorException (500)" data-dialog-type="red" data-dialog-width-cls="m">button dialog</button>
 <button type="button" class="btn btn-secondary">button-secondary</button>
 <button type="button" class="btn btn-success">button success</button>
 <input type="text" name="name" placeholder="e.g. John Doe">

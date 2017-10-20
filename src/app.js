@@ -154,9 +154,384 @@ import ajax from './components/ajax/ajax';
  * https://github.com/jquery-validation/jquery-validation
  */
 import form from './components/ajax/form';
-
+// import larError from './components/vue/larave-error.vue'
+/*$(function(){
+  new Vue({el:'#app',components:{larError}, data: {
+    errors: {
+      "message": "Undefined variable: data",
+      "exception": "ErrorException",
+      "file": "/home/vagrant/code/tianciai/app/Http/Controllers/LoginController.php",
+      "line": 12,
+      "trace": [
+        {
+          "file": "/home/vagrant/code/tianciai/app/Http/Controllers/LoginController.php",
+          "line": 12,
+          "function": "handleError",
+          "class": "Illuminate\\Foundation\\Bootstrap\\HandleExceptions",
+          "type": "->"
+        },
+        {
+          "function": "login",
+          "class": "App\\Http\\Controllers\\LoginController",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+          "line": 54,
+          "function": "call_user_func_array"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php",
+          "line": 45,
+          "function": "callAction",
+          "class": "Illuminate\\Routing\\Controller",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+          "line": 212,
+          "function": "dispatch",
+          "class": "Illuminate\\Routing\\ControllerDispatcher",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+          "line": 169,
+          "function": "runController",
+          "class": "Illuminate\\Routing\\Route",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+          "line": 645,
+          "function": "run",
+          "class": "Illuminate\\Routing\\Route",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 30,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Router",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php",
+          "line": 41,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 149,
+          "function": "handle",
+          "class": "Illuminate\\Routing\\Middleware\\SubstituteBindings",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 53,
+          "function": "Illuminate\\Pipeline\\{closure}",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php",
+          "line": 67,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 149,
+          "function": "handle",
+          "class": "Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 53,
+          "function": "Illuminate\\Pipeline\\{closure}",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php",
+          "line": 49,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 149,
+          "function": "handle",
+          "class": "Illuminate\\View\\Middleware\\ShareErrorsFromSession",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 53,
+          "function": "Illuminate\\Pipeline\\{closure}",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php",
+          "line": 63,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 149,
+          "function": "handle",
+          "class": "Illuminate\\Session\\Middleware\\StartSession",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 53,
+          "function": "Illuminate\\Pipeline\\{closure}",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php",
+          "line": 37,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 149,
+          "function": "handle",
+          "class": "Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 53,
+          "function": "Illuminate\\Pipeline\\{closure}",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php",
+          "line": 59,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 149,
+          "function": "handle",
+          "class": "Illuminate\\Cookie\\Middleware\\EncryptCookies",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 53,
+          "function": "Illuminate\\Pipeline\\{closure}",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 102,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+          "line": 647,
+          "function": "then",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+          "line": 622,
+          "function": "runRouteWithinStack",
+          "class": "Illuminate\\Routing\\Router",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+          "line": 588,
+          "function": "runRoute",
+          "class": "Illuminate\\Routing\\Router",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+          "line": 577,
+          "function": "dispatchToRoute",
+          "class": "Illuminate\\Routing\\Router",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+          "line": 176,
+          "function": "dispatch",
+          "class": "Illuminate\\Routing\\Router",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 30,
+          "function": "Illuminate\\Foundation\\Http\\{closure}",
+          "class": "Illuminate\\Foundation\\Http\\Kernel",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/fideloper/proxy/src/TrustProxies.php",
+          "line": 56,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 149,
+          "function": "handle",
+          "class": "Fideloper\\Proxy\\TrustProxies",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 53,
+          "function": "Illuminate\\Pipeline\\{closure}",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+          "line": 30,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 149,
+          "function": "handle",
+          "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 53,
+          "function": "Illuminate\\Pipeline\\{closure}",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+          "line": 30,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 149,
+          "function": "handle",
+          "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 53,
+          "function": "Illuminate\\Pipeline\\{closure}",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
+          "line": 27,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 149,
+          "function": "handle",
+          "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 53,
+          "function": "Illuminate\\Pipeline\\{closure}",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php",
+          "line": 46,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 149,
+          "function": "handle",
+          "class": "Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+          "line": 53,
+          "function": "Illuminate\\Pipeline\\{closure}",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+          "line": 102,
+          "function": "Illuminate\\Routing\\{closure}",
+          "class": "Illuminate\\Routing\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+          "line": 151,
+          "function": "then",
+          "class": "Illuminate\\Pipeline\\Pipeline",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+          "line": 116,
+          "function": "sendRequestThroughRouter",
+          "class": "Illuminate\\Foundation\\Http\\Kernel",
+          "type": "->"
+        },
+        {
+          "file": "/home/vagrant/code/tianciai/public/index.php",
+          "line": 55,
+          "function": "handle",
+          "class": "Illuminate\\Foundation\\Http\\Kernel",
+          "type": "->"
+        }
+      ]
+    }
+  }})
+})*/
 RequireJC.config({
 	baseUrl: getScriptArg('baseUrl') || '/',
+  paths:{
+	  'vue': 'js/vue/vue.min.js'
+  },
 	debug  : true
 });
 

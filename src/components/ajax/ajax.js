@@ -44,6 +44,7 @@ import './ajax.confirm';
   $(document).ajaxError((event, xhr, opts, error) => {
     let e_ajaxError = $.Event(CONFIG.EVENT.AJAX_ERROR);
     opts.element.trigger(e_ajaxError, [xhr, opts, error]);
+    console.log('exception', xhr)
 
     //如果其它地方监听返回false，则交由其它地方处理
     if (e_ajaxError.isDefaultPrevented()) {
@@ -53,6 +54,13 @@ import './ajax.confirm';
     if (xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors) {
       opts.element.trigger(CONFIG.EVENT.FORM_VALIDATE_ERROR, [xhr.responseJSON.errors]);
       return false;
+    }
+
+    //laravel json error Exception
+    if(xhr.responseJSON && xhr.responseJSON.exception){
+      $.showLaravelError(xhr.responseJSON, xhr.status, xhr.statusText);
+    }else if(xhr.responseText){
+      $.showLaravelError(xhr.responseText, xhr.status, xhr.statusText, 'html');
     }
 
   });
