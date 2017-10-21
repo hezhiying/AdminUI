@@ -192,6 +192,15 @@ let doAjaxRequest = function (event) {
   if (e_ajaxBefore.isDefaultPrevented()) {
     return false;
   }
+  
+  //构建ajax发送选项
+  let types = ($this.data('ajax') || 'get.json').split('.');
+  let opts = {};
+  opts.element = $this;
+  opts.url = $this.data('ajaxUrl') || $this.attr('href') || $this.attr('action') || '';
+  opts.dataType = types.length === 2 ? types[1] : 'json';
+  opts.method = ($this.attr('method') || (types[0] ? types[0] : 'GET')).toUpperCase();
+  opts.data = $this.data('ajaxData');
 
   /**
    * 2.生命周期： ajax.build
@@ -199,14 +208,7 @@ let doAjaxRequest = function (event) {
    * 其它地方监听返回false则退出发送
    */
   let e_ajaxBuild = $.Event(CONFIG.EVENT.AJAX_BUILD);
-  let opts = $.extend({element: $this, data: []}, $this.data() || {});
-  opts.url = opts.url || $this.attr('href') || $this.attr('action') || '';
-  let ajax = opts.ajax || 'get.json';
-  let types = ajax.split('.');
-  opts.dataType = types.length === 2 ? types[1] : 'json';
-  opts.method = ($this.attr('method') || (types[0] ? types[0] : 'GET')).toUpperCase();
   e_ajaxBuild.opts = opts;
-
   $this.trigger(e_ajaxBuild, [opts]);
   if (e_ajaxBuild.isDefaultPrevented()) {
     return false;
