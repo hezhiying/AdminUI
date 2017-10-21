@@ -706,8 +706,8 @@ data-loading-text|内容| `loading...`
 
 > form.init.rule事件，validate在初始化表单的时候会发送。
  
-参数|说明|
----|---|---
+参数|说明
+---|---
 options|当前validate选项，可以修改options.rules 和 options.messages
 
 
