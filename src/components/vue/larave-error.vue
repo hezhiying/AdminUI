@@ -59,33 +59,40 @@
       }
     },
     created() {
+      //traces新增一条数据
       this.errors.file && this.errors.trace.unshift({
         file: this.errors.file,
         line: this.errors.line,
         'class': this.errors.exception
       });
-      let files;
-      for (let i in this.errors.trace) {
+      let files, traces = this.errors.trace;
+      for (let i in traces) {
         //获取文件地址转换为数组
-        if (!files && this.errors.trace[i]['file']) {
-          files = this.errors.trace[i]['file'].split("/");
+        if (!files && traces[i]['file']) {
+          files = traces[i]['file'].split("/");
           if (!files[0]) {
             files.shift()
           }
         }
-        if (i > 0 && this.errors.trace[i]['file'] && !this.errors.trace[i - 1]['file']) {
-          this.errors.trace[i - 1]['file'] = this.errors.trace[i]['file']
+        //如果没有file,line则用下一个数据
+        if (i > 0 && traces[i]['file'] && !traces[i - 1]['file']) {
+          traces[i - 1]['file'] = traces[i]['file']
         }
-        if (i > 0 && this.errors.trace[i]['line'] && !this.errors.trace[i - 1]['line']) {
-          this.errors.trace[i - 1]['line'] = this.errors.trace[i]['line']
+        if (i > 0 && traces[i]['line'] && !traces[i - 1]['line']) {
+          traces[i - 1]['line'] = traces[i]['line']
         }
+        traces[i]['id'] = traces.length - i -1;
+
       }
-      for (let item of this.errors.trace) {
+
+      //提取出application错误记录
+      for (let item of traces) {
         if (this.isApplicationFrame(item.file)){
           this.appErrorsTrace.push(item);
           }
       }
 
+      //查找出项目目录
       let findRootPath = function (files, traces) {
         let str = "";
         for (let folder of files) {
@@ -105,9 +112,7 @@
       };
 
       this.rootFolder = (files && findRootPath(files, this.errors.trace)) || '';
-      for (let i of this.errors.trace) {
 
-      }
     },
     methods: {
       isApplicationFrame(file) {
