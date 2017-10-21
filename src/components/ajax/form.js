@@ -155,8 +155,8 @@ import CONFIG from '../config.js';
      * })
      */
     let event = new $.Event(CONFIG.EVENT.FORM_INIT_RULE);
-    event.validateOptions = this.options;
-    form.trigger(event);
+    // event.validateOptions = this.options;
+    form.trigger(event, this.options);
 
     //验证器句柄
     this.validator = form.validate(this.options);
@@ -192,7 +192,7 @@ import CONFIG from '../config.js';
       }
     });
 
-    //监听表单校验失败事件
+    //监听表单校验失败事件, ajax提交骓失败后触发这个事件
     form.on(CONFIG.EVENT.FORM_VALIDATE_ERROR, function (event, errors) {
       if($(this).is($(event.target))){
         me.validOrShowErrors(errors);
@@ -280,7 +280,6 @@ export default {
   },
   onload: () => {
     $('form').uiForm();
-
   },
   event: (elm) => {
     $(elm).find('form').uiForm();

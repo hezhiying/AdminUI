@@ -19,8 +19,10 @@
 	- [popover 弹出框](#popover)
 	- [toggle class 切换元素样式](#toggle-class)
 	- [toggle panel 切换显示隐藏](#toggle-panel)
-- [form validate 表单验证](#form-validate)
 - [ajax](#ajax)
+	- [confirm 加载确认](#ajax-confirm)
+	- [data-loading 加载时按钮显示加载状态](#ajax-data-loading)
+	- [form validate 表单验证](#form-validate)
 
 	
 ## placeholder
@@ -630,12 +632,86 @@ data-delay|0|延迟显示和隐藏弹出框的毫秒数
  </section>
 ```
 
+# Ajax
+
+## ajax使用
+
+> 基本基本使用
+
+```
+<button data-ajax="get.json" data-ajax-url="" data-ajax-data="a=1&b=2" data-confirm="提交前确认"></button>
+
+```
+
+
+* `method`   get, post, put, patch, or delete
+* `dataType` json, xml, script, or html
+
+>ajax生命周期、事件名称及前端捕获使用方法
+
+事件名|参数
+---|---
+ajax.before|`$("#id").on('ajax.before',function(event){})`<br>`$("#id").onAjaxBefore(event=>{});`|
+ajax.build|`$("#id").on('ajax.build',function(event, ajaxOptions){})`<br>`$("#id").onAjaxBuild((ajaxOptions, event)=>{});`|
+ajax.send|`$("#id").on('ajax.send',function(event, xhr, ajaxOptions){})` <br> `$("#id").onAjaxSend((xhr, ajaxOptions, event)=>{});`|
+ajax.error|`$("#id").on('ajax.error',function(event, xhr, ajaxOptions, statusText){})`  <br>  `$("#id").onAjaxError((xhr, ajaxOptions, statusText, event)=>{});`
+ajax.success|`$("#id").on('ajax.success',function(event, data, xhr, ajaxOptions){})` <br> `$("#id").onAjaxSuccess((data, xhr, ajaxOptions, event)=>{});`
+ajax.done|`$("#id").on('ajax.done',function(event, xhr, ajaxOptions){})` <br> `$("#id").onAjaxDone((xhr, ajaxOptions, event)=>{});`
+
+## ajax-confirm
+
+> ajax请求，弹出确认框
+
+```html
+<form data-ajax data-confirm="提示标题" data-confirm-content="提示内容"></form>
+<button data-ajax="delete.json" data-confirm="确认删除吗"></button>
+```
+
+> 属性说明
+
+属性名|说明|默认
+---|---|---
+data-confirm|提示框标题| `请再次确认操作`
+data-confirm-content|内容| `null`
+
+## ajax-data-loading
+
+> ajax请求时，会对button显示加载效果
+
+```html
+<button data-ajax="delete.json" data-loading data-loading-text="loading..."></button>
+
+<!--form使用-->
+<form data-ajax="post.json"> 
+   <button type="submit" data-loading ></button>
+</form>
+```
+
+> 属性说明
+
+属性名|说明|默认
+---|---|---
+data-loading|自动显示ajax加载状态| `null`
+data-loading-text|内容| `loading...`
+
 ## form-validate
-表单验证插件，默认所有表单已进行validate插件初始化。
+
+表单验证插件，默认所有表单已进行validate插件初始化。可以配合data-ajax data-confirm 使用。不管是不是ajax模式提交，都会自动使用validate控件进行表单验证
+
+> 相关教程
 
  * https://jqueryvalidation.org/
  * https://github.com/jquery-validation/jquery-validation
- * [所有内置验证方法](https://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods) 
+ * [所有内置验证方法](https://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods)
+
+> form.init.rule事件，validate在初始化表单的时候会发送。
+ 
+参数|说明|
+---|---|---
+options|当前validate选项，可以修改options.rules 和 options.messages
+
+
+> 使用方法 
 
 ```html
 <!--添加data-ajax属性交由ajax组件触发校验，否则绑定submit事件验证-->
@@ -677,21 +753,68 @@ $("form").valid();
 
 ### 添加验证规则方法:
 
-1. 直接在html中写,支持的[内置验证器方法](https://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods),格式为：`data-rule-name`
-2. 通过脚本：$("form").data('formRule',{rules,messages})
-3. form元素定定义data-form-rule属性:{"rules":{},"messages"}
-4. 已包含自定义规则:
+* 直接在input上添加
+
+
+```html
+<form>
+<input name="user" type="text" required data-rule-required="true">
+<input name="email" type="email" required>
+</form>
+
+```
+
+
+* js写法
+
+```js
+$(function(){
+  $("form").data('formRule',{
+        rules:{
+          username:'required',
+          password:{
+            required:true,
+            minlength:3,
+            maxlength:12
+          }
+        },
+        messages:{
+          username:'用户名错误', 
+          password:{
+            required:'密码必须', 
+            minlength:'长度不能少于3字符'
+          }
+        }
+    })
+  
+})
+
+```
+
+* 监听事件，在事件中添加
+
+```js
+
+$("form").on('form.init.rule', function(events, options){
+
+  options.rules = {
+      username:'required'
+  
+  }
+})
+
+```
+
+* 已包含自定义规则:
 
 	* `data-rule-ismobile`:判断是否手机号
 	* `data-rule-istel`:判断是否为电话号码或手机号
 	* `data-rule-ischinese`: 判断是否全为中文字符
 	* `data-rule-isenglish`: 判断是否全为英文字符
 	
-> 自定义规则脚本文件路径：`js/jquery-validation/extend-rules.js`
-> 
-> 自定义中文messages脚本路径 `js/jquery-validation/local/messages_zh.js`
-> 
-> 可以修改以上两个文件定义自己的规则和提示信息
+* 自定义规则脚本文件路径：`js/jquery-validation/extend-rules.js`
+* 自定义中文messages脚本路径 `js/jquery-validation/local/messages_zh.js`
+
 
 ### form元素data主要属性和方法
 
@@ -711,50 +834,6 @@ validator.form(); //校验
 validator.focusInvalid(); //第一个错误元素获得焦点
 ```
 
-## Ajax
-
-`data-ajax="get.json"` 
-
-* `method`   get, post, put, patch, or delete
-* `dataType` json, xml, script, or html
-
-### 前端监听，捕获事件，在元素上监听
-
-可以在前端任意截获以下事件以改变默认
-
-```js
-
-$("#id").onAjaxBefore(event=>{});
-$("#id").onAjaxBuild((ajaxOptions, event)=>{});
-$("#id").onAjaxSend((xhr, ajaxOptions, event)=>{});
-$("#id").onAjaxError((xhr, ajaxOptions, statusText, event)=>{});
-$("#id").onAjaxSuccess((data, xhr, ajaxOptions, event)=>{});
-$("#id").onAjaxDone((xhr, ajaxOptions, event)=>{});
-//this  指向当前元素
-//event 事件对象
-//xhr   jquery.xhr 对象
-//ajaxOptions ajax发送选项
-
-//OR
-
-$("#id").on('ajax.before',function(event){})
-$("#id").on('ajax.build',function(event, ajaxOptions){})
-$("#id").on('ajax.send',function(event, xhr, ajaxOptions){})
-$("#id").on('ajax.error',function(event, xhr, ajaxOptions, statusText){})
-$("#id").on('ajax.success',function(event, data, xhr, ajaxOptions){})
-$("#id").on('ajax.done',function(event, xhr, ajaxOptions){})
-```
-
-
-
-### ajax是否需要确认 confirm
-
-如果本次ajax请求前需要确认，如删除操作，请添加 `data-confirm` 属性
-
-属性名|说明|默认
----|---|---
-data-confirm|提示框标题| `请再次确认操作`
-data-confirm-content|内容| `null`
 
 # 相关样式说明
 
