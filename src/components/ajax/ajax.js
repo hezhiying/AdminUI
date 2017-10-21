@@ -1,5 +1,6 @@
 import CONFIG from '../config.js';
 import './ajax.confirm';
+import {showExceptionDialog} from "../dialog/http.exception";
 
 (function ($) {
 
@@ -44,7 +45,6 @@ import './ajax.confirm';
   $(document).ajaxError((event, xhr, opts, error) => {
     let e_ajaxError = $.Event(CONFIG.EVENT.AJAX_ERROR);
     opts.element.trigger(e_ajaxError, [xhr, opts, error]);
-    console.log('exception', xhr)
 
     //如果其它地方监听返回false，则交由其它地方处理
     if (e_ajaxError.isDefaultPrevented()) {
@@ -58,9 +58,9 @@ import './ajax.confirm';
 
     //laravel json error Exception
     if(xhr.responseJSON && xhr.responseJSON.exception){
-      $.showLaravelError(xhr.responseJSON, xhr.status, xhr.statusText);
+      showExceptionDialog(xhr.responseJSON, xhr.status, xhr.statusText);
     }else if(xhr.responseText){
-      $.showLaravelError(xhr.responseText, xhr.status, xhr.statusText, 'html');
+      showExceptionDialog(xhr.responseText, xhr.status, xhr.statusText, 'html');
     }
 
   });

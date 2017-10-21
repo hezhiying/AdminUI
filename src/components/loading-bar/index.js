@@ -45,27 +45,19 @@
 	$(() => {
 		const bar = $.adminUI.loadingBar;
 		$(document).ajaxStart(() => {
-      console.log('loadbar.start')
-
-
       bar.show();
 		});
 		$(document).ajaxStop(() => {
-      console.log('loadbar.stop')
       bar.hide();
 		});
 		$(document).ajaxError(() => {
-			console.log('loadbar.error')
 			bar.error();
 		});
 		$(document).ajaxSuccess(() => {
-      console.log('loadbar.success')
-
       bar.success();
 		});
 		// block it
 		$(document).on('ajax.send', '[data-loading]', function (e) {
-			console.log('data-loading', e)
 			let me = e.element;
 			if (me.data('loading') !== undefined && me.data('loading') !== null) {
 				let jc;
