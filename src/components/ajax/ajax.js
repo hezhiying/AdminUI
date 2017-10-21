@@ -51,7 +51,7 @@ import {showExceptionDialog} from "../dialog/http.exception";
       return false;
     }
     //处理表单校验错误
-    if (xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors) {
+    if ((xhr.status === 422 || xhr.status === 423) && xhr.responseJSON && xhr.responseJSON.errors) {
       opts.element.trigger(CONFIG.EVENT.FORM_VALIDATE_ERROR, [xhr.responseJSON.errors]);
       return false;
     }
