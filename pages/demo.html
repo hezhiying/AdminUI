@@ -104,14 +104,13 @@
                     </form>
                     <script>
 
-                      $("form").on('form.init.rule',(event)=>{
+                      $("form").on('form.init.rule',(event, opts)=>{
                         let rules = {
                           email2:{
                             required:true
                           }
                         };
-                        console.log('event.validateOptions', event.validateOptions)
-                        event.validateOptions.rules = rules
+                        opts.rules = rules
                       });
                       $(function () {
 

@@ -28,12 +28,7 @@ import {showExceptionDialog} from "../dialog/http.exception";
     e_ajaxSend.element = opts.element;
     opts.element.trigger(e_ajaxSend, [xhr, opts]);
 
-    /**
-     * 确认是否要实现load效果
-     */
-    if (opts.element.is('[data-loading]')) {
-      opts.element.button('loading');
-    }
+    //loading功能已转至单独模块ajax.loading.js中
     xhr.setRequestHeader('X-AJAX-TYPE', opts.dataType);
     xhr.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'));
   });
@@ -85,9 +80,6 @@ import {showExceptionDialog} from "../dialog/http.exception";
   $(document).ajaxComplete((event, xhr, opts) => {
     //重置发送状态
     opts.element.data('ajaxSending', false);
-    if (opts.element.is('[data-loading]')) {
-      opts.element.button('reset');
-    }
 
     //触发事件
     let e_ajaxDone = new $.Event(CONFIG.EVENT.AJAX_DONE);
@@ -192,7 +184,7 @@ let doAjaxRequest = function (event) {
   if (e_ajaxBefore.isDefaultPrevented()) {
     return false;
   }
-  
+
   //构建ajax发送选项
   let types = ($this.data('ajax') || 'get.json').split('.');
   let opts = {};

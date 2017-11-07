@@ -7,6 +7,13 @@ import './components/modernizr';
 import {getScriptArg} from './utils/helpers'
 
 /**
+ * blockUI
+ * https://github.com/malsup/blockui
+ * http://jquery.malsup.com/block/
+ */
+import plugin from './components/plugin';
+
+/**
  * 扩展jquery string方法
  */
 import './components/jquery.extend.string';
@@ -76,7 +83,7 @@ import landing from './components/landing';
  * $.adminUI.loadingBar.success();  //成功
  * $.adminUI.loadingBar.error(); //失败
  */
-import loadingBar from './components/loading-bar';
+//import loadingBar from './components/loading-bar';
 
 /**
  * 日期范围选择控件
@@ -146,18 +153,12 @@ import toggleClass from './components/toggle/toggle-class';
  */
 import togglePanel from './components/toggle/toggle-panel';
 /**
- * ajax模块
+ * ajax模块入口
  * 提供以下事件
  * onAjaxBefore onAjaxBuild onAjaxSend onAjaxError onAjaxSuccess onAjaxDone
+ * 包含 form提交 target显示 loading状态 confirm等模块
  */
-import ajax from './components/ajax/ajax';
-
-/**
- * 表单校验插件
- * https://jqueryvalidation.org/
- * https://github.com/jquery-validation/jquery-validation
- */
-import form from './components/ajax/form';
+import ajax from './components/ajax';
 
 RequireJC.config({
 	baseUrl: getScriptArg('baseUrl') || '/',
@@ -165,7 +166,7 @@ RequireJC.config({
 });
 
 let components = {
-	slimscroll, landing, loadingBar, placeholder,
+	slimscroll, landing, placeholder, plugin,
   //图表相关
   easyPieChart, flotChar, chartSparkline,
   //日期相关
@@ -173,7 +174,7 @@ let components = {
   //data-toggle
   togglePopover, toggleTooltip, toggleClass, togglePanel,
 	//ajax
-  ajax,form,
+  ajax,
 };
 
 $(function () {

@@ -162,11 +162,7 @@
     });
 
 	// docs
-    $('#docs pre code').each(function(){
-	    var $this = $(this);
-	    var t = $this.html();
-	    $this.html(t.replace(/</g, '&lt;').replace(/>/g, '&gt;'));
-	});
+		//todo:已迁移至 components/notebook
 
 	// fontawesome
 	$(document).on('click', '.fontawesome-icon-list a', function(e){

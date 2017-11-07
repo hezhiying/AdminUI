@@ -27,6 +27,7 @@ import CONFIG from '../config.js';
           btnClass: 'btn-blue',
           keys    : ['enter'],
           action() {
+            //点击OK按钮后执行ajax
             $.ajax(opts)
           }
         },
@@ -37,6 +38,9 @@ import CONFIG from '../config.js';
     };
 
     $.confirm(confirmOptions);
+
+    //立即返回false 阻止默认的ajax后续动作
     return false;
   });
+
 })(jQuery);

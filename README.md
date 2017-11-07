@@ -694,6 +694,28 @@ data-confirm-content|内容| `null`
 data-loading|自动显示ajax加载状态| `null`
 data-loading-text|内容| `loading...`
 
+
+## ajax-target
+
+> 将ajax请求结果显示在目标元素上
+
+```html
+<button data-ajax-url="" data-ajax="get.html" data-ajax-target="#test" data-loading></button>
+
+<div id="test"></div>
+
+```
+
+> 属性说明
+
+属性名|说明|默认
+---|---|---
+data-ajax-target|目标元素|要显示内容的目标元素
+data-loading|loading显示的位置，默认显示在target元素上，如不想显示可以设置为null| `null`
+data-loading-text|内容| `loading...`
+
+
+
 ## form-validate
 
 表单验证插件，默认所有表单已进行validate插件初始化。可以配合data-ajax data-confirm 使用。不管是不是ajax模式提交，都会自动使用validate控件进行表单验证
