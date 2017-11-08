@@ -22,6 +22,7 @@
 - [ajax](#ajax)
 	- [confirm 加载确认](#ajax-confirm)
 	- [data-loading 加载时按钮显示加载状态](#ajax-data-loading)
+	- [ajax-target](#ajax-target)
 	- [form validate 表单验证](#form-validate)
 
 	
@@ -639,13 +640,18 @@ data-delay|0|延迟显示和隐藏弹出框的毫秒数
 > 基本基本使用
 
 ```
-<button data-ajax="get.json" data-ajax-url="" data-ajax-data="a=1&b=2" data-confirm="提交前确认"></button>
+<button data-ajax="get.json.reload" data-ajax-url="" data-ajax-data="a=1&b=2" data-confirm="提交前确认"></button>
 
 ```
 
 
 * `method`   get, post, put, patch, or delete
 * `dataType` json, xml, script, or html
+* `eventType` 事件类型，click|reload 默认绑定点击事件，reload时为一开始就加载
+
+> 可用方法
+
+* $(elm).ajaxReload() //重新ajax加载
 
 >ajax生命周期、事件名称及前端捕获使用方法
 

@@ -9,6 +9,7 @@ export default {
     AJAX_SUCCESS: 'ajax.success', //ajax 成功
     AJAX_ERROR: 'ajax.error', //ajax 失败
     AJAX_DONE: 'ajax.done', //ajax 结束不论失败还是成功
+    AJAX_RELOAD: 'ajax.reload', //ajax 重新加载
 
   },
 

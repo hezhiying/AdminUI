@@ -190,7 +190,7 @@ let doAjaxRequest = function (event) {
   let opts = {};
   opts.element = $this;
   opts.url = $this.data('ajaxUrl') || $this.attr('href') || $this.attr('action') || '';
-  opts.dataType = types.length === 2 ? types[1] : 'json';
+  opts.dataType = types.length >= 2 ? types[1] : 'json';
   opts.method = ($this.attr('method') || (types[0] ? types[0] : 'GET')).toUpperCase();
   opts.data = $this.data('ajaxData');
 
@@ -212,16 +212,52 @@ let doAjaxRequest = function (event) {
 
 };
 
+$.fn.ajaxReload = function () {
+  if($(this).is('[data-ajax]')){
+    $(this).trigger($.Event(CONFIG.EVENT.AJAX_RELOAD));
+  }
+};
+
+$.fn.uiAjax = function () {
+  let self = $(this);
+  if (self.length) {
+    self.each(function (i,elm) {
+      if ($(this).data('installed')) return;
+
+      //每一个ajax功能元素都绑定reload监听
+      $(this).on(CONFIG.EVENT.AJAX_RELOAD, doAjaxRequest);
+
+      if($(this).is("form")){
+        $(this).submit(doAjaxRequest);
+      }else if($(this).is("select")){
+        $(this).change(doAjaxRequest);
+      }else{
+        let types = ($(this).data('ajax') || 'get.json.click').split('.');
+        if(types.includes("load")){
+          $(this).ajaxReload();
+        }else{
+          $(this).click(doAjaxRequest)
+        }
+
+      }
+
+      $(this).data('installed', true);
+    });
+  }
+
+
+};
 export default {
   config: {},
   onload: () => {
-    $('body')
+    $('[data-ajax]').uiAjax();
+   /* $('body')
       .on('click', '[data-ajax]:not(form)', doAjaxRequest)
       .on('submit', 'form[data-ajax]', doAjaxRequest)
-      .on('change', 'select[data-ajax]', doAjaxRequest);
+      .on('change', 'select[data-ajax]', doAjaxRequest);*/
 
   },
   event: (elm) => {
-
+    $(elm).find('[data-ajax]').uiAjax();
   }
 }
