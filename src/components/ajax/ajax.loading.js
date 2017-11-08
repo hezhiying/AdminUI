@@ -69,9 +69,10 @@ import CONFIG from '../config'
    */
   $(document).on(CONFIG.EVENT.AJAX_SEND, function (event, xhr, ajaxOptions) {
     let me = ajaxOptions.element;
+    let types = ($(me).data('ajax') || '').split('.');
 
-    if( me.data('ajaxTarget')){
-      let target = me.data('loading') || me.data('ajaxTarget');
+    if(  types.includes('load') || me.data('ajaxTarget')){
+      let target = me.data('loading') || me.data('ajaxTarget') || me;
       let blockOptions = {};
       me.data('loadingText') && (blockOptions.message = me.data('loadingText'));
       $(target).block(blockOptions);
@@ -86,8 +87,10 @@ import CONFIG from '../config'
    */
   $(document).on(CONFIG.EVENT.AJAX_DONE, function (event, xhr, ajaxOptions) {
     let me = ajaxOptions.element;
-    if( me.data('ajaxTarget')){
-      let target = me.data('loading') || me.data('ajaxTarget');
+    let types = ($(me).data('ajax') || '').split('.');
+
+    if( types.includes('load') || me.data('ajaxTarget')){
+      let target = me.data('loading') || me.data('ajaxTarget') || me;
       setTimeout(()=>{$(target).unblock();},2000)
     }else if (me.is('[data-loading]')) {
       setTimeout(()=>{ me.button('reset');},2000)
