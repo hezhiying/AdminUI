@@ -46,7 +46,7 @@ import CONFIG from '../config'
       let me = this;
       setTimeout(function () {
         me.bar.addClass('fadeOut').hide().remove();
-      }, 1500)
+      }, 500)
     }
   };
   $(()=>{
