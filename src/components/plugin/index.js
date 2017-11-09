@@ -1,4 +1,8 @@
 import './jquery.blockUI'
+import select2 from './jquery.select2'
+import TransformCodeHtml from './transform.code.html'
+
+let compents = {select2, TransformCodeHtml};
 
 /**
  * 安装blockUI功能
@@ -27,29 +31,30 @@ let installBlockUI = function () {
   $.blockUI.defaults = $.extend($.blockUI.defaults, blockOpts);
 };
 
-/**
- * 将pre code中的代码转换为html格式
- */
-$.fn.codeTransformHtml = function () {
-  let self = $(this);
-  if (self.length) {
-    self.each(function (i,elm) {
-      if ($(this).data('installed')) return;
-      let t = $(this).html();
-      $(this).html(t.replace(/</g, '&lt;').replace(/>/g, '&gt;'));
-      $(this).data('installed', true);
-    });
-  }
-};
 
+//合并配制
+let config;
+for(let item of Object.values(compents)){
+  config = $.extend(true, {}, config, item.config||{});
+}
 export default {
+  config,
   onload: () => {
     installBlockUI();
-    $("pre code").codeTransformHtml();
 
+    //依次加载初始化
+    for(let item of Object.values(compents)){
+      if (item.onload) {
+        item.onload();
+      }
+    }
   },
   event: (elm) => {
-    $(elm).find('pre code').codeTransformHtml();
-
+    //依次加载事件
+    for(let item of Object.values(compents)){
+      if (item.event) {
+        item.event(this, event);
+      }
+    }
   }
 }

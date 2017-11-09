@@ -24,7 +24,7 @@
 	- [data-loading 加载时按钮显示加载状态](#ajax-data-loading)
 	- [ajax-target](#ajax-target)
 	- [form validate 表单验证](#form-validate)
-
+- [select2](#select2)
 	
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -739,6 +739,11 @@ data-loading-text|内容| `loading...`
 options|当前validate选项，可以修改options.rules 和 options.messages
 
 
+可用属性|对象|说明|默认
+---|---|---|---
+data-ignore-title | form | 是否忽略使用title作为错误提示 | true  false (默认true忽略）
+data-error-placement|form | 错误信息显示位置 | down right(以右侧通知形式) null(不显示) (默认down 显示在元素下面）
+
 > 使用方法 
 
 ```html
@@ -860,6 +865,19 @@ let validator = $("form").data('validator'); //jquery validate 句柄
 validator.showErrors(errors);//显示错误信息
 validator.form(); //校验
 validator.focusInvalid(); //第一个错误元素获得焦点
+```
+
+## select2
+
+```html
+<select class="select2" data-tags="true" multiple dir="rtl">
+
+ <optgroup label="Alaskan/Hawaiian Time Zone">
+  <option value="AK">Alaska</option>
+  <option value="HI">Hawaii</option>
+ </optgroup>
+
+</select>
 ```
 
 

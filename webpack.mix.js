@@ -38,3 +38,5 @@ if (mix.config.production) {
   mix.less('src/less/app.less', '.');
   mix.js('src/app.js', 'app.js');
 }
+//生成select2主题
+mix.less('src/less/select2-bootstrap.less', './js/select2/select2-bootstrap-theme.css');

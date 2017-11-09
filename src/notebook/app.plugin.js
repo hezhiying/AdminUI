@@ -210,13 +210,14 @@
   setTimeout(function(){addMsg($msg);}, 1500);
 
 	// select2
- 	if ($.fn.select2) {
+		//todo:已迁移至components/plugin/jquery.select2.js
+ 	/*if ($.fn.select2) {
       $("#select2-option").select2();
       $("#select2-tags").select2({
         tags:["red", "green", "blue"],
         tokenSeparators: [",", " "]}
       );
-  	}
+  	}*/
 
 
   });

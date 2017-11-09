@@ -7,6 +7,8 @@ import CONFIG from '../config.js';
 
 ($ => {
 
+  let notifyHandle = {};
+
   /**
    * 处理自定义表单规则
    * @e.g
@@ -41,6 +43,10 @@ import CONFIG from '../config.js';
    * @param element 表单控件元素
    */
   const errorPlacement = function (error, element) {
+    //判断是否要在当前元素下显示错误提示
+    if($(this.currentForm).data('errorPlacement') === 'right' || $(this.currentForm).data('errorPlacement') === 'null'){
+      return ;
+    }
     if (element.is('[type=checkbox]') || element.is('[type=radio]')) {
       //如果是checkbox 或 radio 控件，手动处理
       let wrap = element.closest('div');
@@ -102,6 +108,14 @@ import CONFIG from '../config.js';
   const unhighlight = function (element, errorClass, validClass) {
     ($(element).parents('.form-group') || $(element).parent()).removeClass("has-error").addClass("has-success");
 
+    //成功时，将对应的notify通知类型改为success
+    let id = element.name + '-notify-error';
+    if($('#' + id).length){
+      notifyHandle[id].update({message:'校验成功', title: '<strong>' + element.name + '</strong>', type: 'success', icon: 'fa fa-check'})
+    }
+
+
+    //notifyHandle[element.name] && notifyHandle[element.name].update({type: 'success', message: element.name, icon: 'fa fa-check'})
     /* if ($(element).is('[type=checkbox]') || $(element).is('[type=radio]')) {
        let wrap = $(element).closest('div');
        if (wrap.is('.checkbox') || wrap.is('.radio')) {
@@ -121,7 +135,6 @@ import CONFIG from '../config.js';
   const Validator = function (form) {
     // this.form                 = form;
     this.target = form;
-
     //validate 验证选项
     this.options = prepareValidateRule(form.data('formRule'));
 
@@ -130,8 +143,7 @@ import CONFIG from '../config.js';
     if (typeof form.data('ajax') === 'undefined' ){
       this.options.onsubmit = true;
     }
-
-    this.options.ignoreTitle = true;
+    this.options.ignoreTitle = form.is('[data-ignore-title]') ? form.data('ignoreTitle') : true;      //忽略标题作为错误提示内容
     this.options.highlight = highlight;     //失败时回调
     this.options.unhighlight = unhighlight; //成功时回调
 
@@ -144,6 +156,29 @@ import CONFIG from '../config.js';
     this.options.wrapperClass = 'parsley-error-list';
 
     this.options.debug = false;
+
+    //自定义错误显示逻辑
+    this.options.showErrors = function (errorMap, errorList) {
+
+      //判断是否要以右侧notify形式显示错误
+      if($(this.currentForm).data('errorPlacement') === 'right'){
+        let err = '';
+        for(let key in errorMap){
+          err += '<li><strong>' + key + '</strong> '+ errorMap[key];
+
+          let id = key + '-notify-error';
+          if($('#' + id).length){
+            notifyHandle[id].update({message:errorMap[key], title: '<strong>' + key + '</strong>', type: 'danger', icon: 'fa fa-warning'})
+          }else{
+            notifyHandle[id] = $.notifyD(errorMap[key], key);
+            notifyHandle[id].$ele.attr('id', id);
+          }
+        }
+      }
+
+      //调用系统错误处理方法
+      this.defaultShowErrors()
+    };
 
 
     /**
@@ -166,10 +201,10 @@ import CONFIG from '../config.js';
 
     form.on(CONFIG.EVENT.AJAX_BEFORE, function (event) {
       if($(this).is($(event.target))){
-        return me.validOrShowErrors(); //返回验证结果成功还是失败，返回false ajax将停止提交
+       return me.validOrShowErrors(); //返回验证结果成功还是失败，返回false ajax将停止提交
       }
-
     });
+
     //监听ajax.build事件，序列化表单数据
     form.on(CONFIG.EVENT.AJAX_BUILD, function (event, ajaxOptions) {
       if($(this).is($(event.target))){
@@ -186,9 +221,16 @@ import CONFIG from '../config.js';
       }
     });
     //当完成时，恢复button状态
-    form.on(CONFIG.EVENT.AJAX_DONE, function (event) {
+    form.on(CONFIG.EVENT.AJAX_DONE, function (event, xhr) {
       if($(this).is($(event.target))){
         form.find("button[data-loading]").button('reset');
+
+        // 处理表单校验错误
+        if (xhr.responseJSON && (xhr.status === 422 || xhr.status === 423 || xhr.responseJSON.code === 422) && xhr.responseJSON.errors) {
+          me.validOrShowErrors(xhr.responseJSON.errors);
+          return false;
+        }
+
       }
     });
 
@@ -213,12 +255,12 @@ import CONFIG from '../config.js';
       return false;
     }
 
-    if (this.validator.form()) {
+    if (this.validator.valid()) {
       //如果验证表单通过但是errors不为空直直接显示错误信息
       if (errors) {
         this.validator.showErrors(errors);
         this.validator.focusInvalid(); //第一个错误元素获得焦点
-        return false;
+        return;
       }
       if (this.validator.pendingRequest) {
         this.validator.formSubmitted = true;
@@ -275,7 +317,7 @@ export default {
       validator: ['js/jquery-validation/local/messages_zh.js','js/jquery-validation/extend-rules.js'],
     },
     dep:{
-      validator:'js/jquery-validation/jquery.validate.min.js'
+      validator:'js/jquery-validation/jquery.validate.js'
     }
   },
   onload: () => {

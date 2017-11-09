@@ -45,11 +45,11 @@ import {showExceptionDialog} from "../dialog/http.exception";
     if (e_ajaxError.isDefaultPrevented()) {
       return false;
     }
-    //处理表单校验错误
-    if ((xhr.status === 422 || xhr.status === 423) && xhr.responseJSON && xhr.responseJSON.errors) {
-      opts.element.trigger(CONFIG.EVENT.FORM_VALIDATE_ERROR, [xhr.responseJSON.errors]);
-      return false;
-    }
+    //处理表单校验错误 表单错误处理交由ajax form 模块自己处理
+    // if ((xhr.status === 422 || xhr.status === 423) && xhr.responseJSON && xhr.responseJSON.errors) {
+    //   opts.element.trigger(CONFIG.EVENT.FORM_VALIDATE_ERROR, [xhr.responseJSON.errors]);
+    //   return false;
+    // }
 
     //laravel json error Exception
     if(xhr.responseJSON && xhr.responseJSON.exception){

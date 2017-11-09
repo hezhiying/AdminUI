@@ -76,9 +76,9 @@ export default {
 		}
 	},
 	onload:()=>{
-		$('[date-range-picker]').uiDateRangePicker();
+		$('[date-range-picker], .date-range-picker').uiDateRangePicker();
 	},
 	event:(elm)=>{
-		$(elm).find('[date-range-picker]').uiDateRangePicker();
+		$(elm).find('[date-range-picker], .date-range-picker').uiDateRangePicker();
 	}
 }

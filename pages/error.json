@@ -1,5 +1,6 @@
 {
   "message": "信息提交成功",
+  "code":422,
   "errors":{
     "password":["密码不匹配"]
   }
