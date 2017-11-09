@@ -742,7 +742,7 @@ options|当前validate选项，可以修改options.rules 和 options.messages
 可用属性|对象|说明|默认
 ---|---|---|---
 data-ignore-title | form | 是否忽略使用title作为错误提示 | true  false (默认true忽略）
-data-error-placement|form | 错误信息显示位置 | down right(以右侧通知形式) null(不显示) (默认down 显示在元素下面）
+data-error-placement|form | 错误信息显示位置 from-align | from: `top` or `bottom`  align: `left`, `center` or `right` 默认(top-right)
 
 > 使用方法 
 

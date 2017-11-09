@@ -9,6 +9,26 @@ import CONFIG from '../config.js';
 
   let notifyHandle = {};
 
+  let notifyError = function (message, title, placement) {
+    placement = (placement || 'top-right').split('-');
+    if(placement.length !== 2){
+      placement = ['top', 'right'];
+    }
+    let from = placement[0];
+    let align = placement[1];
+    return $.notify({
+      title: title ? '<strong>'+title+'</strong> ' : '',
+      message: message,
+      icon: 'fa fa-warning'
+    }, {
+      type: 'danger',
+      newest_on_top: true,
+      z_index: 9000,
+      delay:5000,
+      placement: {from, align}
+    })
+  };
+
   /**
    * 处理自定义表单规则
    * @e.g
@@ -44,7 +64,7 @@ import CONFIG from '../config.js';
    */
   const errorPlacement = function (error, element) {
     //判断是否要在当前元素下显示错误提示
-    if($(this.currentForm).data('errorPlacement') === 'right' || $(this.currentForm).data('errorPlacement') === 'null'){
+    if($(this.currentForm).data('errorPlacement')){
       return ;
     }
     if (element.is('[type=checkbox]') || element.is('[type=radio]')) {
@@ -161,7 +181,8 @@ import CONFIG from '../config.js';
     this.options.showErrors = function (errorMap, errorList) {
 
       //判断是否要以右侧notify形式显示错误
-      if($(this.currentForm).data('errorPlacement') === 'right'){
+      let placement = $(this.currentForm).data('errorPlacement');
+      if(placement){
         let err = '';
         for(let key in errorMap){
           err += '<li><strong>' + key + '</strong> '+ errorMap[key];
@@ -170,7 +191,7 @@ import CONFIG from '../config.js';
           if($('#' + id).length){
             notifyHandle[id].update({message:errorMap[key], title: '<strong>' + key + '</strong>', type: 'danger', icon: 'fa fa-warning'})
           }else{
-            notifyHandle[id] = $.notifyD(errorMap[key], key);
+            notifyHandle[id] = notifyError(errorMap[key], key, placement);
             notifyHandle[id].$ele.attr('id', id);
           }
         }
