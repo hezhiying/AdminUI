@@ -20,10 +20,13 @@
 	- [toggle class 切换元素样式](#toggle-class)
 	- [toggle panel 切换显示隐藏](#toggle-panel)
 - [ajax](#ajax)
-	- [confirm 加载确认](#ajax-confirm)
-	- [data-loading 加载时按钮显示加载状态](#ajax-data-loading)
-	- [ajax-target](#ajax-target)
-	- [form validate 表单验证](#form-validate)
+	- [基本用法](#基本用法)
+		- [例子](#例子)
+		- [属性](#属性)
+		- [方法](#方法)
+		- [事件](#事件)
+	- [表格分页](#表格分页)
+	- [form-validate表单验证](#form-validate)
 - [select2](#select2)
 	
 ## placeholder
@@ -633,94 +636,171 @@ data-delay|0|延迟显示和隐藏弹出框的毫秒数
  </section>
 ```
 
-# Ajax
 
-## ajax使用
+# ajax
 
-> 基本基本使用
+## 基本用法
+
+> ###例子
+
 
 ```
-<button data-ajax="get.json.reload" data-ajax-url="" data-ajax-data="a=1&b=2" data-confirm="提交前确认"></button>
+//普通点击
 
-```
+<button data-ajax="get.json" data-ajax-url="example.html" data-ajax-data="a=1&b=2"></button>
+<button data-ajax="delete.json?id=1" data-loading data-loading-text="loading..."></button>
 
+<!-- 加载前确认 -->
 
-* `method`   get, post, put, patch, or delete
-* `dataType` json, xml, script, or html
-* `eventType` 事件类型，click|reload 默认绑定点击事件，reload时为一开始就加载
+<button data-ajax="get.json" data-ajax-url="example.html" data-ajax-data="a=1&b=2" data-confirm="确认标题" data-confirm-content="确认提示内容"></button>
 
-> 可用方法
+<!-- 加载内容在指定元素上显示 -->
 
-* $(elm).ajaxReload() //重新ajax加载
-
->ajax生命周期、事件名称及前端捕获使用方法
-
-事件名|参数
----|---
-ajax.before|`$("#id").on('ajax.before',function(event){})`<br>`$("#id").onAjaxBefore(event=>{});`|
-ajax.build|`$("#id").on('ajax.build',function(event, ajaxOptions){})`<br>`$("#id").onAjaxBuild((ajaxOptions, event)=>{});`|
-ajax.send|`$("#id").on('ajax.send',function(event, xhr, ajaxOptions){})` <br> `$("#id").onAjaxSend((xhr, ajaxOptions, event)=>{});`|
-ajax.error|`$("#id").on('ajax.error',function(event, xhr, ajaxOptions, statusText){})`  <br>  `$("#id").onAjaxError((xhr, ajaxOptions, statusText, event)=>{});`
-ajax.success|`$("#id").on('ajax.success',function(event, data, xhr, ajaxOptions){})` <br> `$("#id").onAjaxSuccess((data, xhr, ajaxOptions, event)=>{});`
-ajax.done|`$("#id").on('ajax.done',function(event, xhr, ajaxOptions){})` <br> `$("#id").onAjaxDone((xhr, ajaxOptions, event)=>{});`
-
-## ajax-confirm
-
-> ajax请求，弹出确认框
-
-```html
-<form data-ajax data-confirm="提示标题" data-confirm-content="提示内容"></form>
-<button data-ajax="delete.json" data-confirm="确认删除吗"></button>
-```
-
-> 属性说明
-
-属性名|说明|默认
----|---|---
-data-confirm|提示框标题| `请再次确认操作`
-data-confirm-content|内容| `null`
-
-## ajax-data-loading
-
-> ajax请求时，会对button显示加载效果
-
-```html
-<button data-ajax="delete.json" data-loading data-loading-text="loading..."></button>
-
-<!--form使用-->
-<form data-ajax="post.json"> 
-   <button type="submit" data-loading ></button>
-</form>
-```
-
-> 属性说明
-
-属性名|说明|默认
----|---|---
-data-loading|自动显示ajax加载状态| `null`
-data-loading-text|内容| `loading...`
-
-
-## ajax-target
-
-> 将ajax请求结果显示在目标元素上
-
-```html
-<button data-ajax-url="" data-ajax="get.html" data-ajax-target="#test" data-loading></button>
+<button data-ajax-url="" data-ajax="get.html" data-ajax-target="#test" data-loading="block.light"></button>
 
 <div id="test"></div>
 
+<!-- 自动加载内容到本元素上 -->
+
+<div data-ajax="get.html.load" data-ajax-url="example.html" data-loading="block.dark"></div>
+
+<!-- form表单提交 -->
+
+<form action="post.html" data-ajax="post.json">
+<button type="submit" data-loading></button>
+</form>
+
 ```
 
-> 属性说明
+
+
+> ###属性
 
 属性名|说明|默认
 ---|---|---
-data-ajax-target|目标元素|要显示内容的目标元素
-data-loading|loading显示的位置，默认显示在target元素上，如不想显示可以设置为null| `null`
-data-loading-text|内容| `loading...`
+data-ajax| ajax绑定，格式: `method.dataType.eventType`| `get.json.click` 
+data-ajax-url|访问地址|优先顺序为：ajaxUrl > herf > action
+data-ajax-data|提交参数,json 或 string|`null`
+data-confirm|提交前确认，值为确认框标题 | `null`
+data-confirm-content|确认框内容 | `null`
+data-loading|加载时显示状态，text block.light block.dark| `null`
+data-loading-text|加载时提示内容|loading...
+data-ajax-target|显示的目标元素|默认为自己
+data-table-form|当前form为table的关联form|#tableID (目标table的ID)
+data-table-pager|当前元素为table的关联分页器|#tableID (目标table的ID)
 
 
+data-ajax 可用属性
+
+属性名|可选值|默认
+---|---|---|
+method|get, post, put, patch, delete | get
+dataType|json, xml, script, html | json
+eventType|click(点击加载), load(立即开始加载) | click
+
+> ###方法
+
+方法名|说明|示例
+---|---|---
+ajaxReload|重新加载ajax|$(elm).ajaxReload()
+onAjaxBefore|ajax加载前监听，返回false中断ajax继续|$(elm).onAjaxBefore(event=>{})
+onAjaxBuild|构建参数时监听，可以动态改变发送选项|$("#id").onAjaxBuild((ajaxOptions, event)=>{});
+onAjaxSend|请求前|$("#id").onAjaxSend((xhr, ajaxOptions, event)=>{});
+onAjaxError|请求错误|$("#id").onAjaxError((xhr, ajaxOptions, statusText, event)=>{});
+onAjaxSuccess|请求成功|$("#id").onAjaxSuccess((data, xhr, ajaxOptions, event)=>{});
+onAjaxDone|请求完成|$("#id").onAjaxDone((xhr, ajaxOptions, event)=>{});
+
+> ###事件
+
+事件名|说明|参数
+---|---|---
+ajax.before||$("#id").on('ajax.before',function(event){})
+ajax.build||$("#id").on('ajax.build',function(event, ajaxOptions){})
+ajax.send||$("#id").on('ajax.send',function(event, xhr, ajaxOptions){})
+ajax.error||$("#id").on('ajax.error',function(event, xhr, ajaxOptions, statusText){})
+ajax.success||$("#id").on('ajax.success',function(event, data, xhr, ajaxOptions){})
+ajax.done||$("#id").on('ajax.done',function(event, xhr, ajaxOptions){})
+form.init.rule|form初始化校验规则，可以在此定义字段校验规则|$("form").on('form.init.rule', function(events, options){options.rules = {username:'required'};options.messages = {username:'用户名必填'};})
+form.validate.error|form会监听此事件，可以触发form此事件，达到让form显示自定义错误|$("form").trigger('form.validate.error', [{username:'用户名不能为空'}])
+table.reload|表格加载事件，向table触发此事件以加载分页数据|$("table").trigger('table.reload',[page, perPage])
+
+## 表格分页
+
+### 代码
+
+```html
+//searchForm
+
+<form class="form-inline" data-table-form="#userTable" data-ajax="get.json" data-error-placement="bottom-right" >
+	<div class="form-group">
+		<input type="text" name="username"  class="form-control input-sm"  placeholder="please input username" required data-rule-required="true">
+	</div>
+	<div class="form-group">
+		<input type="text" name="email"  class="form-control input-sm"  placeholder="please input email" required>
+	</div>
+	<button class="btn btn-sm btn-primary" type="submit">Search</button>
+	<button class="btn btn-sm btn-primary" type="button" onclick="reset()">Reset</button>
+</form>
+			
+//table
+
+<table class="table table-striped table-hover" id="userTable" data-ajax="get.html" data-ajax-url="table.data.html" data-loading="block.light">
+	<thead>
+		<tr role="row">
+			<th width="20">
+				<input type="checkbox" class="grp"/>
+			</th>
+			<th width="80" data-sort="id,asc">ID</th>
+			<th width="150" data-sort="username">用户名</th>
+			<th data-sort="nickname">昵称</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+</table>
+			
+
+//page
+
+<div class="pull-right">
+   <div data-table-pager="#tableID"> </div>
+  
+   <!-- or -->
+
+   <div data-table-pager="#tableID" data-per-size-opts="[5,10,20]" data-per-size="5" data-per-page="20">
+   
+   <!-- or -->
+  
+   <div data-table-pager="#tableID" data-show-total="false" data-show-per-size="false" data-show-go="false" data-show-page="false">
+ 
+</div>
+
+```
+
+### 属性
+* form 表格关联查询表单
+
+属性名|说明|默认
+---|---|---
+data-table-form|当前form关联的表格元素|#tableID
+
+* table th 表格头
+
+属性名|说明|默认
+---|---|---
+data-sort|当前列是否参与排序 field.dir 字段和方向|如果指定dir排序方向，直当前字段为默认排序字段
+
+* table page 分页器
+
+属性名|说明|默认
+---|---|---
+data-table-pager|当前分页器关联的表格元素|#tableID
+data-per-size-opts|分页大小可选列表|[5,10,20,30,50,100]
+data-per-size|分页器大小，显示几个分页|5
+data-per-page|每页记录显示记录数|20
+data-show-total|是否显示记录总数|true
+data-show-per-size|是否显示分页大小下拉框|true
+data-show-go|是否显示分页跳转|true
+data-show-page|是否显示分页按钮|true
 
 ## form-validate
 
@@ -866,6 +946,7 @@ validator.showErrors(errors);//显示错误信息
 validator.form(); //校验
 validator.focusInvalid(); //第一个错误元素获得焦点
 ```
+
 
 ## select2
 
