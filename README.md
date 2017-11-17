@@ -641,7 +641,7 @@ data-delay|0|延迟显示和隐藏弹出框的毫秒数
 
 ## 基本用法
 
-> ###例子
+> ### 例子
 
 
 ```
@@ -674,7 +674,7 @@ data-delay|0|延迟显示和隐藏弹出框的毫秒数
 
 
 
-> ###属性
+> ### 属性
 
 属性名|说明|默认
 ---|---|---
@@ -698,7 +698,7 @@ method|get, post, put, patch, delete | get
 dataType|json, xml, script, html | json
 eventType|click(点击加载), load(立即开始加载) | click
 
-> ###方法
+> ### 方法
 
 方法名|说明|示例
 ---|---|---
