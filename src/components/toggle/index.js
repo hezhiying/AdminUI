@@ -22,11 +22,11 @@ export default {
       }
     }
   },
-  event:function (event) {
+  event:function (elm, event) {
     for(let item of Object.values(compents)){
       //组件初始化
       if (item.event) {
-        item.event(this, event);
+        item.event(elm, event);
       }
     }
   }

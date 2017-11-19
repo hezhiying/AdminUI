@@ -3,6 +3,44 @@
  */
 ($=>{
 
+  /**
+   * 将表单序列化成json格式
+   * @returns {{}}
+   */
+  $.fn.serializeObject = function() {
+    let o = {};
+    let a = this.serializeArray();
+    $.each(a, function() {
+      if (o[this.name] !== undefined) {
+        if (!o[this.name].push) {
+          o[this.name] = [o[this.name]];
+        }
+        o[this.name].push(this.value || '');
+      } else {
+        o[this.name] = this.value || '';
+      }
+    });
+    return o;
+  };
+
+  /**
+   * 简便获取checkbox 和 radio选中值
+   * @returns {*}
+   */
+  $.fn.getval = function () {
+    if($(this).is('[type="radio"]')){
+      let val = $(this).filter('[type="radio"]:checked').val();
+      return typeof val === 'undefined' ? '' : val;
+    }
+    if($(this).is('[type="checkbox"]')){
+      let chkVal = [];
+      $(this).filter('[type="checkbox"]:checked').each(function(i,elm){
+        $(this).val() && chkVal.push($(this).val());
+      });
+      return chkVal.toString();
+    }
+  };
+
   //扩展jQuery字符串方法
   $.extend(String.prototype,{
     //a=1&b=2 转成json

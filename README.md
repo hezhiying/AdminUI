@@ -9,7 +9,6 @@
 - [jquery-confirm](#jquery-confirm)
 - [landing 让元素在进入视野里产生动画效果](#landing)
 - [loading-bar loadingBar加载效果](#loading-bar)
-- [daterangepicker日期范围](#daterangepicker)
 - [bootstrap-datepicker](#bootstrap-datepicker)
 - [chart-sparkline迷你图](#chart-sparkline)
 - [easyPieChart 轻量饼图插件](#easypiechart)
@@ -27,7 +26,11 @@
 		- [事件](#事件)
 	- [表格分页](#表格分页)
 	- [form-validate表单验证](#form-validate)
-- [select2](#select2)
+- [form element](#form-element)
+	- [checkbox](#checkbox)
+	- [radio](#radio)
+	- [select2](#select2)
+	- [daterangepicker日期范围](#daterangepicker)
 	
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -214,91 +217,6 @@ $.adminUI.loadingBar.success();
 $.adminUI.loadingBar.error();
 ```
 
-## daterangepicker
-非常好用的日期范围选择
-* http://www.daterangepicker.com/
-* https://github.com/dangrossman/bootstrap-daterangepicker
-
-**e.g.**
-
-```html
-<input date-range-picker data-start-date="2017-5-3" data-end-date="2017-7-1" data-opens="right" data-date-limit='{"days":30}'>
-
-```
-
-**属性**
-
-属性 | data | 说明 |默认值
----|--- | --- |---
-startDate|data-start-date|开始日期|当天
-endDate|data-end-date|结束日期|当天
-opens|data-opens|窗口打开位置|'left'/'right'/'center'
-dateLimit|data-date-limit|开始结束大最日期间隔|`{"days":30}` `{"months":1}`
-dateLimitDays|data-date-limit-days|选择范围（天）|int
-dateLimitMonths|data-date-limit-months|选择范围（月）|int
-drops|data-drops|选择框打开方向| 'down' or 'up'
-showDropdowns|data-show-dropdowns|年月下拉框可选| false
-timePicker|data-time-picker|时间可选| false
-timePicker24Hour|data-time-picker24-hour|24小时制| false
-timePickerIncrement|data-time-picker-increment|分钟间隔时间|1
-timePickerSeconds|data-time-picker-seconds|秒数是否可选|false
-singleDatePicker|data-single-date-picker|是否单选一天|false
-localeFormat|data-locale-format|格式|`YYYY-MM-DD`, 
-
-### localeFormat可用属性
-* `YYYY` 年
-* `MM` 月
-* `DD` 日
-* `H` 24小时制小时
-* `h` 14小时制小时
-* `mm` 分钟
-* `ss` 秒
-* `A` AM PM
-
-## bootstrap-datepicker
-
-bootstrap提供的一个日期组件
-
- * @git https://github.com/uxsolutions/bootstrap-datepicker
- * @demo https://uxsolutions.github.io/bootstrap-datepicker
- 
-**e.g.**
- 
-```html
-//单选 必须包含样式: datepicker-input
-<input type="text" class="form-control datepicker-input">
-
-//range日期范围 必须包含样式：input-daterange datepicker-input
-<div class="input-daterange input-group datepicker-input">
-    <input type="text" class="input-sm form-control" name="start" />
-    <span class="input-group-addon">to</span>
-    <input type="text" class="input-sm form-control" name="end" />
-</div>
-
-//组件样式加上 class="datepicker-input"
-//日期范围组件加上 class="input-daterange"
-```
-
-**可用属性**
-
-属性 | data | 说明 |默认值
----|--- | --- |---
-format|data-date-format|日期格式|yyyy-mm-dd
-clearBtn|data-date-clear-btn|显示清空按钮|false
-todayBtn|data-date-today-btn|显示今日按钮|false `true`回到当天的日期位置但不设置 <br>`linked` 设置为当天日期
-orientation|data-date-orientation|组件显示方向|auto 由`auto`, `top`, `bottom`, `left`, `right` 一个或两个组件
-startDate|data-date-start-date|最小日期|日期格式字符串`2017-10-01`
-endDate|data-date-end-date|最大日期|`2017-10-31` 必须由 `format` 能够解析
-autoclose|data-date-autoclose|自动关闭|true
-startView|data-date-start-view|打开时显示的视图|0:days(默认) 1:months(月) 2:years(年) 3:decades(十年) 4:centuries(百年）
-
-**日期格式说明**
-
-* d, dd: 数字日期，无前导0和有前导0. Eg, 5, 05.
-* D, DD: 星期几缩写和全称. Eg, Mon, Monday.
-* m, mm: 数字月份. Eg, 7, 07.
-* M, MM: 月份缩写和全称. Eg, Jan, January
-* yy, yyyy: 2位或4位数年份. Eg, 12, 2012.
 
 ## chart-sparkline
 
@@ -681,6 +599,7 @@ data-delay|0|延迟显示和隐藏弹出框的毫秒数
 data-ajax| ajax绑定，格式: `method.dataType.eventType`| `get.json.click` 
 data-ajax-url|访问地址|优先顺序为：ajaxUrl > herf > action
 data-ajax-data|提交参数,json 或 string|`null`
+method|提交方法get post |method 优先于 data-ajax中的方法
 data-confirm|提交前确认，值为确认框标题 | `null`
 data-confirm-content|确认框内容 | `null`
 data-loading|加载时显示状态，text block.light block.dark| `null`
@@ -688,7 +607,8 @@ data-loading-text|加载时提示内容|loading...
 data-ajax-target|显示的目标元素|默认为自己
 data-table-form|当前form为table的关联form|#tableID (目标table的ID)
 data-table-pager|当前元素为table的关联分页器|#tableID (目标table的ID)
-
+data-ajax-success-callback|成功后执行的回调脚本,可用参数:this(指向自己),可用参数: data,xhr,opts|如：成功后删除当前表格行：$(this).parents("tr").remove();
+data-ajax-error-callback|失败后执行的回调脚本,this(指向自己),可用参数: status,xhr,opts|这里是js脚本
 
 data-ajax 可用属性
 
@@ -947,11 +867,76 @@ validator.form(); //校验
 validator.focusInvalid(); //第一个错误元素获得焦点
 ```
 
+# form-element
+
+
+## checkbox
+
+> link [http://getfuelux.com/javascript.html#checkbox](http://getfuelux.com/
+javascript.html#checkbox)
+
+> example:
+
+```html
+ <label class="zui-checkbox">
+   <input type="checkbox"  name="ck" value="1" />  全选
+ </label>
+<label class="zui-checkbox">
+  <input type="checkbox"  name="ck" value="2" checked/> checked 全选
+</label>
+<label class="zui-checkbox">
+  <input type="checkbox"  name="ck" value="3" disabled/> disabled 全选
+</label>
+<label class="zui-checkbox">
+  <input type="checkbox"  name="ck" value="4" disabled checked/> checked disabled 全选
+</label>
+
+
+```
+
+获取选中checkbox值方法： `$("input[name=ck]").getval();
+
+
+## radio
+
+> link [http://getfuelux.com/javascript.html#radio](http://getfuelux.com/javascript.html#radio)
+
+> example:
+
+
+```html
+
+<label class="zui-radio">
+  <input type="radio"   name="ra" value="1"  /> normal
+</label>
+<label class="zui-radio">
+  <input type="radio"   name="ra" value="2"  checked/> 2checked 全选
+</label>
+<label class="zui-radio">
+  <input type="radio"  name="ra" value="3"  disabled/> disabled 全选
+</label>
+<label class="zui-radio">
+  <input type="radio" name="ra" value="4"  disabled checked/> checked disabled 全选
+</label>
+
+
+```
+
+
+获取选中radio值方法： `$("input[name=ra]").getval();
+
 
 ## select2
 
+> link [https://select2.org/](https://select2.org/)  [select2-bootstrap-theme](http://select2.github.io/select2-bootstrap-theme/)
+> 
+> api [https://select2.org/configuration/options-api](https://select2.org/configuration/options-api)
+
+> example:
+
+
 ```html
-<select class="select2" data-tags="true" multiple dir="rtl">
+<select class="zui-select" data-tags="true" multiple dir="rtl">
 
  <optgroup label="Alaskan/Hawaiian Time Zone">
   <option value="AK">Alaska</option>
@@ -960,6 +945,95 @@ validator.focusInvalid(); //第一个错误元素获得焦点
 
 </select>
 ```
+
+## daterangepicker
+
+非常好用的日期范围选择
+
+* http://www.daterangepicker.com/
+* https://github.com/dangrossman/bootstrap-daterangepicker
+
+**e.g.**
+
+```html
+<input class="zui-date-range-picker" data-start-date="2017-5-3" data-end-date="2017-7-1" data-opens="right" data-date-limit='{"days":30}'>
+
+```
+
+**属性**
+
+属性 | data | 说明 |默认值
+---|--- | --- |---
+startDate|data-start-date|开始日期|当天
+endDate|data-end-date|结束日期|当天
+opens|data-opens|窗口打开位置|'left'/'right'/'center'
+dateLimit|data-date-limit|开始结束大最日期间隔|`{"days":30}` `{"months":1}`
+dateLimitDays|data-date-limit-days|选择范围（天）|int
+dateLimitMonths|data-date-limit-months|选择范围（月）|int
+drops|data-drops|选择框打开方向| 'down' or 'up'
+showDropdowns|data-show-dropdowns|年月下拉框可选| false
+timePicker|data-time-picker|时间可选| false
+timePicker24Hour|data-time-picker24-hour|24小时制| false
+timePickerIncrement|data-time-picker-increment|分钟间隔时间|1
+timePickerSeconds|data-time-picker-seconds|秒数是否可选|false
+singleDatePicker|data-single-date-picker|是否单选一天|false
+localeFormat|data-locale-format|格式|`YYYY-MM-DD`, 
+
+**localeFormat可用属性**
+
+* `YYYY` 年
+* `MM` 月
+* `DD` 日
+* `H` 24小时制小时
+* `h` 14小时制小时
+* `mm` 分钟
+* `ss` 秒
+* `A` AM PM
+
+## bootstrap-datepicker
+
+bootstrap提供的一个日期组件
+
+ * @git [https://github.com/uxsolutions/bootstrap-datepicker](https://github.com/uxsolutions/bootstrap-datepicker)
+ * @demo [https://uxsolutions.github.io/bootstrap-datepicker](https://uxsolutions.github.io/bootstrap-datepicker)
+ 
+**e.g.**
+ 
+```html
+//单选 必须包含样式: zui-bootstrap-datepicker
+<input type="text" class="form-control zui-bootstrap-datepicker">
+
+//range日期范围 必须包含样式：input-daterange zui-bootstrap-datepicker
+<div class="input-daterange input-group zui-bootstrap-datepicker">
+    <input type="text" class="input-sm form-control" name="start" />
+    <span class="input-group-addon">to</span>
+    <input type="text" class="input-sm form-control" name="end" />
+</div>
+
+//组件样式加上 class="zui-bootstrap-datepicker"
+//日期范围组件加上 class="input-daterange"
+```
+
+**可用属性**
+
+属性 | data | 说明 |默认值
+---|--- | --- |---
+format|data-date-format|日期格式|yyyy-mm-dd
+clearBtn|data-date-clear-btn|显示清空按钮|false
+todayBtn|data-date-today-btn|显示今日按钮|false `true`回到当天的日期位置但不设置 <br>`linked` 设置为当天日期
+orientation|data-date-orientation|组件显示方向|auto 由`auto`, `top`, `bottom`, `left`, `right` 一个或两个组件
+startDate|data-date-start-date|最小日期|日期格式字符串`2017-10-01`
+endDate|data-date-end-date|最大日期|`2017-10-31` 必须由 `format` 能够解析
+autoclose|data-date-autoclose|自动关闭|true
+startView|data-date-start-view|打开时显示的视图|0:days(默认) 1:months(月) 2:years(年) 3:decades(十年) 4:centuries(百年）
+
+**日期格式说明**
+
+* d, dd: 数字日期，无前导0和有前导0. Eg, 5, 05.
+* D, DD: 星期几缩写和全称. Eg, Mon, Monday.
+* m, mm: 数字月份. Eg, 7, 07.
+* M, MM: 月份缩写和全称. Eg, Jan, January
+* yy, yyyy: 2位或4位数年份. Eg, 12, 2012.
 
 
 # 相关样式说明

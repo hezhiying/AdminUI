@@ -4,42 +4,47 @@
  * @git https://github.com/rochal/jQuery-slimScroll
  */
 $.fn.uiSlimScroll = function () {
-	let me = $(this);
-	if (me.length) {
-		RequireJC(['slimscroll'], () => {
-			me.each(initSlimscroll);
-		});
-	}
-	return me;
-};
-function initSlimscroll (i, elm) {
-	if ($(this).data('installed')) return;
-	$(this).data('installed',true);
-	let $self = $(this), $data = $self.data(), $slimResize;
-	$self.slimScroll($data);
-	$(window).resize(function () {
-		clearTimeout($slimResize);
-		$slimResize = setTimeout(function () {
-			$self.slimScroll($data);
-		}, 500);
-	});
+  if (this.length) {
+    RequireJC(['slimscroll'], () => {
+      $(this).each((i, e) => {
+        const $this = $(e), inited = $this.data('slimScrollObj');
+        if (inited) {
+          return;
+        }
+        $this.data('slimScrollObj', true);
+        let $slimResize;
+        let opts = $.extend({
+          distance:0,
+          size:"5px",
+          color:"#333333",
+          disableFadeOut:true,
+          height:'auto'
+        }, $this.data() || {});
+        $this.slimScroll(opts);
 
-	$(document).on('updateNav', function () {
-		$self.slimScroll($data);
-	});
-}
+        $(window).resize(function () {
+          $slimResize && clearTimeout($slimResize);
+          $slimResize = setTimeout(function () {
+            $this.slimScroll(opts);
+          }, 500);
+        });
+
+      });
+    });
+  }
+};
 export default {
-	config:{
-		paths:{
-			'slimscroll':'js/jquery-slimscroll/jquery.slimscroll.min.js'
-		}
-	},
-	onload: function () {
-		$('.no-touch .slim-scroll').uiSlimScroll();
-	},
-	event:function(elm){
-		if ($('html').hasClass('no-touch')) {
-			$(elm).find('.slim-scroll').uiSlimScroll();
-		}
-	}
+  config:{
+    paths:{
+      'slimscroll':'js/jquery-slimscroll/jquery.slimscroll.min.js'
+    }
+  },
+  onload: function () {
+    $('.no-touch .slim-scroll').uiSlimScroll();
+  },
+  event:function(elm){
+    if ($('html').hasClass('no-touch')) {
+      $(elm).find('.slim-scroll').uiSlimScroll();
+    }
+  }
 }

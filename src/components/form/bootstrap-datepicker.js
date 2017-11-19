@@ -1,7 +1,17 @@
+
 /**
- * bootstrap-datepicker 插件
+ * bootstrap-datepicker插件
+ * bootstrap提供的一款日期选择组件
  * @git https://github.com/uxsolutions/bootstrap-datepicker
  * @demo https://uxsolutions.github.io/bootstrap-datepicker
+ * * @e.g.
+ * <input class="datepicker-input">
+ * 范围选择 必须包含样式：input-daterange datepicker-input
+ * <div class="input-daterange input-group datepicker-input">
+ *   <input type="text" class="input-sm form-control" name="start" />
+ *   <span class="input-group-addon">to</span>
+ *   <input type="text" class="input-sm form-control" name="end" />
+ * </div>
  */
 
 (function ($) {
@@ -47,9 +57,9 @@ export default {
     }
   },
   onload:()=>{
-    $('.datepicker-input').uiDatePicker();
+    $('.zui-bootstrap-datepicker').uiDatePicker();
   },
   event:(elm)=>{
-    $(elm).find('.datepicker-input').uiDatePicker();
+    $(elm).find('.zui-bootstrap-datepicker').uiDatePicker();
   }
 }

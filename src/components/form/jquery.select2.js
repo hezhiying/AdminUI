@@ -2,7 +2,8 @@
  * select2下拉选择框
  * https://select2.org/
  * http://select2.github.io/select2-bootstrap-theme/
- * <select class="select2" data-tags="true" ></select>
+ * https://select2.org/configuration/options-api
+ * <select class="select2" data-tags="true" multiple></select>
  */
 $.fn.uiSelect2 = function () {
   if(this.length) {
@@ -31,9 +32,9 @@ export default {
     }
   },
   onload:()=>{
-    $('select.select2').uiSelect2();
+    $('select.select2, select.zui-select').uiSelect2();
   },
   event:(elm)=>{
-    $(elm).find('select.select2').uiSelect2();
+    $(elm).find('select.select2, select.zui-select').uiSelect2();
   }
 }

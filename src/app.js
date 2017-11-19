@@ -86,28 +86,6 @@ import landing from './components/landing';
 //import loadingBar from './components/loading-bar';
 
 /**
- * 日期范围选择控件
- * http://www.daterangepicker.com/
- * https://github.com/dangrossman/bootstrap-daterangepicker
- */
-import daterangepicker from './components/date-range-picker';
-
-/**
- * bootstrap-datepicker插件
- * bootstrap提供的一款日期选择组件
- * https://github.com/uxsolutions/bootstrap-datepicker
- * @e.g.
- * <input class="datepicker-input">
- * 范围选择 必须包含样式：input-daterange datepicker-input
- * <div class="input-daterange input-group datepicker-input">
- *   <input type="text" class="input-sm form-control" name="start" />
- *   <span class="input-group-addon">to</span>
- *   <input type="text" class="input-sm form-control" name="end" />
- * </div>
- */
-import bootstrapDatepicker from './components/bootstrap-datepicker';
-
-/**
  * chart-sparkline
  * 直接在浏览器生成迷你图表(sparkline)
  *
@@ -159,6 +137,7 @@ import togglePanel from './components/toggle/toggle-panel';
  * 包含 form提交 target显示 loading状态 confirm等模块
  */
 import ajax from './components/ajax';
+import formElm from './components/form';
 
 RequireJC.config({
 	baseUrl: getScriptArg('baseUrl') || '/',
@@ -170,11 +149,14 @@ let components = {
   //图表相关
   easyPieChart, flotChar, chartSparkline,
   //日期相关
-  daterangepicker, bootstrapDatepicker,
+  // bootstrapDatepicker,
   //data-toggle
   togglePopover, toggleTooltip, toggleClass, togglePanel,
+  //form element
+  formElm,
 	//ajax
   ajax,
+
 };
 
 $(function () {

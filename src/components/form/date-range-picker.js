@@ -1,5 +1,5 @@
 /**
- * daterangepicker
+ * 日期范围选择控件 daterangepicker
  * http://www.daterangepicker.com/
  * https://github.com/dangrossman/bootstrap-daterangepicker
  *
@@ -76,9 +76,9 @@ export default {
 		}
 	},
 	onload:()=>{
-		$('[date-range-picker], .date-range-picker').uiDateRangePicker();
+		$('[date-range-picker], .zui-date-range-picker').uiDateRangePicker();
 	},
 	event:(elm)=>{
-		$(elm).find('[date-range-picker], .date-range-picker').uiDateRangePicker();
+		$(elm).find('[date-range-picker], .zui-date-range-picker').uiDateRangePicker();
 	}
 }

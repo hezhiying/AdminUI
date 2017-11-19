@@ -1,8 +1,7 @@
 import './jquery.blockUI'
-import select2 from './jquery.select2'
 import TransformCodeHtml from './transform.code.html'
 
-let compents = {select2, TransformCodeHtml};
+let components = {TransformCodeHtml};
 
 /**
  * 安装blockUI功能
@@ -34,7 +33,7 @@ let installBlockUI = function () {
 
 //合并配制
 let config;
-for(let item of Object.values(compents)){
+for(let item of Object.values(components)){
   config = $.extend(true, {}, config, item.config||{});
 }
 export default {
@@ -43,18 +42,14 @@ export default {
     installBlockUI();
 
     //依次加载初始化
-    for(let item of Object.values(compents)){
-      if (item.onload) {
-        item.onload();
-      }
+    for(let item of Object.values(components)){
+      item.onload && item.onload();
     }
   },
-  event: (elm) => {
+  event: (elm, event) => {
     //依次加载事件
-    for(let item of Object.values(compents)){
-      if (item.event) {
-        item.event(this, event);
-      }
+    for(let item of Object.values(components)){
+      item.event && item.event(elm, event);
     }
   }
 }
