@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chart</title>
+    <link rel="stylesheet" href="../app.css">
+
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="flotchart" style="height: 250px;">
+                <div class="flot-data hide">
+                    [{
+                    "label": "Product 1",
+                    "data": [[10, 110], [20, 70], [30, 100], [40, 60], [50, 35]],
+                    "bars": {"show": true, "fill": true, "lineWidth": 1, "order": 1, "fillColor": "#6783b7"},
+                    "color": "#6783b7"
+                    }, {
+                    "label": "Product 2",
+                    "data": [[10, 80], [20, 60], [30, 30], [40, 35], [50, 30]],
+                    "bars": {"show": true, "fill": true, "lineWidth": 1, "order": 2, "fillColor": "#4fcdb7"},
+                    "color": "#4fcdb7"
+                    }, {
+                    "label": "Product 3",
+                    "data": [[10, 80], [20, 40], [30, 30], [40, 20], [50, 10]],
+                    "bars": {"show": true, "fill": true, "lineWidth": 1, "order": 1, "fillColor": "#8dd168"},
+                    "color": "#8dd168"
+                    }]
+                </div>
+                <div class="flot-options hide">
+                    {
+                    xaxis: {
+
+                    },
+                    yaxis: {
+
+                    },
+                    grid: {
+                    hoverable: true,
+                    clickable: false,
+                    borderWidth: 0
+                    },
+                    legend: {
+                    labelBoxBorderColor: "none",
+                    position: "nw"
+                    },
+                    series: {
+                    shadowSize: 11
+                    },
+                    tooltip:true,
+                    tooltipOpts: {
+                    show:true,
+                    defaultTheme:false,
+                    content: "chart: %x.1 is %y.4",
+                    }
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="flotchart" style="height: 250px;">
+                <div class="flot-data hide">
+                    [{
+                    "label": "Product 1",
+                    "data": [[10, 110], [20, 70], [30, 100], [40, 60], [50, 35]],
+                    "bars": {"show": true, "fill": true, "lineWidth": 1, "order": 1, "fillColor": "#6783b7"},
+                    "color": "#6783b7"
+                    }, {
+                    "label": "Product 2",
+                    "data": [[10, 80], [20, 60], [30, 30], [40, 35], [50, 30]],
+                    "bars": {"show": true, "fill": true, "lineWidth": 1, "order": 2, "fillColor": "#4fcdb7"},
+                    "color": "#4fcdb7"
+                    }, {
+                    "label": "Product 3",
+                    "data": [[10, 80], [20, 40], [30, 30], [40, 20], [50, 10]],
+                    "bars": {"show": true, "fill": true, "lineWidth": 1, "order": 1, "fillColor": "#8dd168"},
+                    "color": "#8dd168"
+                    }]
+                </div>
+                <div class="flot-options hide">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel panel-default">
+                <header class="panel-heading font-bold">Pie Chart</header>
+                <div class="panel-body">
+                    <div class="flotchart" style="height:240px">
+                        <div class="flot-data">
+                            [{ lines: { show: true },bars:{show:true,fill: true,fillColor: { colors: [ { opacity: 0.8 }, { opacity: 0.1 } ] }},"data":[[0,11],[1,14],[2,16],[3,16],[4,20],[5,12],[6,20],[7,13],[8,12],[9,10],[10,20],[11,10]],"label":"Unique Visits"},{ lines: { show: true,fill: true,fillColor: { colors: [ { opacity: 0.8 }, { opacity: 0.1 } ] } },"color":"#ff0000","data":[[0,11],[1,10],[2,14],[3,14],[4,16],[5,14],[6,19],[7,17],[8,20],[9,10],[10,19],[11,12]],"label":"Page Views"}]
+                        </div>
+                        <div class="flot-options">
+                            {
+                                series:{
+                                    lines:{show:false}, points:{show:false}, bars::{show:true},
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel panel-default">
+                <header class="panel-heading font-bold">Pie Chart</header>
+                <div class="panel-body">
+                    <div class="flotchart" style="height:240px">
+                        <div class="flot-data">
+                            [{"label":"data0","data":51},{"label":"data20","data":47},{"label":"data40","data":88},{"label":"data60","data":39},{"label":"data80","data":38},{"label":"data100","data":94}]
+
+                        </div>
+                        <div class="flot-options">
+                            {
+                            legend:{
+                            show:true
+                            },
+                            series: {
+                                pie: {
+                                    innerRadius: 0.5,
+                                    show: true,
+                                    fill:false
+
+                                }
+                            },
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/vue/vue.min.js"></script>
+<script src="../js/bootstrap/bootstrap.min.js"></script>
+<script src="../app.js"></script>
+
+</body>
+</html>
