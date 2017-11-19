@@ -1,0 +1,4 @@
+.radio-custom > i.checked:before,
+.checkbox-custom > i.checked:before {
+    color: #92cf5c;
+}

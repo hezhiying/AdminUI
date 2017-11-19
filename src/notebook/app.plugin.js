@@ -170,11 +170,8 @@
 	});
 
 	// table select/deselect all
-	$(document).on('change', 'table thead [type="checkbox"]', function(e){
-		e && e.preventDefault();
-		var $table = $(e.target).closest('table'), $checked = $(e.target).is(':checked');
-		$('tbody [type="checkbox"]',$table).prop('checked', $checked);
-	});
+		//表格 checkbox全选全不选
+		//todo:已迁移至 components/ajax/table
 
 	// random progress
 	$(document).on('click', '[data-toggle^="progress"]', function(e){
