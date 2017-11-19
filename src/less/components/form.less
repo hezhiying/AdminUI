@@ -1,0 +1,57 @@
+.radio-custom input[type=radio],
+.checkbox-custom input[type=checkbox] {
+  position: absolute;
+  left: -9999em;
+}
+
+
+.radio-custom,
+.checkbox-custom{
+  display: inline;
+  min-height: 20px;
+  padding-left: 20px;
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
+  position: relative;
+  &:before{
+    position: absolute;
+    left:1px;
+    top:2px;
+    width: 14px;
+    height: 14px;
+
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: -10%;
+    margin-left: 0;
+    margin-right: 4px;
+    color: #ddd;
+  }
+}
+.checkbox-custom{
+  &:before{
+    content: "\F096";
+    font-size: 16px;
+  }
+  &.checked:before{
+    content: "\F046";
+    color: #92cf5c;
+  }
+}
+.radio-custom{
+  &:before{
+    content: "\F10C";
+    font-size: 17px;
+    top:1px;
+
+  }
+  &.checked:before{
+    content: "\F192";
+    color: #92cf5c;
+  }
+}

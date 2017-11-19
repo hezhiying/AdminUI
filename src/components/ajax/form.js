@@ -229,7 +229,7 @@ import CONFIG from '../config.js';
     //监听ajax.build事件，序列化表单数据
     form.on(CONFIG.EVENT.AJAX_BUILD, function (event, ajaxOptions) {
       if($(this).is($(event.target))){
-        ajaxOptions.data = form.serializeArray()
+        ajaxOptions.data = form.serializeObject();
       }
     });
 

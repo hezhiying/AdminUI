@@ -50,6 +50,14 @@ import {showExceptionDialog} from "../dialog/http.exception";
     //   opts.element.trigger(CONFIG.EVENT.FORM_VALIDATE_ERROR, [xhr.responseJSON.errors]);
     //   return false;
     // }
+    //成功后回调执行元素上 data-ajax-success 属性，里面应包含JS脚本。
+    let errorCallback = function (status, xhr, opts) {
+      let errorScript = opts.element.data('ajaxErrorCallback');
+      if (errorScript){
+        eval(errorScript);
+      }
+    };
+    errorCallback.call(opts.element, xhr.status, xhr, opts);
 
     //laravel json error Exception
     if(xhr.responseJSON && xhr.responseJSON.exception){
@@ -61,26 +69,11 @@ import {showExceptionDialog} from "../dialog/http.exception";
   });
 
   /**
-   * 4.2 生命周期 ajax.success
-   * 请求成功
-   */
-  $(document).ajaxSuccess((event, xhr, opts, data) => {
-    let e_ajaxSuccess = $.Event(CONFIG.EVENT.AJAX_SUCCESS);
-    opts.element.trigger(e_ajaxSuccess, [data, xhr, opts]);
-
-    //如果其它地方监听返回false，则交由其它地方处理
-    if (e_ajaxSuccess.isDefaultPrevented()) {
-      return false;
-    }
-  });
-
-  /**
    * 5.生命周期最后 ajax.done 不论失败功失败
    */
   $(document).ajaxComplete((event, xhr, opts) => {
     //重置发送状态
     opts.element.data('ajaxSending', false);
-
     //触发事件
     let e_ajaxDone = new $.Event(CONFIG.EVENT.AJAX_DONE);
     e_ajaxDone.element = opts.element;
@@ -90,6 +83,29 @@ import {showExceptionDialog} from "../dialog/http.exception";
     if (xhr.responseJSON && xhr.responseJSON.message) {
       let code = xhr.responseJSON.code || xhr.status || 0;
       showNotifyMessage(code, xhr.responseJSON.message);
+    }
+  });
+
+  /**
+   * 4.2 生命周期 ajax.success
+   * 请求成功
+   */
+  $(document).ajaxSuccess((event, xhr, opts, data) => {
+    let e_ajaxSuccess = $.Event(CONFIG.EVENT.AJAX_SUCCESS);
+    opts.element.trigger(e_ajaxSuccess, [data, xhr, opts]);
+
+    //成功后回调执行元素上 data-ajax-success 属性，里面应包含JS脚本。
+    let successCallback = function (data, xhr, opts) {
+      let successScript = opts.element.data('ajaxSuccessCallback');
+      if (successScript){
+        eval(successScript);
+      }
+    };
+    successCallback.call(opts.element, data, xhr, opts);
+
+    //如果其它地方监听返回false，则交由其它地方处理
+    if (e_ajaxSuccess.isDefaultPrevented()) {
+      return false;
     }
   });
 
@@ -173,6 +189,7 @@ let doAjaxRequest = function (event) {
   if ($this.data('ajaxSending')) {
     return false;
   }
+
   /**
    * 1.生命周期：ajax.before
    * 发送ajax.before事件， 用户可以在其它地方监听，返回true 或 false
@@ -212,6 +229,7 @@ let doAjaxRequest = function (event) {
 
 };
 
+//
 $.fn.ajaxReload = function () {
   if($(this).is('[data-ajax]')){
     $(this).trigger($.Event(CONFIG.EVENT.AJAX_RELOAD));
@@ -231,6 +249,8 @@ $.fn.uiAjax = function () {
         $(this).submit(doAjaxRequest);
       }else if($(this).is("select")){
         $(this).change(doAjaxRequest);
+      }else if($(this).is("table")){
+        $(this).ajaxReload();
       }else{
         let types = ($(this).data('ajax') || 'get.json.click').split('.');
         if(types.includes("load")){

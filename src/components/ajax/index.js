@@ -1,6 +1,8 @@
 import './ajax.confirm'
-import './ajax.loading'
+import ajaxLoading from './ajax.loading'
 import './ajax.target'
+import ajaxTable from './table'
+import tablePager from './table.pager'
 
 /**
  * ajax核心模块
@@ -24,11 +26,17 @@ let config = $.extend({}, ajax.config, ajaxForm.config);
 export default {
   config: config,
   onload: () => {
-    ajax.onload();
     ajaxForm.onload();
+    tablePager.onload();
+    ajaxTable.onload();
+    ajax.onload();
+    ajaxLoading.onload()
+
   },
   event: (elm) => {
-    ajax.event(elm);
+    ajaxTable.event(elm);
+    tablePager.event(elm);
     ajaxForm.event(elm);
+    ajax.event(elm);
   }
 }

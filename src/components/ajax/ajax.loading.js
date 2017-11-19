@@ -63,38 +63,61 @@ import CONFIG from '../config'
     $(document).ajaxSuccess(() => {
       bar.success();
     });
+
+    /**
+     * ajax发送时判断是否需要显示button loading 或 blockUi loading
+     */
+    $(document).on(CONFIG.EVENT.AJAX_SEND, function (event, xhr, ajaxOptions) {
+      let me = ajaxOptions.element;
+      if(me.is('[data-loading]')){
+        let loadText = me.data('loading');
+        if(loadText && loadText.split('.').shift() === 'block'){
+          //blockUI 样式
+          let blockOptions = {};
+          me.data('loadingText') && (blockOptions.message = me.data('loadingText'));
+          if(loadText.split('.').pop() === 'light'){
+            //白色样式
+            blockOptions.overlayCSS = {backgroundColor:'#fff'};
+            blockOptions.css = {color: '#717171'}
+          }
+          //默认黑色样式
+          let target = me.data('ajaxTarget') || me;
+          $(target).block(blockOptions);
+
+
+        }else{
+          //button text 样式
+          me.button('loading');
+        }
+      }
+    });
+
+    /**
+     * 发送完成结束loading状态
+     */
+    $(document).on(CONFIG.EVENT.AJAX_DONE, function (event, xhr, ajaxOptions) {
+      let me = ajaxOptions.element;
+      if(me.is('[data-loading]')){
+        let loadText = me.data('loading');
+        if(loadText && loadText.split('.').shift() === 'block'){
+          let target = me.data('ajaxTarget') || me;
+          $(target).unblock();
+        }else{
+          me.button('reset');
+        }
+      }
+    });
+
   });
-  /**
-   * ajax发送时判断是否需要显示button loading 或 blockUi loading
-   */
-  $(document).on(CONFIG.EVENT.AJAX_SEND, function (event, xhr, ajaxOptions) {
-    let me = ajaxOptions.element;
-    let types = ($(me).data('ajax') || '').split('.');
 
-    if(  types.includes('load') || me.data('ajaxTarget')){
-      let target = me.data('loading') || me.data('ajaxTarget') || me;
-      let blockOptions = {};
-      me.data('loadingText') && (blockOptions.message = me.data('loadingText'));
-      $(target).block(blockOptions);
-    }else if (me.is('[data-loading]')) {
-      me.button('loading');
-    }
-
-  });
-
-  /**
-   * 发送完成结束loading状态
-   */
-  $(document).on(CONFIG.EVENT.AJAX_DONE, function (event, xhr, ajaxOptions) {
-    let me = ajaxOptions.element;
-    let types = ($(me).data('ajax') || '').split('.');
-
-    if( types.includes('load') || me.data('ajaxTarget')){
-      let target = me.data('loading') || me.data('ajaxTarget') || me;
-      setTimeout(()=>{$(target).unblock();},2000)
-    }else if (me.is('[data-loading]')) {
-      setTimeout(()=>{ me.button('reset');},2000)
-    }
-  });
 
 })(jQuery);
+
+export default {
+  onload: () => {
+
+  },
+  event: (elm) => {
+
+  }
+}
