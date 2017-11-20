@@ -9,7 +9,6 @@
 - [jquery-confirm](#jquery-confirm)
 - [landing 让元素在进入视野里产生动画效果](#landing)
 - [loading-bar loadingBar加载效果](#loading-bar)
-- [bootstrap-datepicker](#bootstrap-datepicker)
 - [chart-sparkline迷你图](#chart-sparkline)
 - [easyPieChart 轻量饼图插件](#easypiechart)
 - [flotChart 图表插件](#flotchart)
@@ -31,6 +30,8 @@
 	- [radio](#radio)
 	- [select2](#select2)
 	- [daterangepicker日期范围](#daterangepicker)
+	- [bootstrap-datepicker](#bootstrap-datepicker)
+
 	
 ## placeholder
 IE上实现Html5中placeholder效果
