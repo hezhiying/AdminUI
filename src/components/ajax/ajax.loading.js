@@ -81,7 +81,7 @@ import CONFIG from '../config'
             blockOptions.css = {color: '#717171'}
           }
           //默认黑色样式
-          let target = me.data('ajaxTarget') || me;
+          let target = me.data('loadingTarget') || me.data('ajaxTarget') || me;
           $(target).block(blockOptions);
 
 
@@ -100,7 +100,7 @@ import CONFIG from '../config'
       if(me.is('[data-loading]')){
         let loadText = me.data('loading');
         if(loadText && loadText.split('.').shift() === 'block'){
-          let target = me.data('ajaxTarget') || me;
+          let target = me.data('loadingTarget') || me.data('ajaxTarget') || me;
           $(target).unblock();
         }else{
           me.button('reset');

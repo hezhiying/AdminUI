@@ -604,6 +604,7 @@ data-confirm|提交前确认，值为确认框标题 | `null`
 data-confirm-content|确认框内容 | `null`
 data-loading|加载时显示状态，text block.light block.dark| `null`
 data-loading-text|加载时提示内容|loading...
+data-loading-target|加载block显示在哪个元素上|默认为自己元素
 data-ajax-target|显示的目标元素|默认为自己
 data-table-form|当前form为table的关联form|#tableID (目标table的ID)
 data-table-pager|当前元素为table的关联分页器|#tableID (目标table的ID)
