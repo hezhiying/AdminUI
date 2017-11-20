@@ -8,9 +8,9 @@ $.fn.uiTooltip = function () {
   let self = $(this);
   if (self.length) {
     self.each(function (i,elm) {
-      if ($(this).data('installed')) return;
+      if ($(this).data('tooltipInstalled')) return;
       $(this).tooltip();
-      $(this).data('installed', true);
+      $(this).data('tooltipInstalled', true);
     });
   }
 };

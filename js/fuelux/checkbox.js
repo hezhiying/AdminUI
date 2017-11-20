@@ -216,7 +216,7 @@
       }
     });
   });
-
   // -- BEGIN UMD WRAPPER AFTERWORD --
 }));
+
 // -- END UMD WRAPPER AFTERWORD --

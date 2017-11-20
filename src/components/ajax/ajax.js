@@ -1,4 +1,5 @@
 import CONFIG from '../config.js';
+import utils from '../../utils/utils';
 import './ajax.confirm';
 import {showExceptionDialog} from "../dialog/http.exception";
 
@@ -209,7 +210,7 @@ let doAjaxRequest = function (event) {
   opts.url = $this.data('ajaxUrl') || $this.attr('href') || $this.attr('action') || '';
   opts.dataType = types.length >= 2 ? types[1] : 'json';
   opts.method = ($this.attr('method') || (types[0] ? types[0] : 'GET')).toUpperCase();
-  opts.data = $this.data('ajaxData');
+  opts.data = utils.parseJson($this.data('ajaxData'));
 
   /**
    * 2.生命周期： ajax.build

@@ -1,11 +1,11 @@
 import './i18n/zh_cn';
 import 'requirejc'
+import Utils from './utils/utils'
 import './notebook/app';
 import './notebook/app.plugin';
 import {adminUI} from './components/admin-ui';
 import './components/modernizr';
-import {getScriptArg} from './utils/helpers'
-
+window.Utils = Utils; //工具方法暴露到全局
 /**
  * blockUI
  * https://github.com/malsup/blockui
@@ -140,7 +140,7 @@ import ajax from './components/ajax';
 import formElm from './components/form';
 
 RequireJC.config({
-	baseUrl: getScriptArg('baseUrl') || '/',
+	baseUrl: Utils.getScriptArg('baseUrl') || '/',
 	debug  : true
 });
 

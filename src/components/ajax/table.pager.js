@@ -29,6 +29,8 @@ const TablePager = function ($table, $pager) {
   //每页大小
   this.perPage = this.pager.data('perPage') || 20;
 
+  this.pager.addClass('adminUI');
+
   //监听table成功事件，更新page perPage total数据
   this.table.onAjaxSuccess((data,xhr, opts, event)=>{
     if($(data).attr('data-total')){
@@ -38,6 +40,8 @@ const TablePager = function ($table, $pager) {
     this.perPage = opts.perPage || this.perPage;
     this.current = opts.page || 1;
     this.render();
+    $.adminUI.initElement(this.pager);
+
   })
 };
 
@@ -100,8 +104,8 @@ TablePager.prototype.renderGoTpl = function () {
   let tpl = `<div class="visible-lg-inline-block visible-md-inline-block v-middle comp-go">
                             <div class="input-group input-s-xs">
                                 <input class="input-sm form-control" type="text" >
-                                <div class="input-group-btn ">
-                                    <button class="btn btn-sm btn-default box-shadow-none btn-go" data-placement="right" data-toggle="tooltip" title="跳转到指定页">go</button>
+                                <div class="input-group-btn" data-toggle="tooltip" title="跳转到指定页">
+                                    <button class="btn btn-sm btn-default box-shadow-none btn-go">go</button>
                                 </div>
                             </div>
                         </div> `;
