@@ -46,12 +46,8 @@ import {showExceptionDialog} from "../dialog/http.exception";
     if (e_ajaxError.isDefaultPrevented()) {
       return false;
     }
-    //处理表单校验错误 表单错误处理交由ajax form 模块自己处理
-    // if ((xhr.status === 422 || xhr.status === 423) && xhr.responseJSON && xhr.responseJSON.errors) {
-    //   opts.element.trigger(CONFIG.EVENT.FORM_VALIDATE_ERROR, [xhr.responseJSON.errors]);
-    //   return false;
-    // }
-    //成功后回调执行元素上 data-ajax-success 属性，里面应包含JS脚本。
+
+    //错误后回调执行元素上 data-ajax-error-callback 属性，里面应包含JS脚本。
     let errorCallback = function (status, xhr, opts) {
       let errorScript = opts.element.data('ajaxErrorCallback');
       if (errorScript){
@@ -79,7 +75,10 @@ import {showExceptionDialog} from "../dialog/http.exception";
     let e_ajaxDone = new $.Event(CONFIG.EVENT.AJAX_DONE);
     e_ajaxDone.element = opts.element;
     opts.element.trigger(e_ajaxDone, [xhr, opts]);
-
+    //如果其它地方监听返回false，则交由其它地方处理
+    if (e_ajaxDone.isDefaultPrevented()) {
+      return false;
+    }
     // 判断是否需要显示notify message信息
     if (xhr.responseJSON && xhr.responseJSON.message) {
       let code = xhr.responseJSON.code || xhr.status || 0;
