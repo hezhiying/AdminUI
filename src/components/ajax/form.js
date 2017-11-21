@@ -196,7 +196,6 @@ import CONFIG from '../config.js';
           }
         }
       }
-
       //调用系统错误处理方法
       this.defaultShowErrors()
     };
@@ -220,10 +219,11 @@ import CONFIG from '../config.js';
     //监听ajax.before事件，提交form表单前进行验证
     let me = this;
 
-    form.on(CONFIG.EVENT.AJAX_BEFORE, function (event) {
-      if($(this).is($(event.target))){
-       return me.validOrShowErrors(); //返回验证结果成功还是失败，返回false ajax将停止提交
-      }
+    /**
+     * ajax请求前先检测表单
+     */
+    form.onAjaxBefore(function () {
+      return me.validOrShowErrors(); //返回验证结果成功还是失败，返回false ajax将停止提交
     });
 
     //监听ajax.build事件，序列化表单数据
@@ -241,17 +241,14 @@ import CONFIG from '../config.js';
         form.find("button[data-loading]").button('loading');
       }
     });
-    //当完成时，恢复button状态
-    form.on(CONFIG.EVENT.AJAX_DONE, function (event, xhr) {
+
+    //当完成时，处理校验失败 及恢复button loading状态
+    form.on('ajax.error ajax.done', function (event, xhr) {
       if($(this).is($(event.target))){
         form.find("button[data-loading]").button('reset');
-
-        // 处理表单校验错误
-        if (xhr.responseJSON && (xhr.status === 422 || xhr.status === 423 || xhr.responseJSON.code === 422) && xhr.responseJSON.errors) {
-          me.validOrShowErrors(xhr.responseJSON.errors);
-          return false;
+        if ((xhr.status === 422 || xhr.status === 423) && xhr.responseJSON && xhr.responseJSON.errors) {
+          return me.validOrShowErrors(xhr.responseJSON.errors);
         }
-
       }
     });
 
@@ -275,13 +272,12 @@ import CONFIG from '../config.js';
     if (!this.validator) {
       return false;
     }
-
-    if (this.validator.valid()) {
+    if (this.validator.form()) {
       //如果验证表单通过但是errors不为空直直接显示错误信息
       if (errors) {
         this.validator.showErrors(errors);
         this.validator.focusInvalid(); //第一个错误元素获得焦点
-        return;
+        return false;
       }
       if (this.validator.pendingRequest) {
         this.validator.formSubmitted = true;

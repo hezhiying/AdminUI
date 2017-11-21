@@ -8,7 +8,7 @@ let components = {TransformCodeHtml};
  */
 let installBlockUI = function () {
   let blockOpts = {
-    message: ' <span class="fa-lg"><i class="fa fa-spinner fa-spin "></i> loading...</span>',
+    message: ' <span class="fa-lg"><i class="fa fa-circle-o-notch fa-spin "></i> loading...</span>',
     css: {
       backgroundColor: "none",
       border:"none",

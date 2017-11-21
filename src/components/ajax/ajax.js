@@ -56,7 +56,6 @@ import {showExceptionDialog} from "../dialog/http.exception";
     };
     errorCallback.call(opts.element, xhr.status, xhr, opts);
 
-    //laravel json error Exception
     if(xhr.responseJSON && xhr.responseJSON.exception){
       showExceptionDialog(xhr.responseJSON, xhr.status, xhr.statusText);
     }else if(xhr.responseText){
@@ -79,11 +78,17 @@ import {showExceptionDialog} from "../dialog/http.exception";
     if (e_ajaxDone.isDefaultPrevented()) {
       return false;
     }
+
     // 判断是否需要显示notify message信息
     if (xhr.responseJSON && xhr.responseJSON.message) {
       let code = xhr.responseJSON.code || xhr.status || 0;
       showNotifyMessage(code, xhr.responseJSON.message);
     }
+    //跳转
+    if (xhr.responseJSON && xhr.responseJSON.redirect) {
+      window.location.href = xhr.responseJSON.redirect;
+    }
+
   });
 
   /**
