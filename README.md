@@ -642,7 +642,7 @@ data-loading-target|加载block显示在哪个元素上|默认为自己元素
 data-ajax-target|显示的目标元素|默认为自己
 data-table-form|当前form为table的关联form|#tableID (目标table的ID)
 data-table-pager|当前元素为table的关联分页器|#tableID (目标table的ID)
-data-ajax-build-callback
+data-ajax-build-callback|构建ajax事件，可用参数:this(自己) 参数:opts|如果返回 false;则会阻止ajax提交，可以ajax前检查
 data-ajax-success-callback|成功后执行的回调脚本,可用参数:this(指向自己),可用参数: data,xhr,opts|如：成功后删除当前表格行：$(this).parents("tr").remove();
 data-ajax-error-callback|失败后执行的回调脚本,this(指向自己),可用参数: status,xhr,opts|这里是js脚本
 
