@@ -5,8 +5,6 @@
 - [占位符 placeholder](#placeholder)
 - [全屏显示 fullscreen](#fullscreen)
 - [漂亮滚动条 slimScroll](#slimscroll)
-- [通知插件 notify](#notify)
-- [jquery-confirm](#jquery-confirm)
 - [landing 让元素在进入视野里产生动画效果](#landing)
 - [loading-bar loadingBar加载效果](#loading-bar)
 - [chart-sparkline迷你图](#chart-sparkline)
@@ -17,12 +15,16 @@
 	- [popover 弹出框](#popover)
 	- [toggle class 切换元素样式](#toggle-class)
 	- [toggle panel 切换显示隐藏](#toggle-panel)
+- [Alert 警告提示](#Alert警告提示)
+	- [Notice 通知提醒](#Notice通知提醒)
+	- [Modal 对话框提醒](#Modal对话框提醒)
 - [ajax](#ajax)
 	- [基本用法](#基本用法)
 		- [例子](#例子)
 		- [属性](#属性)
 		- [方法](#方法)
 		- [事件](#事件)
+	- [dialog-form](#dialog-form)
 	- [表格分页](#表格分页)
 	- [form-validate表单验证](#form-validate)
 - [form element](#form-element)
@@ -71,101 +73,6 @@ disableFadeOut | data-disable-fade-out | true:鼠标在滚动区域内滚动条�
 distance | data-distance |滚动条边距 |pixels| 1px
 color | data-color | 滚动条颜色 |hex| #000000
 wheelStep | data-wheel-step |滚动条每次滚动距离 |int| 20
-
-## notify
-
-[https://github.com/mouse0270/bootstrap-notify](https://github.com/mouse0270/bootstrap-notify)
-
-```js
-//成功
-$.notifyS(message, title, url = null)
-//提示
-$.notifyI()
-//警告
-$.notifyW()
-//错误
-$.notifyD()
-
-//自定义
-$.notify({
-	// options
-	message: 'Hello World' 
-},{
-	// settings
-	type: 'danger'
-});
-
-//主要选项和设置
-let notify = $.notify({
-	// options
-	icon: 'fa fa-user',
-	title: 'Bootstrap notify',
-	message: 'Turning standard Bootstrap alerts',
-	url: 'https://github.com/mouse0270/bootstrap-notify',
-	target: '_blank'
-},{
-    placement: {
-		from: "top",
-		align: "right"
-	},
-	delay: 5000,
-});
-
-notify.close();
-notify.update('title', 'new title')
-
-```
-
-## jquery-confirm
-[http://craftpip.github.io/jquery-confirm/index.html](http://craftpip.github.io/jquery-confirm/index.html)
-
-**example**
-```js
-//alert: 只有一个OK按钮
-$.alert(content, title)
-OR
-$.alert({
-  content: '', //text html ajax(url:page.html)
-  title: '', 
-  type: 'default',//red, green, orange, blue, purple, dark
-  columnClass: 'xs, s, m, l, xl', //s
-  icon: '', //fa fa-user
-  contentLoaded: function(data, status, xhr){}, //仅在ajax调用时使用 status:success|error
-  theme: 'light', //主题 light, dark, modern, supervan, material, bootstrap
-  containerFluid: false, //If true, will use the container-fluid layout, to use the full browser width.
-  onContentReady: function(){},
-  onOpenBefore: function(){},
-  onOpen: function(){},
-  onDestroy: function(){},
-  onAction: function(buttonName){}, //任何按钮点击时被调用，返回buttonName
-  buttons:{
-    btn1: function(btn1){
-        this.buttons.btn2.setText();//api:enable, disable, show, hide, addClass, removeClass
-    },
-    btn2: {
-        text: '',
-        btnClass: '', //btn-blue btn-red, btn-green, btn-orange, btn-purple, btn-dark
-        keys: ['a', 'enter'],
-        isHidden: false,
-        isDisabled: false,
-        action: function(btn2){}
-    }
-      
-  }
-    
-})
-
-//confirm: OK and Close button
-$.confirm(content, title)
-OR
-$.confirm({/**options*/})
-
-//dialog: 没有按钮
-$.dialog(content, title)
-OR
-$.dialog({/**options*/})
-```
-
 ## landing
 使用appear插件，让元素在进入视野里添加动画效果
 https://github.com/morr/jquery.appear/
@@ -556,6 +463,132 @@ data-delay|0|延迟显示和隐藏弹出框的毫秒数
 ```
 
 
+# Alert警告提示
+
+## Notice通知提醒
+
+* docs: [https://github.com/mouse0270/bootstrap-notify](https://github.com/mouse0270/bootstrap-notify)
+
+**用法示例**
+
+```js
+//成功
+$.notifyS(message, title, url = null)
+//提示
+$.notifyI()
+//警告
+$.notifyW()
+//错误
+$.notifyD()
+
+//自定义
+$.notify({
+	// options
+	message: 'Hello World' 
+},{
+	// settings
+	type: 'danger'
+});
+
+//主要选项和设置
+let notify = $.notify({
+	// options
+	icon: 'fa fa-user',
+	title: 'Bootstrap notify',
+	message: 'Turning standard Bootstrap alerts',
+	url: 'https://github.com/mouse0270/bootstrap-notify',
+	target: '_blank'
+},{
+    placement: {
+		from: "top",
+		align: "right"
+	},
+	delay: 5000,
+});
+
+notify.close();
+notify.update('title', 'new title')
+
+```
+
+
+
+## Modal对话框提醒
+
+> 使用 Jquery-confirm 插件。
+> docs: [http://craftpip.github.io/jquery-confirm/index.html](http://craftpip.github.io/jquery-confirm/index.html)
+
+**example**
+
+```js
+//alert: 只有一个OK按钮
+$.alert(content, title)
+OR
+$.alert({
+  content: '', //text html ajax(url:page.html)
+  title: '', 
+  type: 'default',//red, green, orange, blue, purple, dark
+  columnClass: 'xs, s, m, l, xl', //s
+  icon: '', //fa fa-user
+  contentLoaded: function(data, status, xhr){}, //仅在ajax调用时使用 status:success|error
+  theme: 'light', //主题 light, dark, modern, supervan, material, bootstrap
+  containerFluid: false, //If true, will use the container-fluid layout, to use the full browser width.
+  onContentReady: function(){},
+  onOpenBefore: function(){},
+  onOpen: function(){},
+  onDestroy: function(){},
+  onAction: function(buttonName){}, //任何按钮点击时被调用，返回buttonName
+  buttons:{
+    btn1: function(btn1){
+        this.buttons.btn2.setText();//api:enable, disable, show, hide, addClass, removeClass
+    },
+    btn2: {
+        text: '',
+        btnClass: '', //btn-blue btn-red, btn-green, btn-orange, btn-purple, btn-dark
+        keys: ['a', 'enter'],
+        isHidden: false,
+        isDisabled: false,
+        action: function(btn2){}
+    }
+      
+  }
+    
+})
+
+//confirm: OK and Close button
+$.confirm(content, title)
+OR
+$.confirm({/**options*/})
+
+//dialog: 没有按钮
+$.dialog(content, title)
+OR
+$.dialog({/**options*/})
+```
+
+**原生方法**
+
+方法名|说明|示例
+---|---|---
+$.alert|默认含有一个确认按钮的提示 [alert](http://craftpip.github.io/jquery-confirm/index.html#alert)|`$.alert(content, title)`
+$.confirm|默认含有 ok 和 cancel 按钮的提示 [confirm](http://craftpip.github.io/jquery-confirm/index.html#confirm)|`$.confirm(content, title)`
+$.dialog|不包含按钮，有一个closeicon [dialog](http://craftpip.github.io/jquery-confirm/index.html#dialog)|`$.dialog(content)`
+
+**已封装方法**
+
+* content 内容
+* title 标题
+* urlOrCallback string:确认后要跳转的网址 function:确认后要执行的回调
+
+方法名|说明|示例
+---|---|---
+$.alertI|消息|`$.alertI(content,title, urlOrCallback)`|
+$.alertS|成功|`$.alertI(content,title, urlOrCallback)`|
+$.alertD|错误|`$.alertI(content,title, urlOrCallback)`|
+$.alertW|警告|`$.alertI(content,title, urlOrCallback)`|
+
+
+
 # ajax
 
 ## 基本用法
@@ -609,6 +642,7 @@ data-loading-target|加载block显示在哪个元素上|默认为自己元素
 data-ajax-target|显示的目标元素|默认为自己
 data-table-form|当前form为table的关联form|#tableID (目标table的ID)
 data-table-pager|当前元素为table的关联分页器|#tableID (目标table的ID)
+data-ajax-build-callback
 data-ajax-success-callback|成功后执行的回调脚本,可用参数:this(指向自己),可用参数: data,xhr,opts|如：成功后删除当前表格行：$(this).parents("tr").remove();
 data-ajax-error-callback|失败后执行的回调脚本,this(指向自己),可用参数: status,xhr,opts|这里是js脚本
 
@@ -645,6 +679,53 @@ ajax.done||$("#id").on('ajax.done',function(event, xhr, ajaxOptions){})
 form.init.rule|form初始化校验规则，可以在此定义字段校验规则|$("form").on('form.init.rule', function(events, options){options.rules = {username:'required'};options.messages = {username:'用户名必填'};})
 form.validate.error|form会监听此事件，可以触发form此事件，达到让form显示自定义错误|$("form").trigger('form.validate.error', [{username:'用户名不能为空'}])
 table.reload|表格加载事件，向table触发此事件以加载分页数据|$("table").trigger('table.reload',[page, perPage])
+
+
+## dialog-form
+
+> 对话框形式ajax加载打开form表单
+
+**代码**
+
+```html
+
+<a class="btn btn-default" href="data.form.html"  data-ajax="get.html" data-dialog-form='{"title":"标题", "columnClass":"medium"}'>打开form</a>
+
+//js手动方法
+
+$.dialogForm({url:'', dataType:'html', method:'GET'}, {title:'',columnClass:'lg'})
+
+简写方式 
+
+$.dialogForm('url', 'title')
+
+//加载的URL结果要包含form表单，确定按钮自动绑定submit事件，
+//表单提交后怎么关闭
+
+$("form").onAjaxSuccess(funciton(data,xhr,opts){
+//form ajax数据提交成功
+//opts.dialog.close()可关闭当前表单dialog
+
+opts.dialog && opts.dialog.close()
+})
+
+```
+
+* data-dialog-form 存放 string(dialog title) 或 json(options 选项)
+
+**主要选项**
+
+属性名|说明|默认|可选
+---|---|---|---
+columnClass|宽度| m | `xl` `l` `m` `s` `xs`
+type|类型|`default`| blue, green, red, orange, purple & dark
+theme|主题| `bootstrap`|'light', 'dark', 'supervan' 'material', 'bootstrap', modern
+
+**主要方法**
+
+方法名|说明
+---|---|---
+$.dialogForm
 
 ## 表格分页
 
@@ -723,6 +804,14 @@ data-show-total|是否显示记录总数|true
 data-show-per-size|是否显示分页大小下拉框|true
 data-show-go|是否显示分页跳转|true
 data-show-page|是否显示分页按钮|true
+
+* tableObj可用方法
+
+属性名|参数|说明|默认
+---|---|---|---
+setData|data, clearOld=false|设置表格ajax提交默认数据|$("table").data('ajaxData')
+reload|page, perPage, formData|重新加载
+
 
 ## form-validate
 

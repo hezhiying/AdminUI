@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <title>Demo Pages</title>
     <link rel="stylesheet" href="../app.css">
-    <script src="../js/vendor.js"></script>
+    <!--<script src="../js/vendor.js"></script>-->
     <!--<script src="../js/jquery.min.js"></script>-->
     <!--<script src="../js/bootstrap/bootstrap.min.js"></script>-->
     <!--<script src="../js/charts/sparkline/jquery.sparkline.min.js"></script>-->
     <!--<script src="../js/daterangepicker/daterangepicker.js"></script>-->
     <!--<script src="../js/vue/vue.js"></script>-->
-    <script src="../app.js?debug=false"></script>
+    <!--<script src="../app.js?debug=false"></script>-->
 
 </head>
-<body>
+<body class="adminUI">
 <div id="app">
     <lar-error :errors='errors'>default</lar-error>
 </div>
@@ -178,33 +178,7 @@
                         <button type="submit" class="btn btn-sm btn-primary btn-block " data-loading>Submit</button>
 
                     </form>
-                    <script>
 
-                      $("form").on('form.init.rule',(event, opts)=>{
-                        let rules = {
-                          email2:{
-                            required:true
-                          }
-                        };
-                        opts.rules = rules
-                      });
-                      $(function () {
-
-                        $("forfm").data('formRule',{
-                          rules:{
-                            password:{
-                              required:true
-                            }
-                          },
-                          messages:{
-                            password:{
-                              required:'密码必须输入',
-                              minlength:'密码最少3位'
-                            }
-                          }
-                        })
-                      })
-                    </script>
                 </div>
             </div>
         </div>
@@ -885,7 +859,9 @@
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="sssfsafsf">
     Button name
 </button>
+<a class="twitter" data-title="Goto twitter?" href="http://twitter.com/craftpip">Goto twitter</a>
 <a name="a" id="b" class="btn btn-danger" href="#" role="button" data-toggle="tooltip" title="sssfsafsf">link button</a>
+<button type="button" class="btn btn-primary" data-dialog-form='{"title":"There is title", "columnClass":"lg"}' data-ajax="get.html" data-ajax-url="/pages/data.form.html">dialog form</button>
 <button type="button" class="btn btn-primary" data-dialog="#error" data-dialog-title="ErrorException (500)" data-dialog-type="red" data-dialog-width-cls="m">button dialog</button>
 <button type="button" class="btn btn-secondary">button-secondary</button>
 <button type="button" class="btn btn-success">button success</button>
@@ -920,5 +896,9 @@
         </div>
     </div>
 </section>
+<script src="../js/jquery.min.js" type="text/javascript"></script>
+<script src="../js/vue/vue.js" type="text/javascript"></script>
+<script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+<script src="../app.js?baseUrl=/"></script>
 </body>
 </html>
