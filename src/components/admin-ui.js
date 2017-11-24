@@ -35,9 +35,10 @@ export const adminUI = {
 	addListener: (components) => {
 		//监听UI事件
 		$('body').on('adminUI.init', '.adminUI',  function (event) {
+		  let root = $(this).is('body') ? this : $(this).parent();
 			for (let item of Object.values(components)) {
 				if (item.event) {
-					item.event(this, event)
+					item.event(root, event)
 				}
 			}
 		});
