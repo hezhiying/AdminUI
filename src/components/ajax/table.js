@@ -1,5 +1,5 @@
 import CONFIG from '../config.js';
-
+import utils from '../../utils/utils';
 /**
  * 添加ajax结果在目标元素上显示功能
  *
@@ -40,10 +40,11 @@ const Table = function ($table) {
     ajaxOptions.perPage = this.perPage;
     ajaxOptions.sortField = this.sortDir;
     ajaxOptions.sortDir = this.sortDir;
-    ajaxOptions.data = $.extend({}, this.formData || {}, params);
+    ajaxOptions.data = $.extend({}, ajaxOptions.data || {}, this.formData || {}, params);
   });
   //ajax加载完成
   this.table.onAjaxSuccess((data, xhr, ajaxOptions, event)=>{
+    //恢复表格头的checkbox状态为未先中
     this.table.find('thead th input[type="checkbox"]').prop('checked', false).change();
     let tb = this.table.find('tbody');
     $.adminUI.destroyElement(tb);
@@ -123,6 +124,19 @@ Table.prototype.initForm = function () {
   }
 };
 
+/**
+ * 设置默认ajax要提交的数据，
+ * @param data
+ * @param clearOld 用新数据完全替换老数据 默认新老数据合并
+ * @returns {Table}
+ */
+Table.prototype.setData = function (data, clearOld = false) {
+  let old = utils.parseJson(this.table.data('ajaxData'));
+  let newData = clearOld ? data : $.extend(old, data);
+  this.table.data('ajaxData', newData);
+  return this;
+};
+
 Table.prototype.setPage = function (page) {
   this.page = page;
   return this;
@@ -153,14 +167,14 @@ export default {
   onload: () => {
     $('table[data-ajax]').uiTable();
 
-    //全选 | 全不选功能
+    //checkbox全选 | 全不选功能
     $(document).on('change', 'table thead [type="checkbox"]', function(e){
       e && e.preventDefault();
       let $table = $(e.target).closest('table'), $checked = $(e.target).is(':checked');
       $('tbody [type="checkbox"]',$table).prop('checked', $checked).change();
     });
 
-    //选中时激活active样式
+    //选中checkbox时激活 tr active样式
     $(document).on('change', 'table tbody [type="checkbox"]', function(e){
       e && e.preventDefault();
       let $checked = $(e.target).is(':checked');
