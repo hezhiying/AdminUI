@@ -1,7 +1,45 @@
 import 'jquery-confirm'
 
-
+let alertFun = function (type, content, title = null, urlOrCallback = null, icon) {
+  let types = [ 'blue', 'green', 'red', 'orange', 'purple' , 'dark'];
+  if(!types.includes(type)){
+    type = 'default';
+  }
+  $.alert({
+    icon:icon,
+    title:title,
+    content:content,
+    type:type,
+    buttons:{
+      ok:{
+        keys: ['enter'],
+        text:$.lang('button.ok'),
+        action(){
+          typeof urlOrCallback === 'string' && (window.location.href = urlOrCallback);
+          typeof urlOrCallback === 'function' && (urlOrCallback.call(this));
+        }
+      }
+    }
+  })
+};
 ($ => {
+  $.alertI =function (content, title = null, urlOrCallback = null) {
+    title = title ? title : $.lang('alert.title.info');
+    alertFun('blue', content, title, urlOrCallback, 'fa fa-info-circle')
+  };
+  $.alertS =function (content, title = null, urlOrCallback = null) {
+    title = title ? title : $.lang('alert.title.success');
+    alertFun('green', content, title, urlOrCallback, 'fa fa-check-circle')
+  };
+  $.alertD = function (content, title = null, urlOrCallback = null) {
+    title = title ? title : $.lang('alert.title.error');
+    alertFun('red', content, title, urlOrCallback, 'fa fa-times-circle')
+  };
+  $.alertW = function (content, title = null, urlOrCallback = null) {
+    title = title ? title : $.lang('alert.title.warning');
+    alertFun('orange', content, title, urlOrCallback, 'fa fa-warning')
+  };
+
   //页面加载完成时处理
   $(() => {
     $('body').on('click', '[data-dialog]', function () {

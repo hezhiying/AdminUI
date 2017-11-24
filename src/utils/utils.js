@@ -41,7 +41,7 @@ let lazyRun = function (condFun, callback, ttl = 2000) {
 
 let parseJson = function(param){
   let obj={};
-  if(typeof param !== 'string')return obj;
+  if(typeof param !== 'string')return param || obj;
 
   let keyvalue=[];
   let key="",value="";

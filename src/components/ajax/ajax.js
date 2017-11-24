@@ -216,6 +216,20 @@ let doAjaxRequest = function (event) {
   opts.method = ($this.attr('method') || (types[0] ? types[0] : 'GET')).toUpperCase();
   opts.data = utils.parseJson($this.data('ajaxData'));
 
+  if($this.data('ajaxBuildCallback')){
+
+  }
+  let buildCallback = function (opts) {
+    let buildScript = $this.data('ajaxBuildCallback');
+    if (buildScript){
+      return eval('(function(){'+buildScript+'})').call(this);
+    }
+  };
+
+  if(buildCallback.call($this, opts) === false){
+    return false;
+  }
+
   /**
    * 2.生命周期： ajax.build
    * 构建ajaxOptions 发送选项
@@ -252,7 +266,7 @@ $.fn.uiAjax = function () {
 
       if($(this).is("form")){
         $(this).submit(doAjaxRequest);
-      }else if($(this).is("select")){
+      }else if($(this).is("select") || $(this).is("[type=radio]") || $(this).is("[type=checkbox]")){
         $(this).change(doAjaxRequest);
       }else if($(this).is("table")){
         $(this).ajaxReload();

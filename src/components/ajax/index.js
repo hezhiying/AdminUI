@@ -3,6 +3,7 @@ import ajaxLoading from './ajax.loading'
 import './ajax.target'
 import ajaxTable from './table'
 import tablePager from './table.pager'
+import dialogForm from './ajax.dialog.form';
 
 /**
  * ajax核心模块
@@ -30,7 +31,8 @@ export default {
     tablePager.onload();
     ajaxTable.onload();
     ajax.onload();
-    ajaxLoading.onload()
+    ajaxLoading.onload();
+    dialogForm.onload()
 
   },
   event: (elm) => {
@@ -38,5 +40,7 @@ export default {
     tablePager.event(elm);
     ajaxForm.event(elm);
     ajax.event(elm);
+    ajaxLoading.event(elm);
+
   }
 }

@@ -4,10 +4,15 @@
 * @desc 整个对话框内容区可以滚动
 */
 
-.jconfirm-ui-1{
-  background: rgba(0,0,0,0.5);
-  overflow: auto;
+.jconfirm{
+  z-index: 8000;
+  .jconfirm-holder{
+    overflow: auto;
+  }
+  //background: rgba(0,0,0,0.5);
   .jconfirm-content-pane{
     max-height: none!important;
+    height: auto!important;
   }
 }
+
