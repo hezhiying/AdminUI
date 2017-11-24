@@ -1,4 +1,4 @@
-import './i18n/zh_cn';
+import './i18n/index';
 import 'requirejc'
 import Utils from './utils/utils'
 import './notebook/app';

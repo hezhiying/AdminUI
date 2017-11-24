@@ -12,7 +12,7 @@ import CONFIG from '../config.js';
       return;
     }
 
-    let title = me.data('confirm') || $.lang.core.confirmTile;
+    let title = me.data('confirm') || $.lang('confirm.title');
     let content = me.data('confirmContent') || '';
     let confirmOptions = {
       escapeKey: 'cancel',
@@ -23,7 +23,7 @@ import CONFIG from '../config.js';
       theme    : 'material',
       buttons  : {
         ok    : {
-          text    : $.lang.core.confirmOK,
+          text    : $.lang('confirm.ok'),
           btnClass: 'btn-blue',
           keys    : ['enter'],
           action() {
@@ -32,7 +32,7 @@ import CONFIG from '../config.js';
           }
         },
         cancel: {
-          text: $.lang.core.confirmCancel
+          text: $.lang('confirm.Cancel')
         }
       }
     };
