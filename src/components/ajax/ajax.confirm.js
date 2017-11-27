@@ -32,7 +32,7 @@ import CONFIG from '../config.js';
           }
         },
         cancel: {
-          text: $.lang('confirm.Cancel')
+          text: $.lang('confirm.cancel')
         }
       }
     };

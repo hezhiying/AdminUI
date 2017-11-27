@@ -9,16 +9,18 @@ $.lang = function (name, l = 'zh') {
      msg = en;
   }
 
-  let names = name.split('.');
+  let names =  name.split('.');
   let result = msg[names.shift()];
   if(result){
     for(let key of names){
       if(result[key]){
         result = result[key]
+      }else{
+        result = key;
       }
     }
   }else{
-    result = name;
+    result = names.pop();
   }
   return result;
 };
