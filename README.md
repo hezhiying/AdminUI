@@ -35,6 +35,7 @@
 	- [daterangepicker日期范围](#daterangepicker)
 	- [bootstrap-datepicker](#bootstrap-datepicker)
 
+- [jquery cookie](#jquery-cookie)
 	
 ## placeholder
 IE上实现Html5中placeholder效果
@@ -1212,6 +1213,59 @@ startView|data-date-start-view|打开时显示的视图|0:days(默认) 1:months(
 * m, mm: 数字月份. Eg, 7, 07.
 * M, MM: 月份缩写和全称. Eg, Jan, January
 * yy, yyyy: 2位或4位数年份. Eg, 12, 2012.
+
+# jquery-cookie
+
+一个轻量级的cookie 插件，可以读取、写入、删除 cookie。
+
+1.添加一个会话 cookie： 
+
+注：当没有指明 cookie有效时间时，所创建的cookie有效期默认到用户关闭浏览器为止，所以被称为“会话cookie（session cookie）”。 
+
+
+```js
+$.cookie('the_cookie', 'the_value'); 
+
+```
+
+2.创建一个cookie并设置有效时间为 7天: 
+
+
+```js
+$.cookie('the_cookie', 'the_value', { expires: 7 }); 
+```
+
+3.创建一个cookie并设置 cookie的有效路径： 
+
+```js
+$.cookie('the_cookie', 'the_value', { expires: 7, path: '/' }); 
+```
+
+4.读取cookie
+
+```js
+$.cookie('the_cookie'); // cookie存在 => 'the_value' 
+$.cookie('not_existing'); // cookie不存在 => null 
+
+```
+
+5.删除cookie
+
+```js
+$.cookie('the_cookie', null); 
+```
+
+参数说明
+
+参数 | 说明 |默认值
+---|--- | --- 
+expires|过期时间，单位天|会话cookie，将在用户退出浏览器时被删除
+path|能读取当前cookie的路径，设置为 `/` 为整个网站可读取|创建 cookie 的网页所在路径（标准浏览器的行为）
+domain|`domain: 'example.com' `所有子域名能读|创建 cookie的网页所拥有的域名。 
+secure|如果为true，cookie的传输需要使用安全协议（HTTPS）。| false 
+raw:|如果为true,读写时不自动编码和解码 | false （使用encodeURIComponent 编码， decodeURIComponent 解码）
+
+
 
 
 # 相关样式说明
