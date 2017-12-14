@@ -2,6 +2,7 @@ import './i18n/index';
 import 'requirejc'
 import Utils from './utils/utils'
 import './notebook/app';
+import './components/jquery.cookie';
 import './notebook/app.plugin';
 import {adminUI} from './components/admin-ui';
 import './components/modernizr';

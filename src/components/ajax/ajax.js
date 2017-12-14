@@ -216,9 +216,6 @@ let doAjaxRequest = function (event) {
   opts.method = ($this.attr('method') || (types[0] ? types[0] : 'GET')).toUpperCase();
   opts.data = utils.parseJson($this.data('ajaxData'));
 
-  if($this.data('ajaxBuildCallback')){
-
-  }
   let buildCallback = function (opts) {
     let buildScript = $this.data('ajaxBuildCallback');
     if (buildScript){

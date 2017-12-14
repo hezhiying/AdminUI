@@ -1,6 +1,9 @@
 Date.now = Date.now || function() { return +new Date; };
 
 (function ($) {
+	$.fn.initUI = function () {
+  	$(this).trigger('adminUI.init');
+  };
 	$.adminUI                = {};
 	//触发UI初始化事件
 	$.adminUI.initElement    = function (e) {
@@ -34,7 +37,7 @@ export const adminUI = {
 	},
 	addListener: (components) => {
 		//监听UI事件
-		$('body').on('adminUI.init', '.adminUI',  function (event) {
+		$(document).on('adminUI.init', '.adminUI',  function (event) {
 		  let root = $(this).is('body') ? this : $(this).parent();
 			for (let item of Object.values(components)) {
 				if (item.event) {

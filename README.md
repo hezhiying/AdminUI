@@ -26,6 +26,7 @@
 		- [事件](#事件)
 	- [dialog-form](#dialog-form)
 	- [表格分页](#表格分页)
+	- [TableTree](#table-tree)
 	- [form-validate表单验证](#form-validate)
 - [form element](#form-element)
 	- [checkbox](#checkbox)
@@ -811,6 +812,92 @@ data-show-page|是否显示分页按钮|true
 ---|---|---|---
 setData|data, clearOld=false|设置表格ajax提交默认数据|$("table").data('ajaxData')
 reload|page, perPage, formData|重新加载
+
+## table-tree
+
+实现表格树效果
+
+```html
+<table 
+	class="table table-striped table-hover table-tree"
+	data-tree-column="0"
+ 	data-tree-cookie-name="table-tree-state"
+ 	data-tree-collapsed-class="fa fa-folder"
+ 	data-tree-expanded-class="fa fa-folder-open"
+ 	data-tree-leaf-class="fa fa-file">
+ <thead> ... </thead>
+ <tbody>
+ 	<tr data-tree-id="1" data-tree-parent="0" data-tree-leaf="0">
+ 	    <td> Root根目录1</td>
+ 	</tr>
+  	<tr data-tree-id="11" data-tree-parent="1" data-tree-leaf="0">
+ 	    <td> 子目录</td>
+ 	</tr>
+ 	<tr data-tree-id="111" data-tree-parent="11" data-tree-leaf="1">
+ 	    <td> 子目录</td>
+ 	</tr>
+ 	<tr data-tree-id="112" data-tree-parent="11" data-tree-leaf="0">
+ 	    <td> 子目录</td>
+ 	</tr>
+ 	<tr data-tree-id="1111" data-tree-parent="112" data-tree-leaf="1">
+ 	    <td> 子目录</td>
+ 	</tr>
+ 	<tr 
+ 	   data-tree-id="2" 
+ 	   data-tree-parent="0"
+ 	   data-ajax="get.html"
+ 	   data-ajax-url="tr.html"
+ 	   data-ajax-data="a=1&b=2"
+ 	   data-tree-leaf-class="fa fa-file-o">
+ 	    <td> Root根目录2</td>
+ 	</tr>
+ 	
+ </tbody>
+</table>
+
+```
+
+**table-tree table 可用属性**
+
+属性名|说明|默认
+---|---|---
+data-tree-column|节点显示在第几列|0
+data-tree-cookie-name|节点状态保存的变量名|table-tree-state,系统有多个tree-table的话要设置成不同的
+data-tree-collapsed-class|节点折叠时的样式|fa fa-plus
+data-tree-expanded-class|节点展开时的样式|fa fa-minus
+data-tree-leaf-class|叶子节点时的图标样式|无
+
+**table-tree tr 可用属性**
+
+属性名|说明|默认
+---|---|---
+data-tree-id|节点ID|必须
+data-tree-parent|节点父ID|必须，为空时为根节点
+data-tree-leaf|是否为叶子节点|可选 `1` or `0`
+data-ajax|ajax功能|`get.html` method.数据类型
+data-ajax-url|ajax提交网址|必须
+data-ajax-data|ajax提交时参数|格式为:`a=1&b=2`
+data-tree-leaf-class|叶子节点样式图标|如：fa fa-file-o
+
+**Methods可用方法**
+
+先获取表格树对象: `let table = $(".table-tree").data('tableTreeObj')`
+
+方法名|说明|默认
+---|---|---
+table.collapseAll()|折叠所有节点|
+table.collapse($tr)|折叠某个节点
+table.expandAll()|展开所有节点|
+table.expand($tr)|展开某个节点
+table.getRootNodes()|获得所有根节点
+
+**Event事件**
+
+事件名称|说明| Example
+---|---|---
+collapse|折叠|`$('#node1').on('collapse', function(){alert(this);});`
+expand|展开|`$('#node1').on('expand', function(){alert(this);});`
+change|折叠或展开|`$('#node1').on('change', function(){alert(this);});`
 
 
 ## form-validate

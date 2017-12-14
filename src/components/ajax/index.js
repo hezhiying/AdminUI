@@ -3,6 +3,7 @@ import ajaxLoading from './ajax.loading'
 import './ajax.target'
 import ajaxTable from './table'
 import tablePager from './table.pager'
+import tableTree from './table.tree';
 import dialogForm from './ajax.dialog.form';
 
 /**
@@ -19,7 +20,7 @@ import ajax from './ajax';
  */
 import ajaxForm from './form';
 
-let config = $.extend({}, ajax.config, ajaxForm.config);
+let config = $.extend({}, ajax.config, ajaxForm.config, tableTree.config);
 
 /**
  * ajax功能安装入口
@@ -27,12 +28,14 @@ let config = $.extend({}, ajax.config, ajaxForm.config);
 export default {
   config: config,
   onload: () => {
+
     ajaxForm.onload();
     tablePager.onload();
     ajaxTable.onload();
     ajax.onload();
     ajaxLoading.onload();
-    dialogForm.onload()
+    dialogForm.onload();
+    tableTree.onload()
 
   },
   event: (elm) => {
@@ -41,6 +44,7 @@ export default {
     ajaxForm.event(elm);
     ajax.event(elm);
     ajaxLoading.event(elm);
+    tableTree.event(elm)
 
   }
 }
