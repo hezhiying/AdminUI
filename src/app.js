@@ -154,7 +154,7 @@ let components = {
   //data-toggle
   togglePopover, toggleTooltip, toggleClass, togglePanel,
   //form element
-  formElm,
+  // formElm,
 	//ajax
   ajax,
 

@@ -42,22 +42,49 @@ let lazyRun = function (condFun, callback, ttl = 2000) {
 let parseJson = function(param){
   let obj={};
   if(typeof param !== 'string')return param || obj;
-
-  let keyvalue=[];
-  let key="",value="";
   let paraString = param.split("&");
   for(let i in paraString)
   {
-    keyvalue=paraString[i].split("=");
-    key=keyvalue[0];
-    value=keyvalue[1];
-    obj[key]=value;
+    let keyvalue = paraString[i].split("=");
+    let key=keyvalue[0];
+    obj[key]=keyvalue[1];
   }
   return obj;
 };
 
+/**
+ * 注册组件安装
+ * @param components
+ * @returns {{onload: onload, event: event}}
+ */
+let regComp = function (components) {
+  return {
+    onload:function () {
+      for (let item of components) {
+        if (item.config) {
+          RequireJC.config(item.config);
+        }
+      }
+      for (let item of components) {
+        //组件初始化
+        if (item.onload) {
+          item.onload();
+        }
+      }
+    },
+    event: function (elm) {
+      for (let item of components) {
+        //组件初始化
+        if (item.event) {
+          item.event();
+        }
+      }
+    }
+  }
+};
 export default  {
   parseJson,
   lazyRun,
-  getScriptArg
+  getScriptArg,
+  regComp
 }

@@ -8,7 +8,7 @@ const TableTree = function (table) {
   // this.expanderCollapsedClass = 'fa fa-chevron-down';
   this.expanderCollapsedClass = table.data('treeCollapsedClass') || 'fa fa-plus';
   this.expanderExpandedClass =  table.data('treeExpandedClass') || 'fa fa-minus';
-  this.expanderLeafClass =  table.data('treeLeafClass') || '';
+  this.expanderLeafClass =  table.data('treeLeafClass') || 'status ';
   // this.expanderExpandedClass = 'fa fa-chevron-right';
   this.saveStateName = table.data('treeCookieName') || 'table-tree-state';
   this.initTree();
@@ -380,13 +380,11 @@ $(function () {
     });
 
   };
-
 })
 
 export default {
   config: {
     paths:{
-      'treegrid':['js/jquery-tree/jquery.treegrid.min.js'],
     },
   },
   onload: () => {

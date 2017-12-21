@@ -1,3 +1,4 @@
+import utils from '../../utils/utils';
 import './ajax.confirm'
 import ajaxLoading from './ajax.loading'
 import './ajax.target'
@@ -20,31 +21,5 @@ import ajax from './ajax';
  */
 import ajaxForm from './form';
 
-let config = $.extend({}, ajax.config, ajaxForm.config, tableTree.config);
-
-/**
- * ajax功能安装入口
- */
-export default {
-  config: config,
-  onload: () => {
-
-    ajaxForm.onload();
-    tablePager.onload();
-    ajaxTable.onload();
-    ajax.onload();
-    ajaxLoading.onload();
-    dialogForm.onload();
-    tableTree.onload()
-
-  },
-  event: (elm) => {
-    ajaxTable.event(elm);
-    tablePager.event(elm);
-    ajaxForm.event(elm);
-    ajax.event(elm);
-    ajaxLoading.event(elm);
-    tableTree.event(elm)
-
-  }
-}
+let components = [ajax, ajaxForm, tablePager, ajaxTable, ajaxLoading, dialogForm, tableTree];
+export default utils.regComp(components)
