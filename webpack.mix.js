@@ -32,11 +32,12 @@ if (mix.config.production) {
   mix.less('src/less/app.less', './build/app.css');
   mix.js('src/app.js', './build/app.js');
   mix.js('src/app.js', 'app.js');
+  mix.less('src/less/select2-bootstrap.less', './js/select2/select2-bootstrap-theme.min.css');
 
   //mix.scripts(['node_modules/jquery/dist/jquery.js', 'js/vue/vue.js', 'js/bootstrap/bootstrap.min.js'], 'js/vendor.js');
 } else {
   mix.less('src/less/app.less', '.');
   mix.js('src/app.js', 'app.js');
+  mix.less('src/less/select2-bootstrap.less', './js/select2/select2-bootstrap-theme.css');
 }
 //生成select2主题
-mix.less('src/less/select2-bootstrap.less', './js/select2/select2-bootstrap-theme.css');
