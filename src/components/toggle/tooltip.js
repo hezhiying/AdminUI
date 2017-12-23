@@ -9,7 +9,7 @@ $.fn.uiTooltip = function () {
   if (self.length) {
     self.each(function (i,elm) {
       if ($(this).data('tooltipInstalled')) return;
-      $(this).tooltip();
+      $(this).tooltip({trigger:'hover'});
       $(this).data('tooltipInstalled', true);
     });
   }
