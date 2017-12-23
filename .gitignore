@@ -8,5 +8,6 @@ package-lock.json
 app.css
 app.js
 js/vendor.js
+js/jquery-tree
 nodebook
 test
