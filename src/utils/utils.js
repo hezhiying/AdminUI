@@ -76,7 +76,7 @@ let regComp = function (components) {
       for (let item of components) {
         //组件初始化
         if (item.event) {
-          item.event();
+          item.event(elm);
         }
       }
     }
