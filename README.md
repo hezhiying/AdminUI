@@ -34,6 +34,7 @@
 	- [select2](#select2)
 	- [daterangepicker日期范围](#daterangepicker)
 	- [bootstrap-datepicker](#bootstrap-datepicker)
+	- [cascade无限级联下拉选择框](#cascade)
 
 - [jquery cookie](#jquery-cookie)
 	
@@ -1213,6 +1214,97 @@ startView|data-date-start-view|打开时显示的视图|0:days(默认) 1:months(
 * m, mm: 数字月份. Eg, 7, 07.
 * M, MM: 月份缩写和全称. Eg, Jan, January
 * yy, yyyy: 2位或4位数年份. Eg, 12, 2012.
+
+## Cascade
+
+无限级联下拉框，支持ajax动态查询显示和一次性加载完数据
+
+demo:
+
+```html
+<div 
+   id = "cascadeProv"
+	data-cascade="province,city,district"
+	data-cascade-data="data/xxx.json"
+	data-cascade-url="data/region.php"
+	data-cascade-ajax="get.json">
+	<select name="province" class="form-control" data-value="默认值">
+	    <option>请选择省份</option>
+	</select>
+	<select name="city" class="form-control" >
+	    <option>请选择市</option>
+	</select>
+	<select name="district" class="form-control" >
+	    <option>请选择区县</option>
+	</select>
+</div>
+
+```
+
+
+### 属性
+
+属性  | 说明 |例子
+---|--- | --- |---
+data-cascade| 级联目标对象列表（必填）不带# .就是name | a,b,c 
+data-cascade-data|一次性数据加载地址（请见数据格式1) | url
+data-cascade-url|动态加载地址(详见数据格式2）| url
+data-cascade-ajax|请求方式和请求数据类型|get.json
+
+data-cascade-data 数据格式
+
+```json
+
+[
+  {name:"江西",val:"江西",children:[{},...]},
+  {name:"上海",val:"上海",children:[]}
+
+]
+```
+
+data-cascade-url 动态请求时参数例子
+
+```html
+//查询全国所有省份（第一级）
+http://test.dev/region?query=province
+
+//查询江西省全有市（第二级)
+http://test.dev/region?query=city&province=江西
+
+//查询江西省上饶地区所有区县（第三级）
+http://test.dev/region?query=province&province=江西&city=上饶
+
+```
+
+返回格式可以是字符串、对象或html
+
+```json
+['北京','上海','江西']
+
+[{name:"北京", val:"北京"}...]
+
+<option value="北京">北京</option>
+
+```
+
+### 方法
+
+$.fn.uiCascade = function(data)
+
+在页面中直接初始级联数据
+
+demo:
+
+```js
+
+$(function(){
+  let data = [{"name": "北京", "val": "北京", "children":[]}];
+
+  $("#cascadeProv").uiCascade(data);
+})
+
+
+```
 
 # jquery-cookie
 

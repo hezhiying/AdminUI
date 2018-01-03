@@ -1,0 +1,43 @@
+[
+  {
+    "name": "北京",
+    "val": "北京",
+    "children": [
+      {
+        "name": "市",
+        "val": "市",
+        "children": [
+          {
+            "name": "东城",
+            "val": "东城",
+            "children": []
+          },
+          {
+            "name": "西城",
+            "val": "西城",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "县",
+        "val": "县",
+        "children": [
+          {
+            "name": "密云县",
+            "val": "密云县"
+          },
+          {
+            "name": "延庆县",
+            "val": "延庆县"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "上海",
+    "val": "上海",
+    "children": []
+  }
+]

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../app.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue/vue.min.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../app.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="page-header">
+                    <h1>级联菜单 <small>省市区联动选择</small>
+                    </h1>
+                </div>
+                <div class="panel-body">
+                    <form action="" method="post" class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="city" class="col-sm-2 control-label">City</label>
+                            <div class="col-sm-10">
+                                <div class="row" id="testCascade" data-cascade="province,city,district,last" >
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <select title="" name="province" class="zui-select form-control" data-value="上海">
+                                            <option value="">请选择省份</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <select name="city" class="zui-select form-control" >
+                                            <option value="">请选择市</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <select title="请选择区县" name="district" class="zui-select form-control" >
+                                            <option>请选择区县</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <select name="last" class="zui-select form-control" >
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">cascade</label>
+                            <div class="col-sm-10"  data-cascade="a,b,c" data-cascade-data="data/prov.json">
+                                <select name="a" class="form-control" data-value="默认值">
+                                    <option>请选择省份</option>
+                                </select>
+                                <select name="b" class="form-control" >
+                                    <option>请选择市</option>
+                                </select>
+                                <select name="c" class="form-control" >
+                                    <option>请选择区县</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+      let data = [
+        {
+          "name": "北京",
+          "val": "北京",
+          "children": [
+            {
+              "name": "市",
+              "val": "市",
+              "children": [
+                {
+                  "name": "东城",
+                  "val": "东城",
+                  "children": []
+                },
+                {
+                  "name": "西城",
+                  "val": "西城",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "县",
+              "val": "县",
+              "children": [
+                {
+                  "name": "密云县",
+                  "val": "密云县"
+                },
+                {
+                  "name": "延庆县",
+                  "val": "延庆县"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "上海",
+          "val": "上海",
+          "children": []
+        }
+      ];
+      $("#testCascade").uiCascade(data);
+    })
+</script>
+</body>
+</html>
