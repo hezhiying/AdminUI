@@ -26,9 +26,10 @@ $.fn.uiSelect2 = function () {
 export default {
   config:{
     paths:{
-      select2:['js/select2/select2.min', 'js/select2/select2.min.css', 'js/select2/select2-bootstrap-theme.css'],
+      select2:'js/select2/select2.min.js',
     },
     dep:{
+      select2:['js/select2/select2.min.css', 'js/select2/select2-bootstrap-theme.css']
     }
   },
   onload:()=>{

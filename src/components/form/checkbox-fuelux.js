@@ -10,17 +10,22 @@ $(function () {
   $.fn.uiCheckbox = function () {
     if(this.length) {
       RequireJC('checkbox', () => {
-        Utils.lazyRun(()=>$.fn.checkbox !== undefined, ()=>{
-          $(this).each((i, e) => {
-            const $this = $(e);
-            if ($this.data('checkboxObj')) {
-              return;
-            }
-            $this.data('checkboxObj', true);
+        $(this).each((i, e) => {
+          const $this = $(e);
+          if ($this.data('checkboxObj')) {
+            return;
+          }
+          $this.data('checkboxObj', true);
+          if($this.is(":checkbox")){
+            $this.after('<i class="fa fa-fw fa-square-o"></i>');
+            $this.parent('label').addClass('zui-checkbox').checkbox();
+            $this.parent('label').data('checkboxObj', true);
+          }else{
             $this.find('input[type=checkbox]').after('<i class="fa fa-fw fa-square-o"></i>');
             $this.checkbox();
-          });
-        })
+          }
+        });
+
       });
     }
   };
@@ -49,7 +54,7 @@ $(function () {
 export default {
   config:{
     paths:{
-      'checkbox':['js/fuelux/checkbox.js'],
+      'checkbox':'js/fuelux/checkbox.js',
       'fuelux.radio':['js/fuelux/radio.js'],
     },
     dep:{

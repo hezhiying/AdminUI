@@ -19,3 +19,9 @@ $.validator.addMethod("isChinese", function(value, element) {
 $.validator.addMethod("isEnglish", function(value, element) {
   return this.optional(element) || value.isEnglish();
 }, "只能包含英文字符。");
+
+// 通用用户名规则
+$.validator.addMethod("username", function(value, element) {
+  let rule = /^[a-z][a-z0-9_]{5,15}$/i;
+  return this.optional(element) || rule.test(value);
+}, "必须是英文字母、数字和下划线组成的6~16位字符，并且必须以字母开头!");
