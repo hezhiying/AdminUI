@@ -1245,7 +1245,7 @@ demo:
 ### 属性
 
 属性  | 说明 |例子
----|--- | --- |---
+---|--- | --- 
 data-cascade| 级联目标对象列表（必填）不带# .就是name | a,b,c 
 data-cascade-data|一次性数据加载地址（请见数据格式1) | url
 data-cascade-url|动态加载地址(详见数据格式2）| url
