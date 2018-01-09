@@ -16,7 +16,7 @@ $.fn.uiSelect2 = function () {
           return;
         }
         $this.data('select2Obj', true);
-        let opts = $.extend({minimumResultsForSearch:20}, $this.data() || {});
+        let opts = $.extend({minimumResultsForSearch:230}, $this.data() || {});
         $this.select2(opts);
       });
     });

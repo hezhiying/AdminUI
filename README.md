@@ -34,8 +34,9 @@
 	- [select2](#select2)
 	- [daterangepicker日期范围](#daterangepicker)
 	- [bootstrap-datepicker](#bootstrap-datepicker)
-	- [cascade无限级联下拉选择框](#cascade)
-
+	- [cascade级联选择](#cascade)
+		- [select多下拉框模式](#cascade-select)
+		- [input单下拉框模式](#cascade-input)
 - [jquery cookie](#jquery-cookie)
 	
 ## placeholder
@@ -1215,16 +1216,21 @@ startView|data-date-start-view|打开时显示的视图|0:days(默认) 1:months(
 * M, MM: 月份缩写和全称. Eg, Jan, January
 * yy, yyyy: 2位或4位数年份. Eg, 12, 2012.
 
-## Cascade
+## Cascader
 
-无限级联下拉框，支持ajax动态查询显示和一次性加载完数据
+无限级联选择，支持ajax动态查询显示和一次性加载完数据
+
+### cascade-select
+
+由多个select组件组成，表单提交时是多个字段，适合能预计层级数的情况
+
 
 demo:
 
 ```html
 <div 
-   id = "cascadeProv"
-	data-cascade="province,city,district"
+   class="zui-cascade"
+	data-cascade-select="province,city,district"
 	data-cascade-data="data/xxx.json"
 	data-cascade-url="data/region.php"
 	data-cascade-ajax="get.json">
@@ -1242,6 +1248,83 @@ demo:
 ```
 
 
+data-cascade-url 动态请求时参数例子
+
+```html
+//查询全国所有省份（第一级）
+http://test.dev/region?query=province
+
+//查询江西省全有市（第二级)
+http://test.dev/region?query=city&province=江西
+
+//查询江西省上饶地区所有区县（第三级）
+http://test.dev/region?query=province&province=江西&city=上饶
+
+```
+
+
+返回格式可以是字符串、对象或html
+
+```json
+['北京','上海','江西']
+
+[{name:"北京", val:"北京"}...]
+
+<option value="北京">北京</option>
+
+```
+
+
+### cascade-input
+
+由单个input组件组成，表单提交时只有一个字段，多个层级内容由 `,` 隔开，适合无法预计层级数量的情况
+
+demo:
+
+```html
+
+<div class="col-sm-10 col-sm-offset-2">
+	<input type="text" name="region" class="zui-cascade" 
+	placeholder="请选择" 
+	data-cascade-data="data/prov.json"
+	data-cascade-url="data/region.php"
+	data-cascade-ajax="get.json">
+</div>
+                            
+```
+
+
+data-cascade-url 动态请求时参数例子
+
+```html
+//查询全国所有省份（第一级）
+http://test.dev/region?key=北京市
+//查询江西省全有市（第二级)
+http://test.dev/region?key=北京市,市辖区
+
+```
+
+返回数据格式：
+
+- 一维字符型json数组如：
+
+```json
+["北京","上海"]
+```
+
+- 一维对象型json数组如:
+
+```json
+[{"name":"上海", "val":"上海", "leaf":"true"]
+```
+
+- html字符串 属性设置为 `data-cascade-ajax=get.html`
+
+```html
+
+<li class="cascade-menu-item" data-value="福建省" data-cascade-leaf="true">福建省</li>
+```
+
 无限级联组件的数据加载方式有以下三种可以任选一种：
 
 * ajax一次性数据加载
@@ -1252,7 +1335,7 @@ demo:
 
 属性  | 说明 |例子
 ---|--- | --- 
-data-cascade| 级联目标对象列表（必填）不带# .就是name | a,b,c 
+data-cascade-select| 级联目标对象列表（必填）不带# .就是name | a,b,c 
 data-cascade-data|一次性数据加载地址（请见数据格式1) | url
 data-cascade-url|动态加载地址(详见数据格式2）| url
 data-cascade-ajax|请求方式和请求数据类型|get.json
@@ -1268,34 +1351,10 @@ data-cascade-data 数据格式
 ]
 ```
 
-data-cascade-url 动态请求时参数例子
-
-```html
-//查询全国所有省份（第一级）
-http://test.dev/region?query=province
-
-//查询江西省全有市（第二级)
-http://test.dev/region?query=city&province=江西
-
-//查询江西省上饶地区所有区县（第三级）
-http://test.dev/region?query=province&province=江西&city=上饶
-
-```
-
-返回格式可以是字符串、对象或html
-
-```json
-['北京','上海','江西']
-
-[{name:"北京", val:"北京"}...]
-
-<option value="北京">北京</option>
-
-```
 
 ### 方法
 
-$.fn.uiCascade = function(data)
+$.fn.cascade = function(data)
 
 在页面中直接初始级联数据
 
@@ -1306,7 +1365,7 @@ demo:
 $(function(){
   let data = [{"name": "北京", "val": "北京", "children":[]}];
 
-  $("#cascadeProv").uiCascade(data);
+  $("#cascadeProv").cascade(data);
 })
 
 
