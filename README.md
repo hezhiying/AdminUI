@@ -1127,6 +1127,62 @@ javascript.html#checkbox)
 </select>
 ```
 
+### 属性设置： 
+
+1. 可以通过在html元素上添加 `data-*` 方式设置
+2. 通过`select2Options`设置属性
+
+通过实现一个远程数据搜索(ajax)例子：
+
+具体参阅[官方文档](#https://select2.org/data-sources/ajax)
+
+html:
+
+
+```html
+
+<select class="zui-select" id="exampleSelect"></select>
+
+```
+
+js:
+
+```js
+$(function(){
+	let options = {
+		ajax:{
+			url: '',
+			dataType: 'json',
+    		delay: 250, //延时搜索
+    		data: function (params) { //可以返回自定义搜索参数
+      			return {
+        			q: params.term, // search term
+          		page: params.page
+				}
+			},
+			processResults: function (data, params) {
+      			// 将ajax数据结果解析为selext2想要的数据格式
+      			// 如果使用自定义格式显示则不需要此方法，
+      			// 预期的数据格式: {results:[{id:1, text:'text'}], pagination:{more: true or false}}
+      			params.page = params.page || 1;
+
+      			return {
+        			results: data.items,
+        			pagination: {
+          			more: (params.page * 30) < data.total_count
+        			}
+      			};
+    		},
+    		minimumInputLength:2, //搜索所需最低字数,默认为0时，点击下拉即加载远程数据
+		}
+   $("#exampleSelect").data('select2Options', options)
+
+})
+
+```
+
+还可以自定义下拉列表格式和选择显示的格式请查询属性 `templateResult` 、`templateSelection` 和 `escapeMarkup` [文档](#https://select2.org/data-sources/ajax#additional-examples)
+
 ## daterangepicker
 
 非常好用的日期范围选择

@@ -5,6 +5,7 @@
  * https://select2.org/configuration/options-api
  * <select class="select2" data-tags="true" multiple></select>
  */
+
 $.fn.uiSelect2 = function () {
   if(this.length) {
     RequireJC('select2', () => {
@@ -15,9 +16,9 @@ $.fn.uiSelect2 = function () {
         if (inited) {
           return;
         }
-        $this.data('select2Obj', true);
-        let opts = $.extend({minimumResultsForSearch:230}, $this.data() || {});
-        $this.select2(opts);
+        let opts = $.extend({minimumResultsForSearch:-1}, $this.data() || {});
+        $this.data('select2Obj', $this.select2($this.data('select2Options') || opts));
+
       });
     });
   }

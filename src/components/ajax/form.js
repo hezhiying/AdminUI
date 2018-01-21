@@ -78,6 +78,9 @@ import CONFIG from '../config.js';
       } else {
         error.appendTo(wrap);
       }
+    }else if(element.is('select.zui-select')){
+      //select2下拉框时处理
+      error.insertAfter(element.nextAll('.select2-container'));
     } else {
       //其它控件，错误内容显示在控件之后
       let e = $.Event('form.placement');
